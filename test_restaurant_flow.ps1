@@ -145,6 +145,33 @@ try {
     Assert-Check ($finalBiryani.price -eq 320) "Mutton Kacchi Biryani restored to original 320"
     Assert-Check ($finalContent.meta.brandName -eq "The Sylvana Restaurant") "Brand name remains 'The Sylvana Restaurant'"
 
+    # 7. Verify Typography & Bornomala Bangla Web Font Delivery
+    Write-Host "`n[7/7] Verifying Fine Dining Typography & Bornomala Font Delivery..." -ForegroundColor Yellow
+
+    $fontReg = Invoke-WebRequest -Uri "$baseUrl/fonts/bornomala/bornomala-regular.woff2" -UseBasicParsing
+    Assert-Check ($fontReg.StatusCode -eq 200 -and $fontReg.Headers["Content-Type"] -like "*font/woff2*") "GET /fonts/bornomala/bornomala-regular.woff2 delivers 200 OK with font/woff2"
+    Assert-Check ($fontReg.RawContentLength -gt 70000) "bornomala-regular.woff2 binary size > 70 KB (Actual: $($fontReg.RawContentLength) bytes)"
+
+    $fontBold = Invoke-WebRequest -Uri "$baseUrl/fonts/bornomala/bornomala-bold.woff2" -UseBasicParsing
+    Assert-Check ($fontBold.StatusCode -eq 200 -and $fontBold.Headers["Content-Type"] -like "*font/woff2*") "GET /fonts/bornomala/bornomala-bold.woff2 delivers 200 OK with font/woff2"
+    Assert-Check ($fontBold.RawContentLength -gt 80000) "bornomala-bold.woff2 binary size > 80 KB (Actual: $($fontBold.RawContentLength) bytes)"
+
+    $styleCss = Invoke-WebRequest -Uri "$baseUrl/css/style.css" -UseBasicParsing
+    Assert-Check ($styleCss.StatusCode -eq 200 -and $styleCss.Content -like "*Playfair Display*" -and $styleCss.Content -like "*Plus Jakarta Sans*" -and $styleCss.Content -like "*Bornomala*") "GET /css/style.css defines Playfair Display, Plus Jakarta Sans, and Bornomala"
+    Assert-Check ($styleCss.Content -like "*--font-bengali: 'Bornomala', 'Hind Siliguri', sans-serif*") "style.css configures Bengali fallback: 'Bornomala', 'Hind Siliguri', sans-serif"
+
+    $adminCss = Invoke-WebRequest -Uri "$baseUrl/css/admin.css" -UseBasicParsing
+    Assert-Check ($adminCss.StatusCode -eq 200 -and $adminCss.Content -like "*--admin-font-serif*" -and $adminCss.Content -like "*--admin-font-bengali*" -and $adminCss.Content -like "*#aboutBnTitleInput*") "GET /css/admin.css defines admin serif, Bengali vars, and #aboutBnTitleInput"
+
+    $subAdminCss = Invoke-WebRequest -Uri "$baseUrl/admin/css/admin.css" -UseBasicParsing
+    Assert-Check ($subAdminCss.StatusCode -eq 200) "GET /admin/css/admin.css subpath resolves cleanly (trailing slash safety)"
+
+    $subAdminFont = Invoke-WebRequest -Uri "$baseUrl/admin/fonts/bornomala/bornomala-regular.woff2" -UseBasicParsing
+    Assert-Check ($subAdminFont.StatusCode -eq 200) "GET /admin/fonts/bornomala/... subpath resolves font binary"
+
+    Assert-Check ($indexRes.Content -like "*https://banglawebfonts.pages.dev/css/bornomala.min.css*") "Landing page includes Bornomala CSS link tag"
+    Assert-Check ($adminRes.Content -like "*https://banglawebfonts.pages.dev/css/bornomala.min.css*") "Admin Studio includes Bornomala CSS link tag"
+
 } finally {
     Write-Host "`nStopping test server..." -ForegroundColor Cyan
     if ($proc -and -not $proc.HasExited) {
