@@ -120,22 +120,26 @@ namespace NexusFlow
                     HttpListenerContext context = listener.GetContext();
                     ThreadPool.QueueUserWorkItem(delegate(object state)
                     {
+                        HttpListenerContext ctx = (HttpListenerContext)state;
                         try
                         {
-                            HandleRequest((HttpListenerContext)state);
+                            HandleRequest(ctx);
                         }
                         catch (Exception reqEx)
                         {
                             SafeLog("Error processing request: " + reqEx.Message);
+                            try { ctx.Response.Close(); } catch { }
                         }
                     }, context);
                 }
-                catch (HttpListenerException)
+                catch (HttpListenerException hex)
                 {
-                    break;
+                    if (!listener.IsListening) break;
+                    SafeLog("HttpListener exception: " + hex.Message);
                 }
                 catch (Exception ex)
                 {
+                    if (!listener.IsListening) break;
                     SafeLog("Listener exception: " + ex.Message);
                 }
             }
@@ -734,6 +738,14 @@ namespace NexusFlow
                 {
                     path = "/admin.html";
                 }
+                else if (path.StartsWith("/admin/") && !path.StartsWith("/admin.html"))
+                {
+                    string sub = path.Substring(6);
+                    if (sub.StartsWith("/css/") || sub.StartsWith("/js/") || sub.StartsWith("/assets/") || sub.StartsWith("/fonts/"))
+                    {
+                        path = sub;
+                    }
+                }
 
                 // Security: Prevent Directory Traversal
                 string sanitized = path.Replace('/', Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar);
@@ -750,7 +762,13 @@ namespace NexusFlow
 
                 if (!File.Exists(fullPath))
                 {
-                    if (path == "/favicon.ico" && File.Exists(Path.Combine(_publicDir, "favicon.svg")))
+                    string baseDirNormalized = Path.GetFullPath(_baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                    string altFullPath = Path.GetFullPath(Path.Combine(_baseDir, sanitized));
+                    if (altFullPath.StartsWith(baseDirNormalized, StringComparison.OrdinalIgnoreCase) && File.Exists(altFullPath))
+                    {
+                        fullPath = altFullPath;
+                    }
+                    else if (path == "/favicon.ico" && File.Exists(Path.Combine(_publicDir, "favicon.svg")))
                     {
                         fullPath = Path.Combine(_publicDir, "favicon.svg");
                     }
@@ -787,13 +805,17 @@ namespace NexusFlow
                 {
                     res.OutputStream.Write(bytes, 0, bytes.Length);
                 }
-                res.Close();
+                try { res.Close(); } catch { }
             }
             catch (Exception ex)
             {
-                Dictionary<string, object> err = new Dictionary<string, object>();
-                err["error"] = "Static serving error: " + ex.Message;
-                SendJson(res, 500, err);
+                try
+                {
+                    Dictionary<string, object> err = new Dictionary<string, object>();
+                    err["error"] = "Static serving error: " + ex.Message;
+                    SendJson(res, 500, err);
+                }
+                catch { }
             }
         }
 

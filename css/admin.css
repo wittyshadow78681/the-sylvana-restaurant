@@ -18,6 +18,16 @@
   src: url('../fonts/bornomala/bornomala-bold.woff2') format('woff2'),
        url('/fonts/bornomala/bornomala-bold.woff2') format('woff2'),
        url('https://banglawebfonts.pages.dev/fonts/bornomala/bornomala-bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bornomala';
+  src: url('../fonts/bornomala/bornomala-bold.woff2') format('woff2'),
+       url('/fonts/bornomala/bornomala-bold.woff2') format('woff2'),
+       url('https://banglawebfonts.pages.dev/fonts/bornomala/bornomala-bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -40,8 +50,8 @@
   --admin-warning: #f59e0b;
   --admin-danger: #ef4444;
   --admin-radius: 10px;
-  --admin-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Bornomala', 'Hind Siliguri', sans-serif;
-  --admin-font-serif: 'Playfair Display', Georgia, 'Bornomala', 'Hind Siliguri', serif;
+  --admin-font: 'Plus Jakarta Sans', 'Bornomala', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --admin-font-serif: 'Playfair Display', 'Bornomala', 'Hind Siliguri', Georgia, serif;
   --admin-font-bengali: 'Bornomala', 'Hind Siliguri', sans-serif;
   --admin-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
@@ -634,7 +644,7 @@ body.split-preview-active .admin-main {
 .modal-title,
 .admin-card-title,
 .stat-card-title,
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--admin-font-serif);
 }
 
@@ -644,6 +654,9 @@ h1, h2, h3 {
 [lang="bn"],
 #metaBrandNameBn,
 #heroHeadlineEnd,
-#aboutBnTitle {
+#aboutBnTitle,
+#aboutBnTitleInput,
+#metaSiteTagline,
+#aboutBadgeInput {
   font-family: var(--admin-font-bengali);
 }
