@@ -29,4 +29,4 @@ if (-not $serverProc) {
 Write-Host "`nLaunching High-Speed Cloudflare Tunnel..." -ForegroundColor Yellow
 Write-Host "Press Ctrl+C in this terminal to stop the tunnel.`n" -ForegroundColor DarkGray
 
-& .\cloudflared.exe tunnel --url "http://localhost:$AppPort" --http-host-header "localhost:$AppPort"
+& .\cloudflared.exe tunnel --url "http://localhost:$AppPort" --http-host-header "localhost:$AppPort" --logfile "tunnel.log"
