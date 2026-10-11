@@ -2,10 +2,31 @@
    NexusFlow - Modern Single Page Design System & Stylesheet
    ========================================================================== */
 
+/* Bornomala Bengali Web Font Declarations (Local & Remote Fallbacks) */
+@font-face {
+  font-family: 'Bornomala';
+  src: url('../fonts/bornomala/bornomala-regular.woff2') format('woff2'),
+       url('/fonts/bornomala/bornomala-regular.woff2') format('woff2'),
+       url('https://banglawebfonts.pages.dev/fonts/bornomala/bornomala-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bornomala';
+  src: url('../fonts/bornomala/bornomala-bold.woff2') format('woff2'),
+       url('/fonts/bornomala/bornomala-bold.woff2') format('woff2'),
+       url('https://banglawebfonts.pages.dev/fonts/bornomala/bornomala-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Hind Siliguri', 'SolaimanLipi', sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-bengali: 'Hind Siliguri', 'SolaimanLipi', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Bornomala', 'Hind Siliguri', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Bornomala', 'Hind Siliguri', serif;
+  --font-bengali: 'Bornomala', 'Hind Siliguri', sans-serif;
   --bg-primary: #120d0a;
   --bg-secondary: #1a1310;
   --bg-card: rgba(26, 19, 16, 0.88);
@@ -83,6 +104,68 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+/* ==========================================================================
+   Restaurant Typography System - Luxury English & Bornomala Bangla
+   ========================================================================== */
+
+/* Headings & Brand accents: 'Playfair Display' (weights 400, 600, 700) */
+h1, h2, h3, h4,
+.hero-headline,
+.section-title,
+.brand-text,
+.brand-title,
+.showcase-title,
+.feature-title,
+.plan-name,
+.testimonial-quote,
+.author-info h4,
+.contact-detail-content h5,
+.footer-links h4,
+.modal-title {
+  font-family: var(--font-serif);
+}
+
+/* Body, Navigation, Menu cards & Numbers: 'Plus Jakarta Sans' (weights 400, 500, 600, 700) */
+body,
+p,
+.nav-links,
+.nav-link,
+.btn,
+.dish-card,
+.dish-title,
+.dish-desc,
+.dish-price-tag,
+.dish-order-btn,
+.dish-badges,
+.dish-badge-pill,
+.menu-controls-box,
+.menu-cat-btn,
+.menu-sec-btn,
+.menu-search-input,
+.currency-sym,
+.peek-dish,
+.peek-price,
+.plan-price-box,
+.metric-value,
+.metric-label,
+.badge,
+.tag,
+.announcement-bar {
+  font-family: var(--font-sans);
+}
+
+/* Bengali Titles, Tags, and Text: 'Bornomala', 'Hind Siliguri', sans-serif */
+.bn-title,
+.brand-tagline,
+.bengali-heading,
+.widget-bengali-banner,
+.bn-text,
+.bengali-text,
+[lang="bn"],
+.bengali-script {
+  font-family: var(--font-bengali);
 }
 
 .container {
@@ -170,6 +253,9 @@ button {
 }
 
 .brand-text {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   background: linear-gradient(120deg, #ffffff, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -325,10 +411,11 @@ button {
 }
 
 .hero-headline {
+  font-family: var(--font-serif);
   font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
 }
 
 .gradient-text {
@@ -560,11 +647,12 @@ button {
 }
 
 .section-title {
+  font-family: var(--font-serif);
   font-size: 2.6rem;
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   color: #fff;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 16px;
 }
 
@@ -1419,11 +1507,12 @@ button {
 }
 
 .brand-tagline {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
   margin-top: -2px;
   font-family: var(--font-bengali);
+  letter-spacing: 0.2px;
 }
 
 .btn-phone {
@@ -1438,23 +1527,25 @@ button {
   color: #fff;
 }
 
-/* Bengali Typography */
+/* Bengali Typography - Powered by Bornomala */
 .bn-title {
   display: block;
   font-family: var(--font-bengali);
-  font-size: 0.6em;
+  font-size: 0.62em;
   color: var(--accent);
   margin-top: 8px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: normal;
+  line-height: 1.4;
 }
 
 .bengali-heading {
   font-family: var(--font-bengali);
   color: var(--accent);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 16px;
+  line-height: 1.4;
 }
 
 /* Hero Widget Extras */
@@ -1465,9 +1556,10 @@ button {
   font-family: var(--font-bengali);
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
 .widget-menu-peek {
@@ -1809,6 +1901,7 @@ button {
 }
 
 .dish-title {
+  font-family: var(--font-sans);
   font-size: 1.15rem;
   font-weight: 700;
   color: #fff;
@@ -1816,6 +1909,7 @@ button {
 }
 
 .dish-desc {
+  font-family: var(--font-sans);
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.5;
@@ -1838,11 +1932,13 @@ button {
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--accent);
+  font-family: var(--font-sans);
 }
 
 .dish-price-tag .currency-sym {
   font-size: 1.2rem;
   color: #fbbf24;
+  font-family: var(--font-sans);
 }
 
 .dish-order-btn {

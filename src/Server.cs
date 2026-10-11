@@ -95,21 +95,21 @@ namespace NexusFlow
             try
             {
                 listener.Start();
-                Console.WriteLine("==================================================");
-                Console.WriteLine("   NexusFlow Web Server & Dynamic CMS Engine      ");
-                Console.WriteLine("==================================================");
-                Console.WriteLine("Server started successfully!");
-                Console.WriteLine("Public Website:   " + urlPrefix);
-                Console.WriteLine("Admin Dashboard:  " + urlPrefix + "admin");
-                Console.WriteLine("API Root:         " + urlPrefix + "api/content");
-                Console.WriteLine("Base Directory:   " + _baseDir);
-                Console.WriteLine("Default Login:    Username: admin  |  Password: " + _adminPassword);
-                Console.WriteLine("Press Ctrl+C to terminate the server.");
-                Console.WriteLine("==================================================");
+                SafeLog("==================================================");
+                SafeLog("   NexusFlow Web Server & Dynamic CMS Engine      ");
+                SafeLog("==================================================");
+                SafeLog("Server started successfully!");
+                SafeLog("Public Website:   " + urlPrefix);
+                SafeLog("Admin Dashboard:  " + urlPrefix + "admin");
+                SafeLog("API Root:         " + urlPrefix + "api/content");
+                SafeLog("Base Directory:   " + _baseDir);
+                SafeLog("Default Login:    Username: admin  |  Password: " + _adminPassword);
+                SafeLog("Press Ctrl+C to terminate the server.");
+                SafeLog("==================================================");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("FATAL ERROR: Failed to start HttpListener: " + ex.Message);
+                SafeLog("FATAL ERROR: Failed to start HttpListener: " + ex.Message);
                 return;
             }
 
@@ -126,7 +126,7 @@ namespace NexusFlow
                         }
                         catch (Exception reqEx)
                         {
-                            Console.WriteLine("Error processing request: " + reqEx.Message);
+                            SafeLog("Error processing request: " + reqEx.Message);
                         }
                     }, context);
                 }
@@ -136,9 +136,14 @@ namespace NexusFlow
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Listener exception: " + ex.Message);
+                    SafeLog("Listener exception: " + ex.Message);
                 }
             }
+        }
+
+        private static void SafeLog(string msg)
+        {
+            try { Console.WriteLine(msg); } catch { }
         }
 
         private static void HandleRequest(HttpListenerContext context)
@@ -778,7 +783,10 @@ namespace NexusFlow
                     res.Headers["Cache-Control"] = "public, max-age=3600";
                 }
 
-                res.OutputStream.Write(bytes, 0, bytes.Length);
+                if (req.HttpMethod != "HEAD")
+                {
+                    res.OutputStream.Write(bytes, 0, bytes.Length);
+                }
                 res.Close();
             }
             catch (Exception ex)
