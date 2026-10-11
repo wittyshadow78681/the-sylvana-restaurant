@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sylvana Restaurant Admin Studio | Content & Menu Management</title>
+  <link rel="icon" type="image/png" href="/assets/sylvana-logo.png">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <!-- Hidden File Input for JSON Source Import -->
+  <input type="file" id="importFileInput" accept=".json,application/json" style="display: none;">
+
+  <!-- Admin Top Navigation Bar -->
+  <header class="admin-navbar">
+    <div class="admin-brand">
+      <img src="/assets/sylvana-logo.png" alt="Sylvana Logo" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;" onerror="this.style.display='none'">
+      <div style="display: flex; flex-direction: column;">
+        <span style="font-size: 1.05rem; font-weight: 700;">The Sylvana Restaurant</span>
+        <span style="font-size: 0.72rem; color: #f59e0b;">দ্যা সিলভানা রেস্টুরেন্ট</span>
+      </div>
+      <span class="admin-badge">Admin Studio</span>
+    </div>
+
+    <div class="admin-status-area">
+      <span class="source-status-pill">
+        ● Source Synced (content.json)
+      </span>
+      <span class="dirty-indicator" id="dirtyIndicator">
+        ⚠️ Unsaved Changes Pending
+      </span>
+    </div>
+
+    <div class="admin-top-actions">
+      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnTogglePreview" title="Toggle Side-by-Side Live Preview">
+        👁️ Live Preview
+      </button>
+      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnExportJson" title="Export Current Content Source as JSON file">
+        📥 Export JSON
+      </button>
+      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnImportJson" title="Import Content from JSON file">
+        📤 Import JSON
+      </button>
+      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnResetDefaults" title="Restore Default Content Template">
+        🔄 Reset Defaults
+      </button>
+      <button type="button" class="btn-admin-action btn-primary-save" id="btnSaveAll" title="Save All Changes (Ctrl+S)">
+        💾 Save All Changes
+      </button>
+      <button type="button" class="btn-admin-action btn-danger-tool" id="btnLogout" title="Log Out">
+        🚪 Logout (<span id="adminUserDisplay">admin</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Admin Workspace Layout -->
+  <div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-category">Core Operations</div>
+      <button type="button" class="nav-tab-btn active" data-tab="overview">
+        <span>📊</span> Dashboard Overview
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="inbox">
+        <span>📩</span> Reservations & Inbox
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="audit">
+        <span>📜</span> Audit History
+      </button>
+
+      <div class="sidebar-category">Menu & Dishes</div>
+      <button type="button" class="nav-tab-btn" data-tab="menu">
+        <span>🍲</span> Full Menu (38 Dishes)
+      </button>
+
+      <div class="sidebar-category">Restaurant Content</div>
+      <button type="button" class="nav-tab-btn" data-tab="general">
+        <span>⚙️</span> Brand & Metadata
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="hero">
+        <span>🚀</span> Hero Section
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="about">
+        <span>📖</span> About & Heritage
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="metrics">
+        <span>📈</span> Metrics Counter
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="showcase">
+        <span>🌟</span> Chef's Specials
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="features">
+        <span>💡</span> Quality Pillars
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="pricing">
+        <span>💳</span> Feasts & Platters
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="testimonials">
+        <span>💬</span> Guest Reviews
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="faqs">
+        <span>❓</span> FAQ Accordion
+      </button>
+      <button type="button" class="nav-tab-btn" data-tab="contact">
+        <span>📬</span> Location & Contact
+      </button>
+
+      <div class="sidebar-category">Advanced Source Flow</div>
+      <button type="button" class="nav-tab-btn" data-tab="raw-source">
+        <span>🔍</span> Raw Source (JSON)
+      </button>
+    </aside>
+
+    <!-- Main Workspace Content -->
+    <main class="admin-main">
+
+      <!-- TAB: Overview -->
+      <section class="tab-pane active" id="pane-overview">
+        <div class="pane-header">
+          <h1 class="pane-title">Restaurant Management Overview</h1>
+          <p class="pane-desc">Real-time status of The Sylvana Restaurant website, active menu items, and table reservations.</p>
+        </div>
+
+        <div class="summary-stats-grid">
+          <div class="summary-stat-card">
+            <div class="summary-stat-label">Active Dishes</div>
+            <div class="summary-stat-val gradient-text" id="statDishes">38+</div>
+            <div class="summary-stat-label">Breakfast, lunch, snacks & drinks</div>
+          </div>
+          <div class="summary-stat-card">
+            <div class="summary-stat-label">Server Uptime</div>
+            <div class="summary-stat-val" id="statUptime" style="color: #38bdf8;">-</div>
+            <div class="summary-stat-label">Continuous operation</div>
+          </div>
+          <div class="summary-stat-card">
+            <div class="summary-stat-label">Table Inquiries</div>
+            <div class="summary-stat-val" id="statInquiries" style="color: #34d399;">-</div>
+            <div class="summary-stat-label">Received in reservation inbox</div>
+          </div>
+          <div class="summary-stat-card">
+            <div class="summary-stat-label">Audit Log Records</div>
+            <div class="summary-stat-val" id="statAudits" style="color: #c084fc;">-</div>
+            <div class="summary-stat-label">Tracked revisions</div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">🍽️ The Sylvana Restaurant Quick Links</div>
+          <p style="color: var(--admin-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;">
+            All modifications performed inside this studio flow straight into the source data store (<code style="color: var(--admin-accent);">/data/content.json</code>).
+            When you hit <strong>Save All Changes</strong> (or press <kbd style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">Ctrl+S</kbd>), the changes are immediately available across the public website with zero build or compile delay.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="/" target="_blank" class="btn-admin-action btn-secondary-tool">
+              🌐 Open Public Restaurant Website
+            </a>
+            <a href="/api/content" target="_blank" class="btn-admin-action btn-secondary-tool">
+              📄 Inspect Raw JSON API
+            </a>
+            <a href="#menu" class="btn-admin-action btn-secondary-tool" onclick="document.querySelector('[data-tab=\'menu\']').click();">
+              🍲 Manage Menu & Prices
+            </a>
+            <a href="#inbox" class="btn-admin-action btn-secondary-tool" onclick="document.querySelector('[data-tab=\'inbox\']').click();">
+              📩 View Reservations
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Menu Management (Dedicated 38 Dishes Tab) -->
+      <section class="tab-pane" id="pane-menu">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <h1 class="pane-title">Full Menu Management</h1>
+            <p class="pane-desc">Manage all dishes, prices in ৳ (BDT), categories, descriptions, special badges, and dietary labels.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn-admin-action btn-primary-save" id="btnAddDish">
+              ➕ Add New Dish
+            </button>
+          </div>
+        </div>
+
+        <!-- Menu Section Headers -->
+        <div class="admin-card">
+          <div class="card-title">Public Menu Section Header Copy</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="menuEyebrowInput" class="admin-input" placeholder="Our Complete Menu">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Title</label>
+              <input type="text" id="menuTitleInput" class="admin-input" placeholder="Explore All 38 Dishes & Refreshments">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="menuSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <!-- Filter bar for admin editing -->
+        <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: center; flex-wrap: wrap;">
+          <input type="text" id="adminMenuSearch" class="admin-input" style="max-width: 320px;" placeholder="Filter dishes in editor (e.g., Biryani, Tea, Paratha)...">
+          <select id="adminCategoryFilter" class="admin-select" style="max-width: 260px;">
+            <option value="ALL">All Categories</option>
+            <option value="Breakfast Menu">Breakfast Menu</option>
+            <option value="Tea Item">Tea Item</option>
+            <option value="Soups & Appetizers">Soups & Appetizers</option>
+            <option value="Gourmet Burgers">Gourmet Burgers</option>
+            <option value="Pizza & Pasta">Pizza & Pasta</option>
+            <option value="Traditional Meals & Favourites">Traditional Meals & Favourites</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Tea, Coffee & Refreshments">Tea, Coffee & Refreshments</option>
+            <option value="Lassis, Milkshakes & Juice">Lassis, Milkshakes & Juice</option>
+          </select>
+          <span style="font-size: 0.85rem; color: var(--admin-muted);" id="adminDishCountLabel">Total: 45 dishes</span>
+        </div>
+
+        <!-- Dynamic Menu Items List -->
+        <div id="menuEditorList">
+          <!-- Dynamically populated dish editing rows -->
+        </div>
+      </section>
+
+      <!-- TAB: General & Branding -->
+      <section class="tab-pane" id="pane-general">
+        <div class="pane-header">
+          <h1 class="pane-title">Restaurant Brand & Metadata</h1>
+          <p class="pane-desc">Manage restaurant identity, Bengali brand name, logo, contact channels, and opening ribbon.</p>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Brand Identity</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Restaurant English Name</label>
+              <input type="text" id="metaBrandName" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Restaurant Bengali Name</label>
+              <input type="text" id="metaBrandNameBn" class="admin-input" placeholder="দ্যা সিলভানা রেস্টুরেন্ট">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Site Title (Browser Tab)</label>
+              <input type="text" id="metaSiteTitle" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Tagline</label>
+              <input type="text" id="metaSiteTagline" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Logo Asset URL</label>
+              <input type="text" id="metaLogoUrl" class="admin-input" placeholder="/assets/sylvana-logo.png">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Logo Glyph Icon (Fallback Emoji)</label>
+              <input type="text" id="metaLogoIcon" class="admin-input">
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Meta Description (SEO)</label>
+            <textarea id="metaDescription" class="admin-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Primary Brand Color (Terracotta Red)</label>
+              <input type="color" id="metaPrimaryColor" class="admin-input" style="height: 44px; padding: 4px;">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Accent Brand Color (Warm Gold / Amber)</label>
+              <input type="color" id="metaAccentColor" class="admin-input" style="height: 44px; padding: 4px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Top Announcement Ribbon</div>
+          <div class="admin-switch-row">
+            <div>
+              <strong>Enable Announcement Banner</strong>
+              <div style="font-size: 0.8rem; color: var(--admin-muted);">Displays a top notice bar above the navigation bar.</div>
+            </div>
+            <input type="checkbox" id="announcementEnabled" style="width: 20px; height: 20px;">
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Badge Label</label>
+              <input type="text" id="announcementBadge" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Announcement Text</label>
+              <input type="text" id="announcementText" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Action Link Text</label>
+              <input type="text" id="announcementLinkText" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Action Link Target URL</label>
+              <input type="text" id="announcementLinkUrl" class="admin-input">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Hero Section -->
+      <section class="tab-pane" id="pane-hero">
+        <div class="pane-header">
+          <h1 class="pane-title">Hero Section</h1>
+          <p class="pane-desc">Customize headlines, Bengali branding, call to actions, highlights, and operational card.</p>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Main Hero Copy</div>
+          <div class="admin-field">
+            <label class="admin-label">Eyebrow Badge Pill</label>
+            <input type="text" id="heroBadgeText" class="admin-input">
+          </div>
+
+          <div class="form-row-3">
+            <div class="admin-field">
+              <label class="admin-label">Headline Prefix</label>
+              <input type="text" id="heroHeadlineStart" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Highlighted Brand (Gradient)</label>
+              <input type="text" id="heroHeadlineHighlight" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Bengali Subtitle</label>
+              <input type="text" id="heroHeadlineEnd" class="admin-input">
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Subtitle / Description</label>
+            <textarea id="heroSubtitleText" class="admin-textarea" rows="3"></textarea>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Primary CTA Button Text</label>
+              <input type="text" id="heroPrimaryCtaText" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Primary CTA Button URL</label>
+              <input type="text" id="heroPrimaryCtaUrl" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Secondary CTA Button Text</label>
+              <input type="text" id="heroSecondaryCtaText" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Secondary CTA Button URL</label>
+              <input type="text" id="heroSecondaryCtaUrl" class="admin-input">
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Trust Badge Proof & Location</label>
+            <input type="text" id="heroTrustBadgeText" class="admin-input">
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Key Highlights Pill Strip (One per line)</label>
+            <textarea id="heroHighlightsList" class="admin-textarea" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Hero Operational Status Card</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Card Title</label>
+              <input type="text" id="heroPreviewTitle" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Operational Status Pill</label>
+              <input type="text" id="heroPreviewStatus" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Metric 1 Label</label>
+              <input type="text" id="heroPreviewMetric1Label" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Metric 1 Value</label>
+              <input type="text" id="heroPreviewMetric1Val" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Metric 2 Label</label>
+              <input type="text" id="heroPreviewMetric2Label" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Metric 2 Value</label>
+              <input type="text" id="heroPreviewMetric2Val" class="admin-input">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: About & Heritage -->
+      <section class="tab-pane" id="pane-about">
+        <div class="pane-header">
+          <h1 class="pane-title">About Our Culinary Heritage</h1>
+          <p class="pane-desc">Manage the story, history, and culinary ethos of The Sylvana Restaurant in Shahbagh.</p>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Heritage Story Content</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Section Eyebrow</label>
+              <input type="text" id="aboutBadgeInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Main Heading</label>
+              <input type="text" id="aboutTitleInput" class="admin-input">
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Bengali Subtitle Heading</label>
+            <input type="text" id="aboutBnTitleInput" class="admin-input">
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Story Paragraph 1</label>
+            <textarea id="aboutStory1Input" class="admin-textarea" rows="3"></textarea>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Story Paragraph 2</label>
+            <textarea id="aboutStory2Input" class="admin-textarea" rows="3"></textarea>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label">Key Highlights Checklist (One per line)</label>
+            <textarea id="aboutHighlightsInput" class="admin-textarea" rows="3"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Metrics Counter -->
+      <section class="tab-pane" id="pane-metrics">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Metrics & Statistics Strip</h1>
+            <p class="pane-desc">Quantitative proof points displayed under the hero section.</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddMetric">
+            ➕ Add Metric
+          </button>
+        </div>
+
+        <div id="metricsEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Showcase / Chef's Specials -->
+      <section class="tab-pane" id="pane-showcase">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Chef's Signature Specials</h1>
+            <p class="pane-desc">Highlighted specialty dishes, pricing tags, and gradients.</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddShowcase">
+            ➕ Add Special Item
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Section Title & Header</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="showcaseEyebrowInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Headline</label>
+              <input type="text" id="showcaseTitleInput" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="showcaseSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div id="showcaseEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Features / Quality Pillars -->
+      <section class="tab-pane" id="pane-features">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Quality Pillars & Features</h1>
+            <p class="pane-desc">Core dining experience pillars (Woodfire, 100% Halal, All Day Dining, etc.).</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddFeature">
+            ➕ Add Pillar Card
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Section Title & Header</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="featuresEyebrowInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Headline</label>
+              <input type="text" id="featuresTitleInput" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="featuresSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div id="featuresEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Pricing / Feasts & Platters -->
+      <section class="tab-pane" id="pane-pricing">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Set Meals & Platters</h1>
+            <p class="pane-desc">Manage curated family feasts, breakfast platters, group discount offers, and inclusions.</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddPricingPlan">
+            ➕ Add Feast Platter
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Section Title & Header</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="pricingEyebrowInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Headline</label>
+              <input type="text" id="pricingTitleInput" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="pricingSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-field">
+            <label class="admin-label">Group Discount Notice Text</label>
+            <input type="text" id="pricingDiscountText" class="admin-input">
+          </div>
+        </div>
+
+        <div id="pricingEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Testimonials / Guest Reviews -->
+      <section class="tab-pane" id="pane-testimonials">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Guest Reviews & Testimonials</h1>
+            <p class="pane-desc">Customer feedback, guest designations, initials avatar, and star rating metrics.</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddTestimonial">
+            ➕ Add Review
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Section Title & Header</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="testimonialsEyebrowInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Headline</label>
+              <input type="text" id="testimonialsTitleInput" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="testimonialsSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div id="testimonialsEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: FAQ Accordion -->
+      <section class="tab-pane" id="pane-faqs">
+        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="pane-title">Frequently Asked Questions</h1>
+            <p class="pane-desc">Manage accordion items clarifying questions about dining, halal certification, reservations, and hours.</p>
+          </div>
+          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddFaq">
+            ➕ Add FAQ
+          </button>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Section Title & Header</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Eyebrow Badge</label>
+              <input type="text" id="faqsEyebrowInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Headline</label>
+              <input type="text" id="faqsTitleInput" class="admin-input">
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Section Subtitle</label>
+            <textarea id="faqsSubtitleInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div id="faqsEditorList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB: Location & Contact -->
+      <section class="tab-pane" id="pane-contact">
+        <div class="pane-header">
+          <h1 class="pane-title">Location, Contact & Footer</h1>
+          <p class="pane-desc">Manage Shahbagh location details, phone hotline, email, opening hours, and social media links.</p>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Contact & Location Details</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Section Title</label>
+              <input type="text" id="contactTitleInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Section Subtitle</label>
+              <input type="text" id="contactSubtitleInput" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Official Email Address</label>
+              <input type="email" id="contactEmailInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Mobile / Phone Hotline</label>
+              <input type="text" id="contactPhoneInput" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Full Address</label>
+              <input type="text" id="contactAddressInput" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Opening / Service Hours</label>
+              <input type="text" id="contactHoursInput" class="admin-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Social Profiles & Messengers</div>
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">Facebook URL</label>
+              <input type="text" id="socialTwitter" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Instagram URL</label>
+              <input type="text" id="socialGithub" class="admin-input">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="admin-field">
+              <label class="admin-label">WhatsApp URL</label>
+              <input type="text" id="socialLinkedin" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Direct Inquiry Link</label>
+              <input type="text" id="socialDiscord" class="admin-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-title">Footer Notice & Links</div>
+          <div class="admin-field">
+            <label class="admin-label">Footer Brand Blurb</label>
+            <textarea id="footerDescInput" class="admin-textarea" rows="2"></textarea>
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Copyright Notice</label>
+            <input type="text" id="footerCopyrightInput" class="admin-input">
+          </div>
+          <div class="admin-field">
+            <label class="admin-label">Footer Navigation Links (One per line: Label | URL)</label>
+            <textarea id="footerLinksInput" class="admin-textarea" rows="4"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Raw Source JSON -->
+      <section class="tab-pane" id="pane-raw-source">
+        <div class="pane-header">
+          <h1 class="pane-title">Atomic Source JSON Editor</h1>
+          <p class="pane-desc">
+            Directly inspect and modify the raw single source of truth (<code style="color: var(--admin-accent);">content.json</code>).
+            All edits reflect across both forms and public views when saved.
+          </p>
+        </div>
+
+        <div class="admin-card">
+          <textarea id="rawJsonSourceEditor" class="raw-json-editor" spellcheck="false"></textarea>
+          <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 10px;">
+            <button type="button" class="btn-admin-action btn-primary-save" onclick="document.getElementById('btnSaveAll').click()">
+              💾 Save JSON Changes
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB: Inquiries & Reservations Inbox -->
+      <section class="tab-pane" id="pane-inbox">
+        <div class="pane-header">
+          <h1 class="pane-title">Table Reservations & Inquiries Inbox</h1>
+          <p class="pane-desc">Messages and table bookings submitted by visitors through the public landing page form.</p>
+        </div>
+
+        <div class="admin-card" style="padding: 0; overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Contact Email</th>
+                <th>Subject / Service</th>
+                <th>Reservation Details & Notes</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="messagesTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB: Audit History -->
+      <section class="tab-pane" id="pane-audit">
+        <div class="pane-header">
+          <h1 class="pane-title">Audit Log & Revision History</h1>
+          <p class="pane-desc">Immutable event log tracking administrative content modifications and auth events.</p>
+        </div>
+
+        <div class="admin-card" style="padding: 0; overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Action Event</th>
+                <th>User</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="auditLogTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Split Live Preview Drawer -->
+  <div class="preview-split-wrapper" id="previewSplitWrapper">
+    <div class="preview-split-bar">
+      <span>👁️ Real-Time Public Website Preview</span>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnPreviewDesktop" style="padding: 2px 8px; font-size: 0.75rem;">
+          🖥️ Desktop
+        </button>
+        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnPreviewMobile" style="padding: 2px 8px; font-size: 0.75rem;">
+          📱 Mobile
+        </button>
+        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnRefreshPreview" style="padding: 2px 8px; font-size: 0.75rem;">
+          🔄 Reload
+        </button>
+        <button type="button" class="btn-danger-tool btn-admin-action" id="btnClosePreview" style="padding: 2px 8px; font-size: 0.75rem;">
+          ✕ Close
+        </button>
+      </div>
+    </div>
+    <iframe id="livePreviewFrame" class="preview-iframe" src="/"></iframe>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="login-modal-overlay" id="loginModal" style="display: none;">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="/assets/sylvana-logo.png" alt="Sylvana Logo" style="height: 52px; width: auto; object-fit: contain; margin-bottom: 8px;" onerror="this.style.display='none'">
+        <h2>The Sylvana Restaurant</h2>
+        <div style="color: #f59e0b; font-size: 0.9rem; font-weight: 600;">Admin Studio</div>
+        <p style="color: var(--admin-muted); font-size: 0.85rem; margin-top: 6px;">
+          Authenticate to manage live menu, dishes, and restaurant content
+        </p>
+      </div>
+
+      <div class="login-hint">
+        🔑 <strong>Default Credentials:</strong><br>
+        Username: <code>admin</code> &nbsp;|&nbsp; Password: <code>admin123</code>
+      </div>
+
+      <div id="loginAlert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 16px;"></div>
+
+      <form id="loginForm">
+        <div class="admin-field">
+          <label class="admin-label">Username</label>
+          <input type="text" id="loginUsername" class="admin-input" required value="admin">
+        </div>
+
+        <div class="admin-field">
+          <label class="admin-label">Password</label>
+          <input type="password" id="loginPassword" class="admin-input" required value="admin123">
+        </div>
+
+        <button type="submit" class="btn-primary-save btn-admin-action" style="width: 100%; padding: 12px; margin-top: 10px; font-size: 0.95rem; justify-content: center;">
+          Sign In to Admin Studio &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Toast Container -->
+  <div class="admin-toast" id="adminToast"></div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

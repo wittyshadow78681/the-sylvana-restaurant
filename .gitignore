@@ -1,0 +1,16 @@
+# Binaries and executables
+*.exe
+cloudflared.exe
+NexusServer.exe
+TunnelProxy.exe
+
+# Build and IDE outputs
+bin/
+obj/
+.vs/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+data/*.tmp

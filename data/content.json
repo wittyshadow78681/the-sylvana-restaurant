@@ -1,0 +1,1083 @@
+﻿{
+    "meta":  {
+                 "siteTitle":  "The Sylvana Restaurant | Authentic Bengali Cuisine in Shahbagh, Dhaka",
+                 "siteTagline":  "দ্যা সিলভানা রেস্টুরেন্ট - Traditional Flavours \u0026 Warm Hospitality",
+                 "metaDescription":  "Experience authentic Bengali cuisine, Kacchi Biryani, hearty breakfast, and Continental dining at The Sylvana Restaurant in Shahbagh, Dhaka.",
+                 "brandName":  "The Sylvana Restaurant",
+                 "brandNameBn":  "দ্যা সিলভানা রেস্টুরেন্ট",
+                 "logoUrl":  "/assets/sylvana-logo.png",
+                 "logoIcon":  "🍽️",
+                 "primaryColor":  "#e63917",
+                 "accentColor":  "#d9381e",
+                 "secondaryColor":  "#f59e0b",
+                 "announcement":  {
+                                      "enabled":  true,
+                                      "badge":  "WELCOME",
+                                      "text":  "The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) is open daily 7:00 AM – 11:30 PM at 10, Shahbagh Biponi Bithan, Dhaka!",
+                                      "linkText":  "Reserve Table",
+                                      "linkUrl":  "#reservation"
+                                  }
+             },
+    "hero":  {
+                 "badge":  "✨ Authentic Culinary Heritage in Shahbagh, Dhaka",
+                 "headlineStart":  "Welcome to",
+                 "headlineHighlight":  "The Sylvana Restaurant",
+                 "headlineEnd":  "দ্যা সিলভানা রেস্টুরেন্ট",
+                 "subtitle":  "Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, hearty traditional Bengali breakfast, fresh clay-oven naans, and gourmet burgers crafted with passion and heritage spices.",
+                 "primaryCta":  {
+                                    "text":  "Explore 38+ Dishes",
+                                    "url":  "#menu"
+                                },
+                 "secondaryCta":  {
+                                      "text":  "Book a Table",
+                                      "url":  "#reservation"
+                                  },
+                 "trustBadge":  "Loved by food lovers, families \u0026 students across Dhaka • 10, Shahbagh Biponi Bithan",
+                 "highlights":  [
+                                    "Authentic Bengali recipes \u0026 slow-cooked Kacchi Biryani",
+                                    "Hearty breakfast served daily from 7:00 AM",
+                                    "Fresh clay oven naans \u0026 premium halal meat"
+                                ],
+                 "previewCard":  {
+                                     "title":  "The Sylvana Restaurant",
+                                     "metric1":  {
+                                                     "label":  "Daily Opening Hours",
+                                                     "value":  "7:00 AM - 11:30 PM"
+                                                 },
+                                     "metric2":  {
+                                                     "label":  "Location \u0026 City",
+                                                     "value":  "Shahbagh, Dhaka"
+                                                 },
+                                     "status":  "Dine-in \u0026 Takeaway Open",
+                                     "sourceStatus":  "Hot \u0026 Fresh from Kitchen"
+                                 }
+             },
+    "about":  {
+                  "badge":  "Our Culinary Heritage / আমাদের ঐতিহ্য",
+                  "title":  "Serving Genuine Flavours at the Heart of Dhaka",
+                  "bengaliTitle":  "দ্যা সিলভানা রেস্টুরেন্ট — ঐতিহ্য ও খাঁটি স্বাদের মেলবন্ধন",
+                  "story1":  "Situated at 10, Shahbagh Biponi Bithan, The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) is proud to be a warm culinary landmark in Dhaka. We bring together time-honoured Bengali cooking traditions, authentic Old Dhaka spices, and contemporary gourmet dining under one welcoming roof.",
+                  "story2":  "From our early morning flaky Parathas with rich Dim Bhuna or Bhaji, to our midday aromatic Mutton Kacchi Biryani and comforting Alu Bhorta with Rui fish curry, every dish is prepared with fresh local ingredients, genuine care, and uncompromised hygiene.",
+                  "story3":  "Whether you are stopping by for our famous Masala Milk Tea and crispy Samosas, a gourmet Beef Burger melted with cheese, or a comforting plate of steamed rice with Rui Fish Curry and Alu Bhorta, we welcome you with open arms.",
+                  "highlights":  [
+                                     "Authentic recipes rooted in traditional Bangladeshi culinary craft",
+                                     "100% Halal fresh meat, poultry, and daily-sourced produce",
+                                     "Welcoming family environment, student-friendly rates, and quick takeaway service"
+                                 ]
+              },
+    "metrics":  [
+                    {
+                        "id":  "m1",
+                        "value":  "38+",
+                        "label":  "Curated Dishes",
+                        "desc":  "Breakfast, lunch, evening snacks \u0026 refreshments",
+                        "icon":  "star"
+                    },
+                    {
+                        "id":  "m2",
+                        "value":  "7 AM - 11:30 PM",
+                        "label":  "Operating Hours",
+                        "desc":  "Open 7 days a week for breakfast, lunch \u0026 dinner",
+                        "icon":  "server"
+                    },
+                    {
+                        "id":  "m3",
+                        "value":  "4.9 ★",
+                        "label":  "Customer Rating",
+                        "desc":  "Loved by Dhaka foodies \u0026 local families",
+                        "icon":  "activity"
+                    },
+                    {
+                        "id":  "m4",
+                        "value":  "100%",
+                        "label":  "Fresh \u0026 Halal",
+                        "desc":  "Finest Bengali spices and premium ingredients",
+                        "icon":  "zap"
+                    }
+                ],
+    "sectionHeaders":  {
+                           "menu":  {
+                                        "eyebrow":  "Our Complete Menu",
+                                        "title":  "Explore All 38+ Dishes \u0026 Offerings",
+                                        "subtitle":  "Authentic Old Dhaka recipes, slow-cooked Kacchi Biryani, hearty morning breakfast, and refreshing beverages crafted fresh daily at Shahbagh."
+                                    },
+                           "features":  {
+                                            "eyebrow":  "Why Dine With Us",
+                                            "title":  "The Sylvana Dining Experience",
+                                            "subtitle":  "More than just a meal — a warm culinary journey celebrating authentic taste and heartfelt Bangladeshi hospitality."
+                                        },
+                           "showcase":  {
+                                            "eyebrow":  "Chef\u0027s Signature Favourites",
+                                            "title":  "House Specialties \u0026 Crowdfavourites",
+                                            "subtitle":  "Signature dishes perfected by our master cooks that keep our guests returning time after time."
+                                        },
+                           "testimonials":  {
+                                                "eyebrow":  "Guest Reviews",
+                                                "title":  "What Our Guests Say About Us",
+                                                "subtitle":  "Real feedback from students, professionals, and families dining at Shahbagh."
+                                            },
+                           "pricing":  {
+                                           "eyebrow":  "Set Meals \u0026 Platters",
+                                           "title":  "Value Combos \u0026 Family Feasts",
+                                           "subtitle":  "Delicious curated platters offering unbeatable value for groups, students, and family gatherings."
+                                       },
+                           "faqs":  {
+                                        "eyebrow":  "Visitor Inquiries",
+                                        "title":  "Frequently Asked Questions",
+                                        "subtitle":  "Everything you need to know about our seating, reservations, takeaway, and menu."
+                                    }
+                       },
+    "menu":  {
+                 "categories":  [
+                                    "All Dishes",
+                                    "Breakfast Menu",
+                                    "Tea Item",
+                                    "Soups \u0026 Appetizers",
+                                    "Gourmet Burgers",
+                                    "Pizza \u0026 Pasta",
+                                    "Traditional Meals \u0026 Favourites",
+                                    "Desserts",
+                                    "Tea, Coffee \u0026 Refreshments",
+                                    "Lassis, Milkshakes \u0026 Juice"
+                                ],
+                 "items":  [
+                               {
+                                   "id":  "item-1",
+                                   "name":  "Paratha with Bhaji",
+                                   "category":  "Breakfast Menu",
+                                   "price":  100,
+                                   "currency":  "৳",
+                                   "description":  "Flaky paratha served with spiced mixed vegetables",
+                                   "badge":  "Morning Special",
+                                   "isSpecial":  true,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥞",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-2",
+                                   "name":  "Paratha with Dal",
+                                   "category":  "Breakfast Menu",
+                                   "price":  90,
+                                   "currency":  "৳",
+                                   "description":  "Golden paratha with warm, seasoned lentils",
+                                   "badge":  "Traditional",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🍲",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-3",
+                                   "name":  "Paratha with Dim Bhuna",
+                                   "category":  "Breakfast Menu",
+                                   "price":  130,
+                                   "currency":  "৳",
+                                   "description":  "Paratha served with eggs in a rich onion and tomato gravy",
+                                   "badge":  "Chef\u0027s Choice",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍳",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-4",
+                                   "name":  "Khichuri with Omelette",
+                                   "category":  "Breakfast Menu",
+                                   "price":  150,
+                                   "currency":  "৳",
+                                   "description":  "Rice and lentils served with an onion and green chilli omelette",
+                                   "badge":  "Popular",
+                                   "isSpecial":  true,
+                                   "dietary":  "Comfort Food",
+                                   "icon":  "🍛",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-5",
+                                   "name":  "Eggs Omelette",
+                                   "category":  "Breakfast Menu",
+                                   "price":  70,
+                                   "currency":  "৳",
+                                   "description":  "Onion coriander and green chilli omelette",
+                                   "badge":  "Classic",
+                                   "isSpecial":  false,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍳",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-6",
+                                   "name":  "Plain Naan (each)",
+                                   "category":  "Breakfast Menu",
+                                   "price":  40,
+                                   "currency":  "৳",
+                                   "description":  "Freshly baked clay oven naan",
+                                   "badge":  "Tandoor",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🫓",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-7",
+                                   "name":  "Paratha (each)",
+                                   "category":  "Breakfast Menu",
+                                   "price":  30,
+                                   "currency":  "৳",
+                                   "description":  "Traditional flaky layered flatbread",
+                                   "badge":  "Fresh Made",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥞",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-8",
+                                   "name":  "Black Tea",
+                                   "category":  "Tea Item",
+                                   "price":  30,
+                                   "currency":  "৳",
+                                   "description":  "Freshly brewed pure black liquor tea",
+                                   "badge":  "Hot Brew",
+                                   "isSpecial":  false,
+                                   "dietary":  "Beverage",
+                                   "icon":  "☕",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-9",
+                                   "name":  "Milk Tea",
+                                   "category":  "Tea Item",
+                                   "price":  40,
+                                   "currency":  "৳",
+                                   "description":  "Classic creamy Bangladeshi-style milk tea",
+                                   "badge":  "Dhaka Favourite",
+                                   "isSpecial":  true,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🫖",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-10",
+                                   "name":  "Masala Tea",
+                                   "category":  "Tea Item",
+                                   "price":  60,
+                                   "currency":  "৳",
+                                   "description":  "Hot Tea infused with aromatic spices",
+                                   "badge":  "Aromatic Spice",
+                                   "isSpecial":  true,
+                                   "dietary":  "Beverage",
+                                   "icon":  "☕",
+                                   "section":  "Breakfast",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-11",
+                                   "name":  "Chicken Soup (Thick / Clear) (1:1)",
+                                   "category":  "Soups \u0026 Appetizers",
+                                   "price":  150,
+                                   "currency":  "৳",
+                                   "description":  "Eggs, chicken chilli, lemon \u0026 vegetables",
+                                   "badge":  "Warm \u0026 Hearty",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🥣",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-12",
+                                   "name":  "French Fries (with tomato/BBQ sauce)",
+                                   "category":  "Soups \u0026 Appetizers",
+                                   "price":  130,
+                                   "currency":  "৳",
+                                   "description":  "Crispy golden french fries served with tomato or BBQ dipping sauce",
+                                   "badge":  "Crispy Snack",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🍟",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-13",
+                                   "name":  "Samosa with Salad \u0026 BBQ/ Tomato sauce (2pcs)",
+                                   "category":  "Soups \u0026 Appetizers",
+                                   "price":  100,
+                                   "currency":  "৳",
+                                   "description":  "Crispy pastry filled with savoury spiced filling served with salad \u0026 BBQ or tomato sauce",
+                                   "badge":  "Snack Hit",
+                                   "isSpecial":  true,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥟",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-14",
+                                   "name":  "Spicy Fried Chicken (6 pcs)",
+                                   "category":  "Soups \u0026 Appetizers",
+                                   "price":  350,
+                                   "currency":  "৳",
+                                   "description":  "Deep-fried crispy spicy chicken served with tomato/BBQ sauce",
+                                   "badge":  "Chef\u0027s Special",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍗",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-15",
+                                   "name":  "Mixed Salad",
+                                   "category":  "Soups \u0026 Appetizers",
+                                   "price":  120,
+                                   "currency":  "৳",
+                                   "description":  "Tomato, cucumber, onions, chilli, lemon and lettuce",
+                                   "badge":  "Fresh \u0026 Healthy",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥗",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-16",
+                                   "name":  "Chicken Burger",
+                                   "category":  "Gourmet Burgers",
+                                   "price":  180,
+                                   "currency":  "৳",
+                                   "description":  "Lettuce, tomato, mayonnaise and tender seasoned chicken patty",
+                                   "badge":  "Gourmet",
+                                   "isSpecial":  false,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍔",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-17",
+                                   "name":  "Beef Burger",
+                                   "category":  "Gourmet Burgers",
+                                   "price":  220,
+                                   "currency":  "৳",
+                                   "description":  "Lettuce, tomato, mayonnaise \u0026 Cheese with succulent beef patty",
+                                   "badge":  "Best Seller",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍔",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-18",
+                                   "name":  "Plain Margherita Pizza",
+                                   "category":  "Pizza \u0026 Pasta",
+                                   "price":  320,
+                                   "currency":  "৳",
+                                   "description":  "Tomato Base, Cheese \u0026 Oregano baked on stone crust",
+                                   "badge":  "Vegetarian",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🍕",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-19",
+                                   "name":  "Italian Pasta",
+                                   "category":  "Pizza \u0026 Pasta",
+                                   "price":  220,
+                                   "currency":  "৳",
+                                   "description":  "Tomato Sauce, Chilli, Cheese, Green Pears \u0026 Coriander",
+                                   "badge":  "Italian Style",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🍝",
+                                   "section":  "Lunch \u0026 Dinner",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-20",
+                                   "name":  "Plain Rice with Beef Bhuna",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  270,
+                                   "currency":  "৳",
+                                   "description":  "Steamed rice served with tender beef in rich Bengali spices",
+                                   "badge":  "House Signature",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🥩",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-21",
+                                   "name":  "Naan with Beef Bhuna",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  280,
+                                   "currency":  "৳",
+                                   "description":  "Clay oven Naan served with tender Beef curry in rich bengali spices",
+                                   "badge":  "Signature Feast",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🫓",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-22",
+                                   "name":  "Mutton Kacchi Biryani",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  320,
+                                   "currency":  "৳",
+                                   "description":  "Fragrant basmati rice layered with tender mutton, potato and aromatic spices",
+                                   "badge":  "Old Dhaka Royal",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍖",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-23",
+                                   "name":  "Chicken Biryani",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  230,
+                                   "currency":  "৳",
+                                   "description":  "Aromatic rice with juicy chicken and traditional Bengali spices",
+                                   "badge":  "Classic Favourite",
+                                   "isSpecial":  false,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍗",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-24",
+                                   "name":  "Chicken Dum Biryani",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  260,
+                                   "currency":  "৳",
+                                   "description":  "Layered rice and spiced chicken, served with raita",
+                                   "badge":  "Dum Pukht",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🥘",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-25",
+                                   "name":  "Beef Tehari",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  230,
+                                   "currency":  "৳",
+                                   "description":  "Fragrant rice cooked with tender beef, green chillies and warm mustard spices",
+                                   "badge":  "Dhaka Heritage",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍛",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-26",
+                                   "name":  "Beef Bhuna Khichuri",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  260,
+                                   "currency":  "৳",
+                                   "description":  "Aromatic rice and lentils with slow-cooked tender beef curry",
+                                   "badge":  "Rainy Day Classic",
+                                   "isSpecial":  true,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍲",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-27",
+                                   "name":  "Chicken Bhuna Khichuri",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  230,
+                                   "currency":  "৳",
+                                   "description":  "Aromatic rice and lentils with a choice of chicken or vegetables",
+                                   "badge":  "Comfort Feast",
+                                   "isSpecial":  false,
+                                   "dietary":  "Non-Veg",
+                                   "icon":  "🍲",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-28",
+                                   "name":  "Fish curry with rice – Rui/Katla",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  250,
+                                   "currency":  "৳",
+                                   "description":  "Tomato based gravy, chilli, garlic \u0026 coriander served with steamed white rice",
+                                   "badge":  "Authentic Bengali",
+                                   "isSpecial":  true,
+                                   "dietary":  "Fish",
+                                   "icon":  "🐟",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-29",
+                                   "name":  "Plain Rice",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  60,
+                                   "currency":  "৳",
+                                   "description":  "Steamed high-grade aromatic rice",
+                                   "badge":  "Staple",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🍚",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-30",
+                                   "name":  "Naan",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  40,
+                                   "currency":  "৳",
+                                   "description":  "Clay oven freshly baked soft naan",
+                                   "badge":  "Tandoor",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🫓",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-31",
+                                   "name":  "Dal",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  40,
+                                   "currency":  "৳",
+                                   "description":  "Slow-cooked Bengali red lentil soup with tempering",
+                                   "badge":  "Classic",
+                                   "isSpecial":  false,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥣",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-32",
+                                   "name":  "Potato mash (Alu Bhorta)",
+                                   "category":  "Traditional Meals \u0026 Favourites",
+                                   "price":  50,
+                                   "currency":  "৳",
+                                   "description":  "Authentic Bengali mashed potato with mustard oil and fried onions",
+                                   "badge":  "Comfort Food",
+                                   "isSpecial":  true,
+                                   "dietary":  "Vegetarian",
+                                   "icon":  "🥔",
+                                   "section":  "Traditional Meals \u0026 Favourites",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-33",
+                                   "name":  "Gulab Jamun / Golap Jamun",
+                                   "category":  "Desserts",
+                                   "price":  70,
+                                   "currency":  "৳",
+                                   "description":  "Soft milk-based sweets soaked in fragrant syrup",
+                                   "badge":  "Sweet Delight",
+                                   "isSpecial":  true,
+                                   "dietary":  "Dessert",
+                                   "icon":  "🍬",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-34",
+                                   "name":  "Firni - Bengali rice pudding",
+                                   "category":  "Desserts",
+                                   "price":  100,
+                                   "currency":  "৳",
+                                   "description":  "Creamy slow-cooked rice pudding infused with cardamom and nuts",
+                                   "badge":  "Royal Dessert",
+                                   "isSpecial":  true,
+                                   "dietary":  "Dessert",
+                                   "icon":  "🍮",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-35",
+                                   "name":  "Sweet Yoghurt / Doi",
+                                   "category":  "Desserts",
+                                   "price":  100,
+                                   "currency":  "৳",
+                                   "description":  "Cool, creamy traditional sweet yoghurt from Bogra tradition",
+                                   "badge":  "Mishti Doi",
+                                   "isSpecial":  true,
+                                   "dietary":  "Dessert",
+                                   "icon":  "🍨",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-36",
+                                   "name":  "Ice-Cream (vanilla/chocolate)",
+                                   "category":  "Desserts",
+                                   "price":  150,
+                                   "currency":  "৳",
+                                   "description":  "Rich creamy double scoop of vanilla or chocolate ice cream",
+                                   "badge":  "Chilled Sweet",
+                                   "isSpecial":  false,
+                                   "dietary":  "Dessert",
+                                   "icon":  "🍦",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-37",
+                                   "name":  "Regular Hot Coffee",
+                                   "category":  "Tea, Coffee \u0026 Refreshments",
+                                   "price":  90,
+                                   "currency":  "৳",
+                                   "description":  "Freshly brewed rich roast coffee with velvety froth",
+                                   "badge":  "Fresh Roast",
+                                   "isSpecial":  false,
+                                   "dietary":  "Beverage",
+                                   "icon":  "☕",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-38",
+                                   "name":  "Soft Drinks (Coca-Cola, Sprite, Fanta)",
+                                   "category":  "Tea, Coffee \u0026 Refreshments",
+                                   "price":  50,
+                                   "currency":  "৳",
+                                   "description":  "Chilled beverage bottle / can of your choice",
+                                   "badge":  "Chilled",
+                                   "isSpecial":  false,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🥤",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-39",
+                                   "name":  "Drinking Water (1L)",
+                                   "category":  "Tea, Coffee \u0026 Refreshments",
+                                   "price":  40,
+                                   "currency":  "৳",
+                                   "description":  "Pure sealed bottled mineral water",
+                                   "badge":  "Mineral",
+                                   "isSpecial":  false,
+                                   "dietary":  "Beverage",
+                                   "icon":  "💧",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-40",
+                                   "name":  "Sweet/Salty Lassi",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  120,
+                                   "currency":  "৳",
+                                   "description":  "Chilled yoghurt drink, lightly sweet and creamy",
+                                   "badge":  "Traditional Chiller",
+                                   "isSpecial":  true,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🥛",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-41",
+                                   "name":  "Mango Lassi",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  150,
+                                   "currency":  "৳",
+                                   "description":  "Creamy yoghurt blended with ripe mango",
+                                   "badge":  "Summer Special",
+                                   "isSpecial":  true,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🥭",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-42",
+                                   "name":  "Vanilla Milkshake",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  160,
+                                   "currency":  "৳",
+                                   "description":  "Rich blended milkshake with premium vanilla bean and milk",
+                                   "badge":  "Thick Shake",
+                                   "isSpecial":  false,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🥤",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-43",
+                                   "name":  "Chocolate Milkshake",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  170,
+                                   "currency":  "৳",
+                                   "description":  "Rich chocolate milkshake with cocoa and chocolate drizzle",
+                                   "badge":  "Youth Hit",
+                                   "isSpecial":  true,
+                                   "dietary":  "Beverage",
+                                   "icon":  "🍫",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-44",
+                                   "name":  "Fresh Orange Juice",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  160,
+                                   "currency":  "৳",
+                                   "description":  "Freshly squeezed 100% natural orange juice",
+                                   "badge":  "Fresh Pressed",
+                                   "isSpecial":  true,
+                                   "dietary":  "Fresh Juice",
+                                   "icon":  "🍊",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               },
+                               {
+                                   "id":  "item-45",
+                                   "name":  "Seasonal Fruit Juice",
+                                   "category":  "Lassis, Milkshakes \u0026 Juice",
+                                   "price":  130,
+                                   "currency":  "৳",
+                                   "description":  "Fresh seasonal fruit juice crafted daily",
+                                   "badge":  "Daily Fresh",
+                                   "isSpecial":  false,
+                                   "dietary":  "Fresh Juice",
+                                   "icon":  "🍉",
+                                   "section":  "Drinks \u0026 Desserts",
+                                   "imageUrl":  ""
+                               }
+                           ]
+             },
+    "features":  [
+                     {
+                         "id":  "f1",
+                         "icon":  "database",
+                         "tag":  "Woodfire \u0026 Dum",
+                         "title":  "Authentic Dum Pukht \u0026 Clay Oven",
+                         "description":  "Our Biryanis and Teharis are slow-cooked using traditional dum sealed techniques, sealing in the royal aromas of Old Dhaka spices.",
+                         "bullets":  [
+                                         "Aromatic Basmati \u0026 Chinigura rice",
+                                         "Authentic clay tandoor naans",
+                                         "Generations-old spice blends"
+                                     ]
+                     },
+                     {
+                         "id":  "f2",
+                         "icon":  "shield-check",
+                         "tag":  "100% Halal",
+                         "title":  "Strict Halal \u0026 Hygiene Standards",
+                         "description":  "Every cut of meat, poultry, and fish is 100% Halal certified, sourced fresh every morning, and prepared in an immaculate kitchen.",
+                         "bullets":  [
+                                         "Daily morning meat procurement",
+                                         "Pristine kitchen sanitation",
+                                         "Pure filtered drinking water"
+                                     ]
+                     },
+                     {
+                         "id":  "f3",
+                         "icon":  "cpu",
+                         "tag":  "All Day Dining",
+                         "title":  "Breakfast to Late Dinner",
+                         "description":  "From 7:00 AM breakfast with flaky Parathas to late evening dining, our kitchen operates continuously for your convenience.",
+                         "bullets":  [
+                                         "Early morning breakfast items",
+                                         "Afternoon Kacchi \u0026 Bhuna feasts",
+                                         "Evening tea \u0026 snack delicacies"
+                                     ]
+                     },
+                     {
+                         "id":  "f4",
+                         "icon":  "star",
+                         "tag":  "Shahbagh Hub",
+                         "title":  "Heart of Shahbagh Dhaka",
+                         "description":  "Conveniently situated at 10, Shahbagh Biponi Bithan, making it the perfect meeting place for students, doctors, families, and visitors.",
+                         "bullets":  [
+                                         "Steps away from Dhaka University \u0026 BSMMU",
+                                         "Comfortable spacious seating",
+                                         "Quick takeaways \u0026 parcel packaging"
+                                     ]
+                     },
+                     {
+                         "id":  "f5",
+                         "icon":  "refresh-cw",
+                         "tag":  "Fresh Sips",
+                         "title":  "Handcrafted Lassis \u0026 Refreshments",
+                         "description":  "Cool down with our signature Sweet Lassi, Mango Lassi, thick chocolate shakes, and our famed Bangladeshi Spiced Masala Chai.",
+                         "bullets":  [
+                                         "Traditional churned curd lassis",
+                                         "Freshly squeezed seasonal juices",
+                                         "Kadak Masala \u0026 Dudh Cha"
+                                     ]
+                     },
+                     {
+                         "id":  "f6",
+                         "icon":  "share-2",
+                         "tag":  "Catering \u0026 Events",
+                         "title":  "Family Gatherings \u0026 Bulk Orders",
+                         "description":  "Host small family celebrations or place bulk party boxes for departmental events, student reunions, and corporate lunches.",
+                         "bullets":  [
+                                         "Customizable event menus",
+                                         "Special group pricing",
+                                         "Prompt hot delivery arrangements"
+                                     ]
+                     }
+                 ],
+    "showcase":  [
+                     {
+                         "id":  "s1",
+                         "category":  "Traditional Meals",
+                         "title":  "Mutton Kacchi Biryani",
+                         "summary":  "Fragrant basmati rice layered with tender marinated mutton chunks, golden roasted potato, and aromatic saffron spices. Served hot with fresh salad.",
+                         "tags":  [
+                                      "320 ৳",
+                                      "House Special",
+                                      "Old Dhaka"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #b91c1c, #d97706)",
+                         "link":  "#menu"
+                     },
+                     {
+                         "id":  "s2",
+                         "category":  "Traditional Meals",
+                         "title":  "Plain Rice with Beef Bhuna",
+                         "summary":  "Steamed fluffy white rice served alongside slow-braised tender beef cubes simmered in deep caramelized onions and rich Bengali garam masala.",
+                         "tags":  [
+                                      "270 ৳",
+                                      "Signature",
+                                      "Bengali Classic"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #7f1d1d, #c2410c)",
+                         "link":  "#menu"
+                     },
+                     {
+                         "id":  "s3",
+                         "category":  "Breakfast Menu",
+                         "title":  "Paratha with Dim Bhuna",
+                         "summary":  "Crispy layered flatbread paired with farm-fresh eggs simmered in a spiced onion, tomato, and green chilli gravy. The premier morning fuel.",
+                         "tags":  [
+                                      "130 ৳",
+                                      "Breakfast Hit",
+                                      "Comfort"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #c2410c, #f59e0b)",
+                         "link":  "#menu"
+                     },
+                     {
+                         "id":  "s4",
+                         "category":  "Traditional Meals",
+                         "title":  "Fish Curry with Rice (Rui/Katla)",
+                         "summary":  "Fresh river Rui or Katla fish cooked in an authentic light tomato-garlic gravy with fresh coriander, served with piping hot steamed rice.",
+                         "tags":  [
+                                      "250 ৳",
+                                      "Fresh River Fish",
+                                      "Bengali Heritage"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #047857, #10b981)",
+                         "link":  "#menu"
+                     },
+                     {
+                         "id":  "s5",
+                         "category":  "Lassis \u0026 Refreshments",
+                         "title":  "Mango Lassi \u0026 Masala Tea",
+                         "summary":  "Cool, creamy yoghurt whipped with sweet sun-ripened mangoes, followed by hot aromatic tea infused with crushed cardamom, cinnamon, and ginger.",
+                         "tags":  [
+                                      "150 ৳ / 60 ৳",
+                                      "Refreshing",
+                                      "Best Seller"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #d97706, #e11d48)",
+                         "link":  "#menu"
+                     },
+                     {
+                         "id":  "s6",
+                         "category":  "Desserts",
+                         "title":  "Firni \u0026 Sweet Yoghurt (Mishti Doi)",
+                         "summary":  "Slow-reduced creamy rice firni dusted with pistachios alongside authentic sweet clay-pot curd for the perfect royal conclusion to any meal.",
+                         "tags":  [
+                                      "100 ৳",
+                                      "Traditional Sweet",
+                                      "Sweet Tooth"
+                                  ],
+                         "gradient":  "linear-gradient(135deg, #6d28d9, #be185d)",
+                         "link":  "#menu"
+                     }
+                 ],
+    "testimonials":  [
+                         {
+                             "id":  "t1",
+                             "name":  "Dr. Tanvir Ahmed",
+                             "role":  "Medical Officer, BSMMU Shahbagh",
+                             "rating":  5,
+                             "avatar":  "TA",
+                             "quote":  "Sylvana Restaurant is our daily lunch sanctuary. Their Mutton Kacchi Biryani is as tender and fragrant as Old Dhaka\u0027s finest, and their service is consistently polite and fast even during peak hours."
+                         },
+                         {
+                             "id":  "t2",
+                             "name":  "Nusrat Jahan",
+                             "role":  "Student, Dhaka University",
+                             "rating":  5,
+                             "avatar":  "NJ",
+                             "quote":  "Every exam morning starts with Sylvana\u0027s Paratha with Dim Bhuna and Masala Tea! It\u0027s affordable, authentic, and tastes just like home-cooked Bengali comfort food."
+                         },
+                         {
+                             "id":  "t3",
+                             "name":  "Farhan Chowdhury",
+                             "role":  "Local Business Owner, Shahbagh",
+                             "rating":  5,
+                             "avatar":  "FC",
+                             "quote":  "We frequently order parcel packets for our office meetings. The Beef Tehari and Khichuri with Omelette always arrive steaming hot, well-packed, and full of genuine flavor."
+                         }
+                     ],
+    "pricing":  {
+                    "billingAnnualDiscount":  "Special 10% Group \u0026 Student Discount Available",
+                    "plans":  [
+                                  {
+                                      "id":  "p1",
+                                      "name":  "Morning Breakfast Platter",
+                                      "description":  "The quintessential start to your morning in Shahbagh with classic flaky flatbreads and hot spiced tea.",
+                                      "monthlyPrice":  180,
+                                      "annualPrice":  160,
+                                      "featured":  false,
+                                      "badge":  "BREAKFAST POPULAR",
+                                      "buttonText":  "Order for Breakfast",
+                                      "features":  [
+                                                       "2x Crisp Golden Parathas",
+                                                       "Rich Egg Dim Bhuna or Bhaji",
+                                                       "Aromatic Spiced Dal",
+                                                       "Hot Bangladeshi Milk Tea",
+                                                       "Fresh Cut Salad"
+                                                   ]
+                                  },
+                                  {
+                                      "id":  "p2",
+                                      "name":  "Royal Sylvana Kacchi Feast",
+                                      "description":  "Our signature feast featuring royal slow-cooked mutton biryani, refreshing accompaniments and dessert.",
+                                      "monthlyPrice":  420,
+                                      "annualPrice":  380,
+                                      "featured":  true,
+                                      "badge":  "CHEF\u0027S SIGNATURE",
+                                      "buttonText":  "Reserve Feast",
+                                      "features":  [
+                                                       "Mutton Kacchi Biryani (Royal Portion)",
+                                                       "Slow-cooked Tender Mutton \u0026 Potato",
+                                                       "Cucumber \u0026 Onion Mint Raita / Salad",
+                                                       "Traditional Firni / Golap Jamun",
+                                                       "Chilled Soft Drink / Fresh Borhani"
+                                                   ]
+                                  },
+                                  {
+                                      "id":  "p3",
+                                      "name":  "Family \u0026 Group Platter (4 Persons)",
+                                      "description":  "Generous feast designed for family dining, office teams, or student gatherings at Shahbagh.",
+                                      "monthlyPrice":  1150,
+                                      "annualPrice":  1050,
+                                      "featured":  false,
+                                      "badge":  "VALUE COMBO",
+                                      "buttonText":  "Book Group Platter",
+                                      "features":  [
+                                                       "Choice of 2x Beef Bhuna \u0026 2x Chicken Biryani",
+                                                       "4x Fresh Clay Oven Naans \u0026 Steamed Rice",
+                                                       "Spiced Mixed Salad \u0026 Dal Bowl",
+                                                       "4x Sweet Yoghurt / Firni Cups",
+                                                       "4x Soft Drinks \u0026 1L Mineral Water"
+                                                   ]
+                                  }
+                              ]
+                },
+    "faqs":  [
+                 {
+                     "id":  "q1",
+                     "question":  "Where is The Sylvana Restaurant located in Dhaka?",
+                     "answer":  "The Sylvana Restaurant is located at 10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh. We are centrally situated in the historic Shahbagh intersection, easily accessible from Dhaka University, BSMMU, and the National Museum."
+                 },
+                 {
+                     "id":  "q2",
+                     "question":  "What are your operating hours?",
+                     "answer":  "We are open 7 days a week, Monday through Sunday, from 7:00 AM in the morning until 11:30 PM at night. Breakfast is served starting at 7:00 AM, with lunch, snacks, and dinner continuing throughout the day."
+                 },
+                 {
+                     "id":  "q3",
+                     "question":  "Are all food items 100% Halal?",
+                     "answer":  "Yes, absolutely. All meat (beef, mutton, chicken) is 100% Halal certified and freshly procured every morning from trusted local suppliers. We maintain the highest standards of culinary hygiene."
+                 },
+                 {
+                     "id":  "q4",
+                     "question":  "Can I reserve a table in advance or order takeaways?",
+                     "answer":  "Yes! You can reserve a table or place a takeaway parcel order using the reservation form below on this website, or by calling our hotline directly at +8801734489275."
+                 },
+                 {
+                     "id":  "q5",
+                     "question":  "How many dishes are on your menu?",
+                     "answer":  "We feature 38 curated dishes and refreshments spanning authentic Bengali breakfast, traditional slow-cooked meals (Biryani, Tehari, Khichuri), soups, appetizers, gourmet burgers, pizza, pasta, traditional sweets, and refreshing lassis and juices."
+                 }
+             ],
+    "contact":  {
+                    "title":  "Visit Us \u0026 Table Reservations",
+                    "subtitle":  "Join us for authentic dining in Shahbagh, Dhaka. Reserve a table, order parcels, or inquire about group meals.",
+                    "email":  "sylvanarestaurantbd@gmail.com",
+                    "phone":  "+8801734489275",
+                    "address":  "10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh",
+                    "hours":  "Monday - Sunday: 7:00 AM - 11:30 PM (Daily)",
+                    "social":  {
+                                   "twitter":  "https://facebook.com/sylvanarestaurantbd",
+                                   "github":  "https://instagram.com/sylvanarestaurantbd",
+                                   "linkedin":  "https://wa.me/8801734489275",
+                                   "discord":  "mailto:sylvanarestaurantbd@gmail.com"
+                               }
+                },
+    "footer":  {
+                   "copyright":  "© 2026 The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট). All rights reserved.",
+                   "description":  "Authentic Bangladeshi culinary heritage, Kacchi Biryani, hearty breakfast, and Continental dining at 10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh.",
+                   "links":  [
+                                 {
+                                     "label":  "Full Menu",
+                                     "url":  "#menu"
+                                 },
+                                 {
+                                     "label":  "About Heritage",
+                                     "url":  "#about"
+                                 },
+                                 {
+                                     "label":  "Specials",
+                                     "url":  "#showcase"
+                                 },
+                                 {
+                                     "label":  "Reserve Table",
+                                     "url":  "#reservation"
+                                 },
+                                 {
+                                     "label":  "Contact \u0026 Location",
+                                     "url":  "#contact"
+                                 },
+                                 {
+                                     "label":  "Admin Studio",
+                                     "url":  "/admin"
+                                 }
+                             ]
+               }
+}
