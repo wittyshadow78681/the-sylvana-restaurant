@@ -746,6 +746,18 @@ namespace NexusFlow
                         path = sub;
                     }
                 }
+                else if (path == "/3d" || path == "/3d/" || path == "/experience" || path == "/experience/")
+                {
+                    path = "/3d.html";
+                }
+                else if (path.StartsWith("/3d/") && !path.StartsWith("/3d.html"))
+                {
+                    string sub = path.Substring(3);
+                    if (sub.StartsWith("/css/") || sub.StartsWith("/js/") || sub.StartsWith("/assets/") || sub.StartsWith("/fonts/"))
+                    {
+                        path = sub;
+                    }
+                }
 
                 // Security: Prevent Directory Traversal
                 string sanitized = path.Replace('/', Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar);

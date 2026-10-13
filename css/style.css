@@ -365,6 +365,23 @@ p,
   color: #c7d2fe;
 }
 
+.btn-3d {
+  background: linear-gradient(135deg, rgba(230, 57, 23, 0.25), rgba(245, 158, 11, 0.25));
+  border: 1px solid rgba(245, 158, 11, 0.6);
+  color: #fde68a;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-3d:hover {
+  background: linear-gradient(135deg, rgba(230, 57, 23, 0.45), rgba(245, 158, 11, 0.45));
+  border-color: #f59e0b;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
+}
+
 .mobile-menu-btn {
   display: none;
   color: var(--text-main);

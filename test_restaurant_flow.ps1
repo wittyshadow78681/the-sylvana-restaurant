@@ -172,6 +172,39 @@ try {
     Assert-Check ($indexRes.Content -like "*https://banglawebfonts.pages.dev/css/bornomala.min.css*") "Landing page includes Bornomala CSS link tag"
     Assert-Check ($adminRes.Content -like "*https://banglawebfonts.pages.dev/css/bornomala.min.css*") "Admin Studio includes Bornomala CSS link tag"
 
+    # 8. Verify 3D Single Page Restaurant Showcase & WebGL Assets
+    Write-Host "`n[8/8] Verifying 3D Single Page Restaurant Showcase & WebGL Assets..." -ForegroundColor Yellow
+
+    $threeDRes = Invoke-WebRequest -Uri "$baseUrl/3d" -UseBasicParsing
+    Assert-Check ($threeDRes.StatusCode -eq 200 -and $threeDRes.Content -like "*webgl-canvas*") "GET /3d resolves 200 OK with WebGL canvas"
+    Assert-Check ($threeDRes.Content -like "*The Sylvana Restaurant*") "3D showcase contains brand title"
+    Assert-Check ($threeDRes.Content -like "*heroBnTitle*" -and $threeDRes.Content -like "*brand-bn-tagline*") "3D showcase contains Bengali brand title elements"
+    Assert-Check ($threeDRes.Content -like "*10, Shahbagh Biponi Bithan*") "3D showcase contains Shahbagh address"
+    Assert-Check ($threeDRes.Content -like "*38+ Curated Dishes*") "3D showcase highlights 38+ curated dishes"
+    Assert-Check ($threeDRes.Content -like "*js/3d.js*" -and $threeDRes.Content -like "*css/3d.css*") "3D showcase references 3d.js and 3d.css"
+
+    $expRes = Invoke-WebRequest -Uri "$baseUrl/experience" -UseBasicParsing
+    Assert-Check ($expRes.StatusCode -eq 200 -and $expRes.Content -like "*webgl-canvas*") "GET /experience route alias serves 3D showcase"
+
+    $threeDHtmlRes = Invoke-WebRequest -Uri "$baseUrl/3d.html" -UseBasicParsing
+    Assert-Check ($threeDHtmlRes.StatusCode -eq 200) "GET /3d.html direct path serves 200 OK"
+
+    $css3dRes = Invoke-WebRequest -Uri "$baseUrl/css/3d.css" -UseBasicParsing
+    Assert-Check ($css3dRes.StatusCode -eq 200 -and ($css3dRes.Headers["Content-Type"] -like "*text/css*" -or $css3dRes.ContentType -like "*text/css*")) "GET /css/3d.css returns valid text/css"
+    Assert-Check ($css3dRes.Content -like "*--font-serif: 'Playfair Display'*" -and $css3dRes.Content -like "*menu-3d-card*") "3d.css includes Playfair Display and 3D card tilt rules"
+
+    $js3dRes = Invoke-WebRequest -Uri "$baseUrl/js/3d.js" -UseBasicParsing
+    Assert-Check ($js3dRes.StatusCode -eq 200 -and ($js3dRes.Headers["Content-Type"] -like "*javascript*" -or $js3dRes.ContentType -like "*javascript*")) "GET /js/3d.js returns valid javascript"
+    Assert-Check ($js3dRes.Content -like "*THREE.WebGLRenderer*" -and $js3dRes.Content -like "*Mutton Kacchi Biryani*") "3d.js includes Three.js WebGL renderer and culinary models"
+
+    $threeJsRes = Invoke-WebRequest -Uri "$baseUrl/js/three.min.js" -UseBasicParsing
+    Assert-Check ($threeJsRes.StatusCode -eq 200 -and $threeJsRes.RawContentLength -gt 500000) "GET /js/three.min.js delivers local Three.js bundle (> 500 KB)"
+
+    $staticContentRes = Invoke-WebRequest -Uri "$baseUrl/data/content.json" -UseBasicParsing
+    Assert-Check ($staticContentRes.StatusCode -eq 200 -and $staticContentRes.Content -like "*Mutton Kacchi Biryani*") "GET /data/content.json delivers static JSON fallback for GitHub Pages"
+
+    Assert-Check ($indexRes.Content -like "*3d.html*" -and $indexRes.Content -like "*3D Experience*") "Landing page includes 3D Experience button linking to 3d.html"
+
 } finally {
     Write-Host "`nStopping test server..." -ForegroundColor Cyan
     if ($proc -and -not $proc.HasExited) {

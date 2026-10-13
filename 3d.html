@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sylvana Restaurant 3D | দ্যা সিলভানা রেস্টুরেন্ট - Immersive Dining Showcase</title>
+  <meta name="description" content="Experience The Sylvana Restaurant in immersive 3D. Explore our authentic 38+ dish menu, slow-cooked Mutton Kacchi Biryani, breakfast, and culinary heritage in Shahbagh, Dhaka.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bornomala Bengali Web Font -->
+  <link rel="stylesheet" href="https://banglawebfonts.pages.dev/css/bornomala.min.css">
+
+  <!-- 3D Luxury Stylesheet -->
+  <link rel="stylesheet" href="css/3d.css">
+</head>
+<body>
+
+  <!-- WebGL 3D Canvas Background -->
+  <div id="webgl-canvas-container" aria-hidden="true">
+    <canvas id="webgl-canvas"></canvas>
+  </div>
+
+  <!-- Atmospheric Vignette & Grain Filters -->
+  <div class="atmosphere-vignette" aria-hidden="true"></div>
+  <div class="atmosphere-noise" aria-hidden="true"></div>
+
+  <!-- Floating 3D Interaction Control HUD -->
+  <div class="hud-controls" id="hudControls">
+    <span class="hud-pulse"></span>
+    <span class="hud-text" id="hudText">Drag 3D table to orbit • Scroll down to browse</span>
+    <button class="hud-btn" id="inspectBtn" type="button" title="Toggle Dome Cloche">Lift Cloche</button>
+    <button class="hud-btn" id="resetCamBtn" type="button" title="Center 3D View">Center View</button>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header class="header-glass">
+    <div class="header-container">
+      <a href="3d.html" class="brand-wrapper" title="The Sylvana Restaurant 3D">
+        <img src="assets/sylvana-logo.png" alt="The Sylvana Restaurant Logo" class="brand-logo-img">
+        <div class="brand-title-box">
+          <span class="brand-name">The Sylvana Restaurant</span>
+          <span class="brand-bn-tagline">দ্যা সিলভানা রেস্টুরেন্ট • ৩ডি শোকেস</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main 3D Navigation">
+        <ul class="nav-links-box">
+          <li><a href="#intro" class="nav-link active">Introduction</a></li>
+          <li><a href="#heritage" class="nav-link">Our Heritage</a></li>
+          <li><a href="#menu" class="nav-link">3D Menu (38+ Dishes)</a></li>
+          <li><a href="#info" class="nav-link">Hours & Location</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-glass" id="soundToggleBtn" type="button" title="Toggle Ambient Dining Chimes">
+          🔕 Audio: Off
+        </button>
+        <a href="index.html" class="btn-glass btn-outline-back" title="Switch to traditional flat landing page">
+          <span>⤾ Standard Menu</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content Scroller Overlay -->
+  <div class="content-scroller">
+
+    <!-- Section 1: Hero & Grand Presentation -->
+    <section class="section-block hero-scene" id="intro">
+      <div class="hero-glass-box interactive-layer">
+        <div class="badge-gold-pill">
+          <span>✨</span>
+          <span>3D Dining Presentation • Shahbagh, Dhaka</span>
+        </div>
+
+        <h1 class="hero-main-title" id="heroHeadline">
+          Welcome to <br>
+          <span class="gold-gradient">The Sylvana Restaurant</span>
+        </h1>
+
+        <h2 class="hero-bn-title" id="heroBnTitle">
+          দ্যা সিলভানা রেস্টুরেন্ট
+        </h2>
+
+        <p class="hero-desc" id="heroSubtitle">
+          Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, hearty traditional Bengali breakfast, fresh clay-oven naans, and gourmet burgers crafted with passion and heritage spices at 10, Shahbagh Biponi Bithan.
+        </p>
+
+        <div class="hero-meta-bar">
+          <div class="meta-pill-item">
+            <span id="heroMetaAddress">📍 10, Shahbagh Biponi Bithan, Dhaka-1000</span>
+          </div>
+          <div class="meta-pill-item">
+            <span id="heroMetaHours">⏰ Daily: 7:00 AM – 11:30 PM</span>
+          </div>
+          <div class="meta-pill-item">
+            <span>🍽️ 38+ Curated Dishes</span>
+          </div>
+          <div class="meta-pill-item">
+            <span>✨ 100% Halal & Fresh</span>
+          </div>
+        </div>
+
+        <div class="hero-btn-row">
+          <a href="#menu" class="btn-hero-primary">
+            Explore 38+ Dishes ↓
+          </a>
+          <button class="btn-hero-secondary" id="heroInspectBtn" type="button">
+            ✨ Open Cloche on Table
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Heritage & Culinary Story -->
+    <section class="section-block" id="heritage">
+      <div class="section-header-box">
+        <p class="section-eyebrow">OUR CULINARY HERITAGE / আমাদের ঐতিহ্য</p>
+        <h2 class="section-title">Serving Authentic Flavours at the Heart of Dhaka</h2>
+        <p class="section-bn-title">দ্যা সিলভানা রেস্টুরেন্ট — ঐতিহ্য ও খাঁটি স্বাদের মেলবন্ধন</p>
+        <p class="section-subtitle">
+          Situated at 10, Shahbagh Biponi Bithan, we blend authentic Old Dhaka spice traditions with genuine Bengali hospitality.
+        </p>
+      </div>
+
+      <div class="heritage-grid interactive-layer">
+        <!-- Story Card 1 -->
+        <div class="heritage-card">
+          <div class="card-accent-glow"></div>
+          <span class="heritage-tag">Culinary Roots</span>
+          <h3 class="heritage-title">Time-Honoured Traditions</h3>
+          <p class="heritage-bn-title">খাঁটি মশলা ও খাঁটি স্বাদের নিশ্চয়তা</p>
+          <p class="heritage-text" id="heritageStory1">
+            Situated at 10, Shahbagh Biponi Bithan, The Sylvana Restaurant is proud to be a warm culinary landmark in Dhaka. We bring together time-honoured Bengali cooking traditions, authentic Old Dhaka spices, and contemporary gourmet dining under one welcoming roof.
+          </p>
+        </div>
+
+        <!-- Story Card 2 -->
+        <div class="heritage-card">
+          <div class="card-accent-glow"></div>
+          <span class="heritage-tag">Pure Ingredients</span>
+          <h3 class="heritage-title">Crafted Fresh Daily</h3>
+          <p class="heritage-bn-title">প্রতিদিনের সকালের নাস্তা থেকে কাচ্চি বিরিয়ানি</p>
+          <p class="heritage-text" id="heritageStory2">
+            From our early morning flaky Parathas with rich Dim Bhuna or Bhaji, to our midday aromatic Mutton Kacchi Biryani and comforting Alu Bhorta with Rui fish curry, every dish is prepared with fresh local ingredients, genuine care, and uncompromised hygiene.
+          </p>
+        </div>
+
+        <!-- Metrics Card -->
+        <div class="heritage-card">
+          <div class="card-accent-glow"></div>
+          <span class="heritage-tag">Restaurant Highlights</span>
+          <h3 class="heritage-title">At a Glance</h3>
+          <p class="heritage-bn-title">আমাদের বিশেষত্ব</p>
+          <div class="metrics-row" id="heritageMetricItems">
+            <div class="metric-box">
+              <div class="metric-val">38+</div>
+              <div class="metric-lbl">Curated Dishes</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">4.9 ★</div>
+              <div class="metric-lbl">Guest Rating</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">7 AM - 11:30 PM</div>
+              <div class="metric-lbl">7 Days a Week</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">100%</div>
+              <div class="metric-lbl">Halal & Fresh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: The 3D Menu Showcase -->
+    <section class="section-block menu-showcase-section" id="menu">
+      <div class="section-header-box">
+        <p class="section-eyebrow">✦ THE COMPLETE CULINARY COLLECTION</p>
+        <h2 class="section-title">Authentic Dishes & Delicacies</h2>
+        <p class="section-bn-title">দ্যা সিলভানা রেস্টুরেন্টের সব সুস্বাদু খাবার ও মূল্যতালিকা</p>
+        <p class="section-subtitle">
+          Every single dish crafted fresh from our kitchen. Select any category to spotlight that dish on the 3D dining table above.
+        </p>
+      </div>
+
+      <!-- Spotlight Notification Banner -->
+      <div class="spotlight-banner interactive-layer" id="spotlightBanner">
+        <div class="spotlight-left">
+          <div class="spotlight-icon-circle" id="spotlightIcon">🍛</div>
+          <div class="spotlight-info">
+            <span class="spotlight-label" id="spotlightLabel">NOW PRESENTING ON 3D TABLE</span>
+            <span class="spotlight-dish-name" id="spotlightDishName">Mutton Kacchi Biryani</span>
+          </div>
+        </div>
+        <div class="spotlight-dish-price" id="spotlightDishPrice">৳ 320 BDT</div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-filter-strip interactive-layer" id="categoryFilterStrip" role="tablist" aria-label="Menu Categories">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- 3D Interactive Menu Cards Grid -->
+      <div class="menu-grid-3d" id="menuGrid">
+        <!-- Rendered dynamically from /api/content & data/content.json -->
+      </div>
+    </section>
+
+    <!-- Section 4: Visitor Info & Location -->
+    <section class="section-block info-section" id="info">
+      <div class="section-header-box">
+        <p class="section-eyebrow">VISIT & CONTACT</p>
+        <h2 class="section-title">Visit The Sylvana Restaurant</h2>
+        <p class="section-bn-title">আমাদের রেস্টুরেন্টের ঠিকানা ও সময়সূচী</p>
+        <p class="section-subtitle">
+          We look forward to welcoming you and your family for breakfast, lunch, tea, or dinner at Shahbagh.
+        </p>
+      </div>
+
+      <div class="info-cards-row interactive-layer">
+        <!-- Location Card -->
+        <div class="info-card">
+          <div class="info-icon-badge">📍</div>
+          <h3 class="info-card-title">Our Location</h3>
+          <p class="info-card-detail" id="infoAddress">
+            10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh
+          </p>
+          <div class="info-highlight-val">Shahbagh, Dhaka</div>
+          <p class="info-card-detail" style="font-size: 0.85rem; color: var(--text-dim);">
+            Centrally situated beside Dhaka University and PG Hospital.
+          </p>
+        </div>
+
+        <!-- Hours Card -->
+        <div class="info-card">
+          <div class="info-icon-badge">⏰</div>
+          <h3 class="info-card-title">Opening Hours</h3>
+          <p class="info-card-detail" id="infoHours">
+            Daily: 7:00 AM – 11:30 PM
+          </p>
+          <div class="info-highlight-val">Open 7 Days a Week</div>
+          <p class="info-card-detail" style="font-size: 0.85rem; color: var(--text-dim);">
+            Breakfast starts at 7:00 AM. Dinner served till late night.
+          </p>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="info-card">
+          <div class="info-icon-badge">📞</div>
+          <h3 class="info-card-title">Get in Touch</h3>
+          <p class="info-card-detail">
+            Direct Line: <a href="tel:+8801734489275" id="infoPhone" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">+8801734489275</a>
+          </p>
+          <p class="info-card-detail">
+            Email: <a href="mailto:sylvanarestaurantbd@gmail.com" id="infoEmail" style="color: var(--text-muted); text-decoration: none;">sylvanarestaurantbd@gmail.com</a>
+          </p>
+          <div class="info-highlight-val">Warm Hospitality Guaranteed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minimalist Footer -->
+    <footer class="footer-minimal interactive-layer">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          <strong>The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট)</strong> &copy; 2026. All rights reserved. <br>
+          10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh.
+        </p>
+        <div class="footer-links-box">
+          <a href="index.html" class="footer-link">Traditional Site</a>
+          <a href="#intro" class="footer-link">Back to Top ↑</a>
+          <a href="admin.html" class="footer-link">Admin Studio</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Three.js (Local bundle with reliable CDN fallback) -->
+  <script src="js/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- 3D Scene Controller & Dynamic Content Streaming Script -->
+  <script src="js/3d.js"></script>
+</body>
+</html>
