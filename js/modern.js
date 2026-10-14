@@ -16,22 +16,36 @@
     setupAdminModal();
   }
 
-  // 1. Fetch content
+    // 1. Fetch content
   async function fetchContent() {
+    // Check localStorage cache first for client-side persistence
+    try {
+      const cached = localStorage.getItem('sylvana_content_data');
+      if (cached) {
+        contentData = JSON.parse(cached);
+      }
+    } catch (e) {
+      console.warn('localStorage parse error:', e);
+    }
+
     try {
       const res = await fetch('/api/content');
       if (res.ok) {
         contentData = await res.json();
-      } else {
+        localStorage.setItem('sylvana_content_data', JSON.stringify(contentData));
+      } else if (!contentData) {
         throw new Error('API returned ' + res.status);
       }
     } catch (e) {
-      console.warn('Falling back to static data/content.json:', e);
-      try {
-        const fallback = await fetch('data/content.json');
-        contentData = await fallback.json();
-      } catch (err) {
-        console.error('Failed to load menu data:', err);
+      if (!contentData) {
+        console.warn('Falling back to static data/content.json:', e);
+        try {
+          const fallback = await fetch('data/content.json');
+          contentData = await fallback.json();
+          localStorage.setItem('sylvana_content_data', JSON.stringify(contentData));
+        } catch (err) {
+          console.error('Failed to load menu data:', err);
+        }
       }
     }
 
@@ -68,7 +82,7 @@
 
     const heroDesc = document.getElementById('heroDesc');
     if (heroDesc) {
-      heroDesc.textContent = hero.subtitle || 'Authentic Bengali culinary traditions, fragrant Mutton Kacchi Biryani, hearty breakfast, and gourmet Continental dining crafted with passion in Shahbagh.';
+      heroDesc.textContent = hero.subtitle || 'Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, hearty morning breakfast, fresh clay-oven naans, and gourmet dishes crafted fresh every day at Shahbagh, Dhaka.';
     }
 
     const heroCallBtn = document.getElementById('heroCallBtn');
@@ -82,17 +96,17 @@
     const filterWrap = document.getElementById('categoryFilterWrap');
     if (!filterWrap || !contentData.menu || !contentData.menu.items) return;
 
-    // Distinct categories
-    const categories = ['All'];
-    contentData.menu.items.forEach(dish => {
-      if (dish.category && !categories.includes(dish.category)) {
-        categories.push(dish.category);
-      }
-    });
+    // Distinct categories (Breakfast & Lunch)
+    const categoryOptions = [
+      { id: 'All', label: 'All Items', icon: '🍽️' },
+      { id: 'Breakfast', label: 'Breakfast Menu', icon: '🌅' },
+      { id: 'Lunch', label: 'Lunch Menu', icon: '🍛' }
+    ];
 
-    filterWrap.innerHTML = categories.map(cat => `
-      <button class="filter-pill ${cat === activeCategory ? 'active' : ''}" type="button" data-cat="${escapeHtml(cat)}">
-        ${escapeHtml(cat)}
+    filterWrap.innerHTML = categoryOptions.map(cat => `
+      <button class="filter-pill tab-btn ${cat.id === activeCategory ? 'active' : ''}" type="button" data-cat="${escapeHtml(cat.id)}">
+        <span>${cat.icon}</span>
+        <span>${escapeHtml(cat.label)}</span>
       </button>
     `).join('');
 
@@ -112,18 +126,26 @@
 
     const filtered = activeCategory === 'All'
       ? contentData.menu.items
-      : contentData.menu.items.filter(d => d.category === activeCategory);
+      : contentData.menu.items.filter(d => d.category.toLowerCase().includes(activeCategory.toLowerCase()));
 
     grid.innerHTML = filtered.map(dish => `
-      <article class="menu-card" data-dish-id="${dish.id}">
-        <div class="menu-card-top">
-          <h3 class="dish-name" data-field="name">${escapeHtml(dish.name)}</h3>
-          <span class="dish-price-badge" data-field="price">৳ ${dish.price}</span>
+      <article class="food-card" data-dish-id="${dish.id}">
+        <div class="food-card-img-wrap">
+          <img src="${escapeHtml(dish.imageUrl || 'assets/sylvana-logo.png')}" alt="${escapeHtml(dish.name)}" class="food-card-img" loading="lazy" onerror="this.onerror=null;this.src='assets/sylvana-logo.png'">
+          ${dish.badge ? `<span class="food-card-badge" data-field="badge">${escapeHtml(dish.badge)}</span>` : ''}
+          <span class="food-card-meal-pill">${escapeHtml(dish.category)}</span>
         </div>
-        <p class="dish-description" data-field="description">${escapeHtml(dish.description || 'Prepared fresh with traditional ingredients.')}</p>
-        <div class="menu-card-bottom">
-          <span class="dish-category-tag">${escapeHtml(dish.category || 'Menu Item')}</span>
-          ${dish.badge ? `<span class="dish-special-pill" data-field="badge">${escapeHtml(dish.badge)}</span>` : ''}
+        <div class="food-card-content">
+          <div class="food-card-header">
+            <h3 class="food-card-title" data-field="name">${escapeHtml(dish.name)}</h3>
+            <span class="food-card-price" data-field="price">৳ ${dish.price}</span>
+          </div>
+          ${dish.nameBn ? `<div class="food-card-bn-title" data-field="nameBn">${escapeHtml(dish.nameBn)}</div>` : ''}
+          <p class="food-card-desc" data-field="description">${escapeHtml(dish.description || 'Prepared fresh with traditional Dhaka spices.')}</p>
+          <div class="food-card-footer">
+            <span>✨ 100% Halal & Fresh</span>
+            <span>🍽️ Dine-in / Takeaway</span>
+          </div>
         </div>
       </article>
     `).join('');
@@ -309,12 +331,15 @@
     if (heroDesc) contentData.hero.subtitle = heroDesc.textContent.trim();
 
     // Collect dish values
-    document.querySelectorAll('.menu-card').forEach(card => {
+    document.querySelectorAll('.food-card, .menu-card').forEach(card => {
       const id = card.getAttribute('data-dish-id');
       const item = contentData.menu.items.find(i => i.id === id);
       if (item) {
         const nameEl = card.querySelector('[data-field="name"]');
         if (nameEl) item.name = nameEl.textContent.trim();
+
+        const nameBnEl = card.querySelector('[data-field="nameBn"]');
+        if (nameBnEl) item.nameBn = nameBnEl.textContent.trim();
 
         const priceEl = card.querySelector('[data-field="price"]');
         if (priceEl) {
@@ -337,6 +362,13 @@
     const contactHours = document.getElementById('contactHours');
     if (contactHours) contentData.contact.hours = contactHours.textContent.trim();
 
+    // Always cache in localStorage for instant persistence across page refreshes
+    try {
+      localStorage.setItem('sylvana_content_data', JSON.stringify(contentData));
+    } catch (err) {
+      console.warn('localStorage save error:', err);
+    }
+
     // PUT to server
     try {
       const res = await fetch('/api/content', {
@@ -350,14 +382,14 @@
       });
 
       if (res.ok) {
-        showToast('💾 Saved successfully! Content updated on server.');
+        showToast('💾 Saved successfully! Content updated on server & local.');
       } else {
         const err = await res.json();
-        showToast('⚠️ Notice: ' + (err.error || res.statusText));
+        showToast('💾 Saved locally! (Server notice: ' + (err.error || res.statusText) + ')');
       }
     } catch (e) {
-      console.error('Save failed:', e);
-      showToast('✅ Saved locally in memory.');
+      console.log('Static hosting mode - saved locally:', e);
+      showToast('💾 Saved successfully to local storage!');
     }
   }
 
