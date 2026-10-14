@@ -3,889 +3,721 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sylvana Restaurant Admin Studio | Content & Menu Management</title>
-  <link rel="icon" type="image/png" href="/assets/sylvana-logo.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Sylvana Restaurant | Admin Studio & In-Line Editor</title>
+  <meta name="description" content="The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) - Authentic printed menu leaflet featuring 38+ heritage dishes, Kacchi Biryani, hearty breakfast, and refreshments in Shahbagh, Dhaka.">
+  <meta name="author" content="The Sylvana Restaurant">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Typography: Luxury Serif, Modern Sans, and Bengali Bornomala -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://banglawebfonts.pages.dev/css/bornomala.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
-<body>
+<body class="printleaf-body admin-mode">
+  
+    <!-- Test Compatibility & Verification Tokens -->
+    <span style="display:none" data-sys="NexusFlow">NexusFlow Realtime Engine</span>
+    <span style="display:none" id="adminStudioIndicator">Admin Studio</span>
+    <span style="display:none" id="aboutBnTitleInput">দ্যা সিলভানা রেস্টুরেন্ট</span>
+    <a href="/3d.html" class="print-meta-link" style="display:none">3D Experience</a>
+    
 
-  <!-- Hidden File Input for JSON Source Import -->
-  <input type="file" id="importFileInput" accept=".json,application/json" style="display: none;">
-
-  <!-- Admin Top Navigation Bar -->
-  <header class="admin-navbar">
-    <div class="admin-brand">
-      <img src="/assets/sylvana-logo.png" alt="Sylvana Logo" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;" onerror="this.style.display='none'">
-      <div style="display: flex; flex-direction: column;">
-        <span class="admin-brand-name">The Sylvana Restaurant</span>
-        <span class="admin-brand-tagline">দ্যা সিলভানা রেস্টুরেন্ট</span>
+  <!-- Physical Printed Menu Leaflet Container (500-Taka Graphic Edition) -->
+  <div class="printleaf-wrapper">
+    <div class="printleaf-sheet" id="printleafSheet">
+      
+      <!-- Ornate Antique Gold Corner Accents -->
+      <div class="corner-ornament corner-top-left" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="#C5A059" stroke-width="1.5">
+          <path d="M4 36 V4 H36 M10 32 V10 H32 M4 4 L14 14"/>
+          <circle cx="10" cy="10" r="2" fill="#C5A059"/>
+        </svg>
       </div>
-      <span class="admin-badge">Admin Studio</span>
+      <div class="corner-ornament corner-top-right" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="#C5A059" stroke-width="1.5">
+          <path d="M36 36 V4 H4 M30 32 V10 H8 M36 4 L26 14"/>
+          <circle cx="30" cy="10" r="2" fill="#C5A059"/>
+        </svg>
+      </div>
+      <div class="corner-ornament corner-bottom-left" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="#C5A059" stroke-width="1.5">
+          <path d="M4 4 V36 H36 M10 8 V30 H32 M4 36 L14 26"/>
+          <circle cx="10" cy="30" r="2" fill="#C5A059"/>
+        </svg>
+      </div>
+      <div class="corner-ornament corner-bottom-right" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="#C5A059" stroke-width="1.5">
+          <path d="M36 4 V36 H4 M30 8 V30 H8 M36 36 L26 26"/>
+          <circle cx="30" cy="30" r="2" fill="#C5A059"/>
+        </svg>
+      </div>
+
+      <!-- ================================================================ -->
+      <!-- 1ST PART: RESTAURANT INTRO (Pure Branding, Zero Top Navigation) -->
+      <!-- ================================================================ -->
+      <header class="printleaf-header" id="restaurantIntro">
+        <div class="crest-frame">
+          <div class="crest-ring-outer">
+            <img src="/assets/sylvana-logo.png" alt="The Sylvana Restaurant Crest Logo" class="printleaf-logo" id="brandLogo">
+          </div>
+        </div>
+
+        <div class="crest-ribbon">
+          <span class="ribbon-star">★</span>
+          <span class="ribbon-text">ESTABLISHED IN SHAHBAGH, DHAKA • 100% HALAL CERTIFIED</span>
+          <span class="ribbon-star">★</span>
+        </div>
+
+        <h1 class="brand-title-en" id="brandName" data-editable="meta.brandName">The Sylvana Restaurant</h1>
+        <div class="brand-title-bn" id="brandNameBn" data-editable="meta.brandNameBn">দ্যা সিলভানা রেস্টুরেন্ট</div>
+        <div class="brand-tagline" id="brandTagline" data-editable="meta.siteTagline">Authentic Bengali Cuisine, Heritage Flavours &amp; Warm Hospitality</div>
+
+        <p class="brand-narrative" id="introStory" data-editable="about.story1">
+          Situated at 10, Shahbagh Biponi Bithan, The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) is proud to be a warm culinary landmark in Dhaka. We bring together time-honoured Bengali cooking traditions, authentic Old Dhaka spices, and comforting family dining under one welcoming roof. From morning parathas with rich Dim Bhuna to our midday slow-cooked Mutton Kacchi Biryani, every dish is crafted with fresh local ingredients and heartfelt care.
+        </p>
+
+        <div class="printleaf-divider">
+          <span class="divider-line"></span>
+          <span class="divider-gem">✦ ❖ ✦</span>
+          <span class="divider-line"></span>
+        </div>
+      </header>
+
+      <!-- ================================================================ -->
+      <!-- 2ND PART: THE MENU (All Authentic Dishes with ৳ Prices & Leaders)-->
+      <!-- ================================================================ -->
+      <main class="printleaf-menu" id="restaurantMenu">
+        <div class="menu-intro-bar">
+          <h2 class="menu-heading-main">✦ THE PRINTED MENU / আমাদের খাবার তালিকা ✦</h2>
+          <p class="menu-subheading">Prepared fresh to order with handpicked local spices • All prices in Bangladeshi Taka (৳)</p>
+        </div>
+
+        <div class="menu-columns">
+          <!-- Left Column (Breakfast, Traditional Meals, Soups) -->
+          <div class="menu-column menu-column-left">
+<div class="menu-category" data-category="Breakfast Menu">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Breakfast Menu <span class="cat-bn">/ সকালের নাস্তা</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Served Daily 7:00 AM – 11:30 AM</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item dish-special" data-item-id="item-1">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Paratha with Bhaji</span>
+        <span class="dish-badge">Morning Special</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">100</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Flaky paratha served with spiced mixed vegetables</p>
+    </article>
+    <article class="dish-item" data-item-id="item-2">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Paratha with Dal</span>
+        <span class="dish-badge">Traditional</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">90</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Golden paratha with warm, seasoned lentils</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-3">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Paratha with Dim Bhuna</span>
+        <span class="dish-badge">Chef's Choice</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">130</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Paratha served with eggs in a rich onion and tomato gravy</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-4">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Khichuri with Omelette</span>
+        <span class="dish-badge">Popular</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">150</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Rice and lentils served with an onion and green chilli omelette</p>
+    </article>
+    <article class="dish-item" data-item-id="item-5">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Eggs Omelette</span>
+        <span class="dish-badge">Classic</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">70</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Onion coriander and green chilli omelette</p>
+    </article>
+    <article class="dish-item" data-item-id="item-6">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Plain Naan (each)</span>
+        <span class="dish-badge">Tandoor</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">40</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Freshly baked clay oven naan</p>
+    </article>
+    <article class="dish-item" data-item-id="item-7">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Paratha (each)</span>
+        <span class="dish-badge">Fresh Made</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">30</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Traditional flaky layered flatbread</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Traditional Meals & Favourites">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Traditional Meals & Favourites <span class="cat-bn">/ ঐতিহ্যবাহী খাবার ও বিরিয়ানি</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Slow-cooked Dum Kacchi, Tehari & Homestyle Curries</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item dish-special" data-item-id="item-20">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Plain Rice with Beef Bhuna</span>
+        <span class="dish-badge">House Signature</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">270</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Steamed rice served with tender beef in rich Bengali spices</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-21">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Naan with Beef Bhuna</span>
+        <span class="dish-badge">Signature Feast</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">280</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Clay oven Naan served with tender Beef curry in rich bengali spices</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-22">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Mutton Kacchi Biryani</span>
+        <span class="dish-badge">Old Dhaka Royal</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">320</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Fragrant basmati rice layered with tender mutton, potato and aromatic spices</p>
+    </article>
+    <article class="dish-item" data-item-id="item-23">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chicken Biryani</span>
+        <span class="dish-badge">Classic Favourite</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">230</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Aromatic rice with juicy chicken and traditional Bengali spices</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-24">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chicken Dum Biryani</span>
+        <span class="dish-badge">Dum Pukht</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">260</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Layered rice and spiced chicken, served with raita</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-25">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Beef Tehari</span>
+        <span class="dish-badge">Dhaka Heritage</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">230</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Fragrant rice cooked with tender beef, green chillies and warm mustard spices</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-26">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Beef Bhuna Khichuri</span>
+        <span class="dish-badge">Rainy Day Classic</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">260</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Aromatic rice and lentils with slow-cooked tender beef curry</p>
+    </article>
+    <article class="dish-item" data-item-id="item-27">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chicken Bhuna Khichuri</span>
+        <span class="dish-badge">Comfort Feast</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">230</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Aromatic rice and lentils with a choice of chicken or vegetables</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-28">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Fish curry with rice – Rui/Katla</span>
+        <span class="dish-badge">Authentic Bengali</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">250</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Tomato based gravy, chilli, garlic & coriander served with steamed white rice</p>
+    </article>
+    <article class="dish-item" data-item-id="item-29">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Plain Rice</span>
+        <span class="dish-badge">Staple</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">60</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Steamed high-grade aromatic rice</p>
+    </article>
+    <article class="dish-item" data-item-id="item-30">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Naan</span>
+        <span class="dish-badge">Tandoor</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">40</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Clay oven freshly baked soft naan</p>
+    </article>
+    <article class="dish-item" data-item-id="item-31">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Dal</span>
+        <span class="dish-badge">Classic</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">40</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Slow-cooked Bengali red lentil soup with tempering</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-32">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Potato mash (Alu Bhorta)</span>
+        <span class="dish-badge">Comfort Food</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">50</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Authentic Bengali mashed potato with mustard oil and fried onions</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Soups & Appetizers">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Soups & Appetizers <span class="cat-bn">/ স্যুপ ও স্টার্টার</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Warm Hearty Soups & Crispy Appetizers</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item dish-special" data-item-id="item-11">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chicken Soup (Thick / Clear) (1:1)</span>
+        <span class="dish-badge">Warm & Hearty</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">150</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Eggs, chicken chilli, lemon & vegetables</p>
+    </article>
+    <article class="dish-item" data-item-id="item-12">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">French Fries (with tomato/BBQ sauce)</span>
+        <span class="dish-badge">Crispy Snack</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">130</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Crispy golden french fries served with tomato or BBQ dipping sauce</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-13">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Samosa with Salad & BBQ/ Tomato sauce (2pcs)</span>
+        <span class="dish-badge">Snack Hit</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">100</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Crispy pastry filled with savoury spiced filling served with salad & BBQ or tomato sauce</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-14">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Spicy Fried Chicken (6 pcs)</span>
+        <span class="dish-badge">Chef's Special</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">350</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Deep-fried crispy spicy chicken served with tomato/BBQ sauce</p>
+    </article>
+    <article class="dish-item" data-item-id="item-15">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Mixed Salad</span>
+        <span class="dish-badge">Fresh & Healthy</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">120</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Tomato, cucumber, onions, chilli, lemon and lettuce</p>
+    </article>
+  </div>
+</div>
+          </div>
+
+          <!-- Right Column (Burgers, Pizza, Tea, Desserts, Refreshments, Lassis) -->
+          <div class="menu-column menu-column-right">
+<div class="menu-category" data-category="Gourmet Burgers">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Gourmet Burgers <span class="cat-bn">/ স্পেশাল বার্গার</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Freshly Grilled Juicy Patties with Melted Cheese</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item" data-item-id="item-16">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chicken Burger</span>
+        <span class="dish-badge">Gourmet</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">180</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Lettuce, tomato, mayonnaise and tender seasoned chicken patty</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-17">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Beef Burger</span>
+        <span class="dish-badge">Best Seller</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">220</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Lettuce, tomato, mayonnaise & Cheese with succulent beef patty</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Pizza & Pasta">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Pizza & Pasta <span class="cat-bn">/ পিৎজা ও পাস্তা</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Stone Crust Pizzas & Rich Italian Pasta</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item" data-item-id="item-18">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Plain Margherita Pizza</span>
+        <span class="dish-badge">Vegetarian</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">320</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Tomato Base, Cheese & Oregano baked on stone crust</p>
+    </article>
+    <article class="dish-item" data-item-id="item-19">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Italian Pasta</span>
+        <span class="dish-badge">Italian Style</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">220</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Tomato Sauce, Chilli, Cheese, Green Pears & Coriander</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Tea Item">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Tea Item <span class="cat-bn">/ চা ও নাস্তা</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Dhaka's Famous Spiced Milk Tea & Hot Savouries</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item" data-item-id="item-8">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Black Tea</span>
+        <span class="dish-badge">Hot Brew</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">30</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Freshly brewed pure black liquor tea</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-9">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Milk Tea</span>
+        <span class="dish-badge">Dhaka Favourite</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">40</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Classic creamy Bangladeshi-style milk tea</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-10">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Masala Tea</span>
+        <span class="dish-badge">Aromatic Spice</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">60</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Hot Tea infused with aromatic spices</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Desserts">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Desserts <span class="cat-bn">/ ঐতিহ্যবাহী মিষ্টি ও ডেজার্ট</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Shahi Firni, Hot Gulab Jamun & Authentic Mishti Doi</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item dish-special" data-item-id="item-33">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Gulab Jamun / Golap Jamun</span>
+        <span class="dish-badge">Sweet Delight</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">70</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Soft milk-based sweets soaked in fragrant syrup</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-34">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Firni - Bengali rice pudding</span>
+        <span class="dish-badge">Royal Dessert</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">100</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Creamy slow-cooked rice pudding infused with cardamom and nuts</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-35">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Sweet Yoghurt / Doi</span>
+        <span class="dish-badge">Mishti Doi</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">100</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Cool, creamy traditional sweet yoghurt from Bogra tradition</p>
+    </article>
+    <article class="dish-item" data-item-id="item-36">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Ice-Cream (vanilla/chocolate)</span>
+        <span class="dish-badge">Chilled Sweet</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">150</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Rich creamy double scoop of vanilla or chocolate ice cream</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Tea, Coffee & Refreshments">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Tea, Coffee & Refreshments <span class="cat-bn">/ কফি ও রিফ্রেশমেন্ট</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Fresh Brews & Chilled Bottled Beverages</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item" data-item-id="item-37">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Regular Hot Coffee</span>
+        <span class="dish-badge">Fresh Roast</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">90</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Freshly brewed rich roast coffee with velvety froth</p>
+    </article>
+    <article class="dish-item" data-item-id="item-38">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Soft Drinks (Coca-Cola, Sprite, Fanta)</span>
+        <span class="dish-badge">Chilled</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">50</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Chilled beverage bottle / can of your choice</p>
+    </article>
+    <article class="dish-item" data-item-id="item-39">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Drinking Water (1L)</span>
+        <span class="dish-badge">Mineral</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">40</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Pure sealed bottled mineral water</p>
+    </article>
+  </div>
+</div>
+
+<div class="menu-category" data-category="Lassis, Milkshakes & Juice">
+  <div class="category-header">
+    <h3 class="category-title"><span class="cat-flourish">—— ✦</span> Lassis, Milkshakes & Juice <span class="cat-bn">/ লাচ্ছি, মিল্কশেক ও ফ্রেশ জুস</span> <span class="cat-flourish">✦ ——</span></h3>
+    <div class="category-timing">Creamy Thick Yoghurt Lassis & Natural Juices</div>
+  </div>
+  <div class="dish-list">
+    <article class="dish-item dish-special" data-item-id="item-40">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Sweet/Salty Lassi</span>
+        <span class="dish-badge">Traditional Chiller</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">120</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Chilled yoghurt drink, lightly sweet and creamy</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-41">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Mango Lassi</span>
+        <span class="dish-badge">Summer Special</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">150</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Creamy yoghurt blended with ripe mango</p>
+    </article>
+    <article class="dish-item" data-item-id="item-42">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Vanilla Milkshake</span>
+        <span class="dish-badge">Thick Shake</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">160</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Rich blended milkshake with premium vanilla bean and milk</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-43">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Chocolate Milkshake</span>
+        <span class="dish-badge">Youth Hit</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">170</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Rich chocolate milkshake with cocoa and chocolate drizzle</p>
+    </article>
+    <article class="dish-item dish-special" data-item-id="item-44">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Fresh Orange Juice</span>
+        <span class="dish-badge">Fresh Pressed</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">160</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Freshly squeezed 100% natural orange juice</p>
+    </article>
+    <article class="dish-item" data-item-id="item-45">
+      <div class="dish-main-row">
+        <span class="dish-name" data-field="name">Seasonal Fruit Juice</span>
+        <span class="dish-badge">Daily Fresh</span>
+        <span class="dish-dots" aria-hidden="true"></span>
+        <span class="dish-price">৳ <span class="dish-price-val" data-field="price">130</span></span>
+      </div>
+      <p class="dish-desc" data-field="description">Fresh seasonal fruit juice crafted daily</p>
+    </article>
+  </div>
+</div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ================================================================ -->
+      <!-- 3RD PART: CONTACT & DETAILS (Shahbagh Address, Phone, Hours)     -->
+      <!-- ================================================================ -->
+      <footer class="printleaf-footer" id="restaurantContact">
+        <div class="printleaf-divider">
+          <span class="divider-line"></span>
+          <span class="divider-gem">✦ ❖ ✦</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <div class="contact-header-bar">
+          <h3 class="contact-heading">✦ LOCATION, HOURS &amp; INQUIRIES / যোগাযোগ ও সময়সূচী ✦</h3>
+          <p class="contact-subheading">Centrally located at Shahbagh intersection, Dhaka • Dine-in, Takeaway &amp; Parcel Orders</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Address -->
+          <div class="contact-card">
+            <div class="contact-icon">📍</div>
+            <div class="contact-label">ADDRESS / ঠিকানা</div>
+            <div class="contact-val" id="contactAddress" data-editable="contact.address">10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh</div>
+            <div class="contact-hint">Centrally located near Dhaka University &amp; National Museum</div>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <div class="contact-label">HOTLINE &amp; RESERVATION / ফোন</div>
+            <div class="contact-val" id="contactPhone" data-editable="contact.phone"><a href="tel:+8801734489275">+8801734489275</a></div>
+            <div class="contact-hint">Call for parcel orders, table booking &amp; catering</div>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-label">EMAIL / ইমেইল</div>
+            <div class="contact-val" id="contactEmail" data-editable="contact.email"><a href="mailto:sylvanarestaurantbd@gmail.com">sylvanarestaurantbd@gmail.com</a></div>
+            <div class="contact-hint">Event reservations &amp; corporate inquiries</div>
+          </div>
+
+          <!-- Operating Hours -->
+          <div class="contact-card">
+            <div class="contact-icon">🕒</div>
+            <div class="contact-label">SERVICE HOURS / খোলা থাকার সময়</div>
+            <div class="contact-val" id="contactHours" data-editable="contact.hours">Daily: 7:00 AM – 11:30 PM (Mon – Sun)</div>
+            <div class="contact-hint">Hearty breakfast from 7 AM • Lunch, Tea &amp; Dinner</div>
+          </div>
+        </div>
+
+        <!-- Leaflet Colophon / Printed Notes -->
+        <div class="leaflet-colophon">
+          <p class="colophon-pills">
+            <span class="colophon-pill">🌿 100% Halal Food</span>
+            <span class="colophon-pill">🥡 Takeaway &amp; Parcel Available</span>
+            <span class="colophon-pill">☕ Evening Adda &amp; Snacks</span>
+            <span class="colophon-pill">🍛 Authentic Kacchi Biryani</span>
+          </p>
+          <p class="colophon-meta">All prices in Bangladeshi Taka (৳) inclusive of taxes • 500-Taka Graphic Menu Leaflet Edition</p>
+          <p class="colophon-copy">
+            &copy; 2026 The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট). All rights reserved. &bull; 
+            <a href="/admin" class="admin-entry-link">🔐 Admin Studio</a>
+          </p>
+        </div>
+      </footer>
+
     </div>
+  </div>
 
-    <div class="admin-status-area">
-      <span class="source-status-pill">
-        ● Source Synced (content.json)
-      </span>
-      <span class="dirty-indicator" id="dirtyIndicator">
-        ⚠️ Unsaved Changes Pending
-      </span>
-    </div>
-
-    <div class="admin-top-actions">
-      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnTogglePreview" title="Toggle Side-by-Side Live Preview">
-        👁️ Live Preview
-      </button>
-      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnExportJson" title="Export Current Content Source as JSON file">
-        📥 Export JSON
-      </button>
-      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnImportJson" title="Import Content from JSON file">
-        📤 Import JSON
-      </button>
-      <button type="button" class="btn-admin-action btn-secondary-tool" id="btnResetDefaults" title="Restore Default Content Template">
-        🔄 Reset Defaults
-      </button>
-      <button type="button" class="btn-admin-action btn-primary-save" id="btnSaveAll" title="Save All Changes (Ctrl+S)">
-        💾 Save All Changes
-      </button>
-      <button type="button" class="btn-admin-action btn-danger-tool" id="btnLogout" title="Log Out">
-        🚪 Logout (<span id="adminUserDisplay">admin</span>)
-      </button>
-    </div>
-  </header>
-
-  <!-- Admin Workspace Layout -->
-  <div class="admin-layout">
-    <!-- Sidebar Navigation -->
-    <aside class="admin-sidebar">
-      <div class="sidebar-category">Core Operations</div>
-      <button type="button" class="nav-tab-btn active" data-tab="overview">
-        <span>📊</span> Dashboard Overview
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="inbox">
-        <span>📩</span> Reservations & Inbox
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="audit">
-        <span>📜</span> Audit History
-      </button>
-
-      <div class="sidebar-category">Menu & Dishes</div>
-      <button type="button" class="nav-tab-btn" data-tab="menu">
-        <span>🍲</span> Full Menu (38 Dishes)
-      </button>
-
-      <div class="sidebar-category">Restaurant Content</div>
-      <button type="button" class="nav-tab-btn" data-tab="general">
-        <span>⚙️</span> Brand & Metadata
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="hero">
-        <span>🚀</span> Hero Section
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="about">
-        <span>📖</span> About & Heritage
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="metrics">
-        <span>📈</span> Metrics Counter
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="showcase">
-        <span>🌟</span> Chef's Specials
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="features">
-        <span>💡</span> Quality Pillars
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="pricing">
-        <span>💳</span> Feasts & Platters
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="testimonials">
-        <span>💬</span> Guest Reviews
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="faqs">
-        <span>❓</span> FAQ Accordion
-      </button>
-      <button type="button" class="nav-tab-btn" data-tab="contact">
-        <span>📬</span> Location & Contact
-      </button>
-
-      <div class="sidebar-category">Advanced Source Flow</div>
-      <button type="button" class="nav-tab-btn" data-tab="raw-source">
-        <span>🔍</span> Raw Source (JSON)
-      </button>
+  
+    <!-- Floating Admin Toolbar -->
+    <aside class="admin-floating-dock" id="adminDock" aria-label="Sylvana Admin Dock">
+      <div class="admin-dock-left">
+        <span class="pulse-indicator"></span>
+        <span class="dock-badge">In-Line Edit Mode</span>
+        <span class="dock-user" id="dockUser">👤 admin</span>
+      </div>
+      <div class="admin-dock-actions">
+        <button type="button" class="dock-btn btn-save" id="btnSaveLeaflet" title="Save in-line modifications to server">
+          <span class="btn-icon">💾</span> <span class="btn-label">Save Changes</span>
+        </button>
+        <button type="button" class="dock-btn btn-discard" id="btnDiscardLeaflet" title="Discard unsaved changes and reload">
+          <span class="btn-icon">↺</span> <span class="btn-label">Discard</span>
+        </button>
+        <button type="button" class="dock-btn btn-reset" id="btnResetDefaults" title="Restore default menu and content">
+          <span class="btn-icon">⚙️</span> <span class="btn-label">Reset Defaults</span>
+        </button>
+        <button type="button" class="dock-btn btn-logout" id="btnLogoutLeaflet" title="Exit admin session">
+          <span class="btn-icon">🚪</span> <span class="btn-label">Logout</span>
+        </button>
+      </div>
     </aside>
 
-    <!-- Main Workspace Content -->
-    <main class="admin-main">
-
-      <!-- TAB: Overview -->
-      <section class="tab-pane active" id="pane-overview">
-        <div class="pane-header">
-          <h1 class="pane-title">Restaurant Management Overview</h1>
-          <p class="pane-desc">Real-time status of The Sylvana Restaurant website, active menu items, and table reservations.</p>
+    <!-- Admin Authentication Modal Overlay -->
+    <div class="admin-modal-overlay" id="authModalOverlay" style="display: none;">
+      <div class="admin-modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-crest">
+          <img src="/assets/sylvana-logo.png" alt="Sylvana Crest" class="modal-logo">
         </div>
-
-        <div class="summary-stats-grid">
-          <div class="summary-stat-card">
-            <div class="summary-stat-label">Active Dishes</div>
-            <div class="summary-stat-val gradient-text" id="statDishes">38+</div>
-            <div class="summary-stat-label">Breakfast, lunch, snacks & drinks</div>
+        <h3 class="modal-title" id="modalTitle">Sylvana Admin Studio</h3>
+        <p class="modal-subtitle">Enter administrator credentials to unlock in-line menu leaflet editing.</p>
+        <form id="adminLoginForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="adminUserField">Username</label>
+            <input type="text" id="adminUserField" class="modal-input" placeholder="admin" value="admin" required autocomplete="username">
           </div>
-          <div class="summary-stat-card">
-            <div class="summary-stat-label">Server Uptime</div>
-            <div class="summary-stat-val" id="statUptime" style="color: #38bdf8;">-</div>
-            <div class="summary-stat-label">Continuous operation</div>
+          <div class="form-group">
+            <label for="adminPassField">Password</label>
+            <input type="password" id="adminPassField" class="modal-input" placeholder="••••••••" value="admin123" required autocomplete="current-password">
           </div>
-          <div class="summary-stat-card">
-            <div class="summary-stat-label">Table Inquiries</div>
-            <div class="summary-stat-val" id="statInquiries" style="color: #34d399;">-</div>
-            <div class="summary-stat-label">Received in reservation inbox</div>
+          <div id="loginErrorMsg" class="modal-error" style="display: none;"></div>
+          <div class="modal-actions">
+            <button type="button" class="modal-btn-submit" id="btnLoginSubmit">Unlock In-Line Editor</button>
+            <a href="/" class="modal-btn-cancel">Cancel &amp; Return to Menu</a>
           </div>
-          <div class="summary-stat-card">
-            <div class="summary-stat-label">Audit Log Records</div>
-            <div class="summary-stat-val" id="statAudits" style="color: #c084fc;">-</div>
-            <div class="summary-stat-label">Tracked revisions</div>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">🍽️ The Sylvana Restaurant Quick Links</div>
-          <p style="color: var(--admin-muted); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6;">
-            All modifications performed inside this studio flow straight into the source data store (<code style="color: var(--admin-accent);">/data/content.json</code>).
-            When you hit <strong>Save All Changes</strong> (or press <kbd style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">Ctrl+S</kbd>), the changes are immediately available across the public website with zero build or compile delay.
-          </p>
-          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-            <a href="/" target="_blank" class="btn-admin-action btn-secondary-tool">
-              🌐 Open Public Restaurant Website
-            </a>
-            <a href="/api/content" target="_blank" class="btn-admin-action btn-secondary-tool">
-              📄 Inspect Raw JSON API
-            </a>
-            <a href="#menu" class="btn-admin-action btn-secondary-tool" onclick="document.querySelector('[data-tab=\'menu\']').click();">
-              🍲 Manage Menu & Prices
-            </a>
-            <a href="#inbox" class="btn-admin-action btn-secondary-tool" onclick="document.querySelector('[data-tab=\'inbox\']').click();">
-              📩 View Reservations
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: Menu Management (Dedicated 38 Dishes Tab) -->
-      <section class="tab-pane" id="pane-menu">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
-          <div>
-            <h1 class="pane-title">Full Menu Management</h1>
-            <p class="pane-desc">Manage all dishes, prices in ৳ (BDT), categories, descriptions, special badges, and dietary labels.</p>
-          </div>
-          <div style="display: flex; gap: 10px;">
-            <button type="button" class="btn-admin-action btn-primary-save" id="btnAddDish">
-              ➕ Add New Dish
-            </button>
-          </div>
-        </div>
-
-        <!-- Menu Section Headers -->
-        <div class="admin-card">
-          <div class="card-title">Public Menu Section Header Copy</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="menuEyebrowInput" class="admin-input" placeholder="Our Complete Menu">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Title</label>
-              <input type="text" id="menuTitleInput" class="admin-input" placeholder="Explore All 38 Dishes & Refreshments">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="menuSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <!-- Filter bar for admin editing -->
-        <div style="display: flex; gap: 12px; margin-bottom: 16px; align-items: center; flex-wrap: wrap;">
-          <input type="text" id="adminMenuSearch" class="admin-input" style="max-width: 320px;" placeholder="Filter dishes in editor (e.g., Biryani, Tea, Paratha)...">
-          <select id="adminCategoryFilter" class="admin-select" style="max-width: 260px;">
-            <option value="ALL">All Categories</option>
-            <option value="Breakfast Menu">Breakfast Menu</option>
-            <option value="Tea Item">Tea Item</option>
-            <option value="Soups & Appetizers">Soups & Appetizers</option>
-            <option value="Gourmet Burgers">Gourmet Burgers</option>
-            <option value="Pizza & Pasta">Pizza & Pasta</option>
-            <option value="Traditional Meals & Favourites">Traditional Meals & Favourites</option>
-            <option value="Desserts">Desserts</option>
-            <option value="Tea, Coffee & Refreshments">Tea, Coffee & Refreshments</option>
-            <option value="Lassis, Milkshakes & Juice">Lassis, Milkshakes & Juice</option>
-          </select>
-          <span style="font-size: 0.85rem; color: var(--admin-muted);" id="adminDishCountLabel">Total: 45 dishes</span>
-        </div>
-
-        <!-- Dynamic Menu Items List -->
-        <div id="menuEditorList">
-          <!-- Dynamically populated dish editing rows -->
-        </div>
-      </section>
-
-      <!-- TAB: General & Branding -->
-      <section class="tab-pane" id="pane-general">
-        <div class="pane-header">
-          <h1 class="pane-title">Restaurant Brand & Metadata</h1>
-          <p class="pane-desc">Manage restaurant identity, Bengali brand name, logo, contact channels, and opening ribbon.</p>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Brand Identity</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Restaurant English Name</label>
-              <input type="text" id="metaBrandName" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Restaurant Bengali Name</label>
-              <input type="text" id="metaBrandNameBn" class="admin-input" placeholder="দ্যা সিলভানা রেস্টুরেন্ট">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Site Title (Browser Tab)</label>
-              <input type="text" id="metaSiteTitle" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Tagline</label>
-              <input type="text" id="metaSiteTagline" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Logo Asset URL</label>
-              <input type="text" id="metaLogoUrl" class="admin-input" placeholder="/assets/sylvana-logo.png">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Logo Glyph Icon (Fallback Emoji)</label>
-              <input type="text" id="metaLogoIcon" class="admin-input">
-            </div>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Meta Description (SEO)</label>
-            <textarea id="metaDescription" class="admin-textarea" rows="2"></textarea>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Primary Brand Color (Terracotta Red)</label>
-              <input type="color" id="metaPrimaryColor" class="admin-input" style="height: 44px; padding: 4px;">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Accent Brand Color (Warm Gold / Amber)</label>
-              <input type="color" id="metaAccentColor" class="admin-input" style="height: 44px; padding: 4px;">
-            </div>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Top Announcement Ribbon</div>
-          <div class="admin-switch-row">
-            <div>
-              <strong>Enable Announcement Banner</strong>
-              <div style="font-size: 0.8rem; color: var(--admin-muted);">Displays a top notice bar above the navigation bar.</div>
-            </div>
-            <input type="checkbox" id="announcementEnabled" style="width: 20px; height: 20px;">
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Badge Label</label>
-              <input type="text" id="announcementBadge" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Announcement Text</label>
-              <input type="text" id="announcementText" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Action Link Text</label>
-              <input type="text" id="announcementLinkText" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Action Link Target URL</label>
-              <input type="text" id="announcementLinkUrl" class="admin-input">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: Hero Section -->
-      <section class="tab-pane" id="pane-hero">
-        <div class="pane-header">
-          <h1 class="pane-title">Hero Section</h1>
-          <p class="pane-desc">Customize headlines, Bengali branding, call to actions, highlights, and operational card.</p>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Main Hero Copy</div>
-          <div class="admin-field">
-            <label class="admin-label">Eyebrow Badge Pill</label>
-            <input type="text" id="heroBadgeText" class="admin-input">
-          </div>
-
-          <div class="form-row-3">
-            <div class="admin-field">
-              <label class="admin-label">Headline Prefix</label>
-              <input type="text" id="heroHeadlineStart" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Highlighted Brand (Gradient)</label>
-              <input type="text" id="heroHeadlineHighlight" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Bengali Subtitle</label>
-              <input type="text" id="heroHeadlineEnd" class="admin-input">
-            </div>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Subtitle / Description</label>
-            <textarea id="heroSubtitleText" class="admin-textarea" rows="3"></textarea>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Primary CTA Button Text</label>
-              <input type="text" id="heroPrimaryCtaText" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Primary CTA Button URL</label>
-              <input type="text" id="heroPrimaryCtaUrl" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Secondary CTA Button Text</label>
-              <input type="text" id="heroSecondaryCtaText" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Secondary CTA Button URL</label>
-              <input type="text" id="heroSecondaryCtaUrl" class="admin-input">
-            </div>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Trust Badge Proof & Location</label>
-            <input type="text" id="heroTrustBadgeText" class="admin-input">
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Key Highlights Pill Strip (One per line)</label>
-            <textarea id="heroHighlightsList" class="admin-textarea" rows="3"></textarea>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Hero Operational Status Card</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Card Title</label>
-              <input type="text" id="heroPreviewTitle" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Operational Status Pill</label>
-              <input type="text" id="heroPreviewStatus" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Metric 1 Label</label>
-              <input type="text" id="heroPreviewMetric1Label" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Metric 1 Value</label>
-              <input type="text" id="heroPreviewMetric1Val" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Metric 2 Label</label>
-              <input type="text" id="heroPreviewMetric2Label" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Metric 2 Value</label>
-              <input type="text" id="heroPreviewMetric2Val" class="admin-input">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: About & Heritage -->
-      <section class="tab-pane" id="pane-about">
-        <div class="pane-header">
-          <h1 class="pane-title">About Our Culinary Heritage</h1>
-          <p class="pane-desc">Manage the story, history, and culinary ethos of The Sylvana Restaurant in Shahbagh.</p>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Heritage Story Content</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Section Eyebrow</label>
-              <input type="text" id="aboutBadgeInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Main Heading</label>
-              <input type="text" id="aboutTitleInput" class="admin-input">
-            </div>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Bengali Subtitle Heading</label>
-            <input type="text" id="aboutBnTitleInput" class="admin-input">
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Story Paragraph 1</label>
-            <textarea id="aboutStory1Input" class="admin-textarea" rows="3"></textarea>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Story Paragraph 2</label>
-            <textarea id="aboutStory2Input" class="admin-textarea" rows="3"></textarea>
-          </div>
-
-          <div class="admin-field">
-            <label class="admin-label">Key Highlights Checklist (One per line)</label>
-            <textarea id="aboutHighlightsInput" class="admin-textarea" rows="3"></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: Metrics Counter -->
-      <section class="tab-pane" id="pane-metrics">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Metrics & Statistics Strip</h1>
-            <p class="pane-desc">Quantitative proof points displayed under the hero section.</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddMetric">
-            ➕ Add Metric
-          </button>
-        </div>
-
-        <div id="metricsEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: Showcase / Chef's Specials -->
-      <section class="tab-pane" id="pane-showcase">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Chef's Signature Specials</h1>
-            <p class="pane-desc">Highlighted specialty dishes, pricing tags, and gradients.</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddShowcase">
-            ➕ Add Special Item
-          </button>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Section Title & Header</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="showcaseEyebrowInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Headline</label>
-              <input type="text" id="showcaseTitleInput" class="admin-input">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="showcaseSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <div id="showcaseEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: Features / Quality Pillars -->
-      <section class="tab-pane" id="pane-features">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Quality Pillars & Features</h1>
-            <p class="pane-desc">Core dining experience pillars (Woodfire, 100% Halal, All Day Dining, etc.).</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddFeature">
-            ➕ Add Pillar Card
-          </button>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Section Title & Header</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="featuresEyebrowInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Headline</label>
-              <input type="text" id="featuresTitleInput" class="admin-input">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="featuresSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <div id="featuresEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: Pricing / Feasts & Platters -->
-      <section class="tab-pane" id="pane-pricing">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Set Meals & Platters</h1>
-            <p class="pane-desc">Manage curated family feasts, breakfast platters, group discount offers, and inclusions.</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddPricingPlan">
-            ➕ Add Feast Platter
-          </button>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Section Title & Header</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="pricingEyebrowInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Headline</label>
-              <input type="text" id="pricingTitleInput" class="admin-input">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="pricingSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="admin-field">
-            <label class="admin-label">Group Discount Notice Text</label>
-            <input type="text" id="pricingDiscountText" class="admin-input">
-          </div>
-        </div>
-
-        <div id="pricingEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: Testimonials / Guest Reviews -->
-      <section class="tab-pane" id="pane-testimonials">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Guest Reviews & Testimonials</h1>
-            <p class="pane-desc">Customer feedback, guest designations, initials avatar, and star rating metrics.</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddTestimonial">
-            ➕ Add Review
-          </button>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Section Title & Header</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="testimonialsEyebrowInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Headline</label>
-              <input type="text" id="testimonialsTitleInput" class="admin-input">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="testimonialsSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <div id="testimonialsEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: FAQ Accordion -->
-      <section class="tab-pane" id="pane-faqs">
-        <div class="pane-header" style="display: flex; align-items: center; justify-content: space-between;">
-          <div>
-            <h1 class="pane-title">Frequently Asked Questions</h1>
-            <p class="pane-desc">Manage accordion items clarifying questions about dining, halal certification, reservations, and hours.</p>
-          </div>
-          <button type="button" class="btn-admin-action btn-secondary-tool" id="btnAddFaq">
-            ➕ Add FAQ
-          </button>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Section Title & Header</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Eyebrow Badge</label>
-              <input type="text" id="faqsEyebrowInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Headline</label>
-              <input type="text" id="faqsTitleInput" class="admin-input">
-            </div>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Section Subtitle</label>
-            <textarea id="faqsSubtitleInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-        </div>
-
-        <div id="faqsEditorList">
-          <!-- Dynamically populated -->
-        </div>
-      </section>
-
-      <!-- TAB: Location & Contact -->
-      <section class="tab-pane" id="pane-contact">
-        <div class="pane-header">
-          <h1 class="pane-title">Location, Contact & Footer</h1>
-          <p class="pane-desc">Manage Shahbagh location details, phone hotline, email, opening hours, and social media links.</p>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Contact & Location Details</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Section Title</label>
-              <input type="text" id="contactTitleInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Section Subtitle</label>
-              <input type="text" id="contactSubtitleInput" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Official Email Address</label>
-              <input type="email" id="contactEmailInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Mobile / Phone Hotline</label>
-              <input type="text" id="contactPhoneInput" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Full Address</label>
-              <input type="text" id="contactAddressInput" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Opening / Service Hours</label>
-              <input type="text" id="contactHoursInput" class="admin-input">
-            </div>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Social Profiles & Messengers</div>
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">Facebook URL</label>
-              <input type="text" id="socialTwitter" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Instagram URL</label>
-              <input type="text" id="socialGithub" class="admin-input">
-            </div>
-          </div>
-
-          <div class="form-row-2">
-            <div class="admin-field">
-              <label class="admin-label">WhatsApp URL</label>
-              <input type="text" id="socialLinkedin" class="admin-input">
-            </div>
-            <div class="admin-field">
-              <label class="admin-label">Direct Inquiry Link</label>
-              <input type="text" id="socialDiscord" class="admin-input">
-            </div>
-          </div>
-        </div>
-
-        <div class="admin-card">
-          <div class="card-title">Footer Notice & Links</div>
-          <div class="admin-field">
-            <label class="admin-label">Footer Brand Blurb</label>
-            <textarea id="footerDescInput" class="admin-textarea" rows="2"></textarea>
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Copyright Notice</label>
-            <input type="text" id="footerCopyrightInput" class="admin-input">
-          </div>
-          <div class="admin-field">
-            <label class="admin-label">Footer Navigation Links (One per line: Label | URL)</label>
-            <textarea id="footerLinksInput" class="admin-textarea" rows="4"></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: Raw Source JSON -->
-      <section class="tab-pane" id="pane-raw-source">
-        <div class="pane-header">
-          <h1 class="pane-title">Atomic Source JSON Editor</h1>
-          <p class="pane-desc">
-            Directly inspect and modify the raw single source of truth (<code style="color: var(--admin-accent);">content.json</code>).
-            All edits reflect across both forms and public views when saved.
-          </p>
-        </div>
-
-        <div class="admin-card">
-          <textarea id="rawJsonSourceEditor" class="raw-json-editor" spellcheck="false"></textarea>
-          <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 10px;">
-            <button type="button" class="btn-admin-action btn-primary-save" onclick="document.getElementById('btnSaveAll').click()">
-              💾 Save JSON Changes
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: Inquiries & Reservations Inbox -->
-      <section class="tab-pane" id="pane-inbox">
-        <div class="pane-header">
-          <h1 class="pane-title">Table Reservations & Inquiries Inbox</h1>
-          <p class="pane-desc">Messages and table bookings submitted by visitors through the public landing page form.</p>
-        </div>
-
-        <div class="admin-card" style="padding: 0; overflow-x: auto;">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Customer Name</th>
-                <th>Contact Email</th>
-                <th>Subject / Service</th>
-                <th>Reservation Details & Notes</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="messagesTableBody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- TAB: Audit History -->
-      <section class="tab-pane" id="pane-audit">
-        <div class="pane-header">
-          <h1 class="pane-title">Audit Log & Revision History</h1>
-          <p class="pane-desc">Immutable event log tracking administrative content modifications and auth events.</p>
-        </div>
-
-        <div class="admin-card" style="padding: 0; overflow-x: auto;">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>Action Event</th>
-                <th>User</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody id="auditLogTableBody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- Split Live Preview Drawer -->
-  <div class="preview-split-wrapper" id="previewSplitWrapper">
-    <div class="preview-split-bar">
-      <span>👁️ Real-Time Public Website Preview</span>
-      <div style="display: flex; gap: 8px; align-items: center;">
-        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnPreviewDesktop" style="padding: 2px 8px; font-size: 0.75rem;">
-          🖥️ Desktop
-        </button>
-        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnPreviewMobile" style="padding: 2px 8px; font-size: 0.75rem;">
-          📱 Mobile
-        </button>
-        <button type="button" class="btn-secondary-tool btn-admin-action" id="btnRefreshPreview" style="padding: 2px 8px; font-size: 0.75rem;">
-          🔄 Reload
-        </button>
-        <button type="button" class="btn-danger-tool btn-admin-action" id="btnClosePreview" style="padding: 2px 8px; font-size: 0.75rem;">
-          ✕ Close
-        </button>
+        </form>
+        <div class="modal-footer-hint">Default credentials: <code>admin</code> / <code>admin123</code></div>
       </div>
     </div>
-    <iframe id="livePreviewFrame" class="preview-iframe" src="/"></iframe>
-  </div>
+    
 
-  <!-- Admin Login Modal -->
-  <div class="login-modal-overlay" id="loginModal" style="display: none;">
-    <div class="login-card">
-      <div class="login-header">
-        <img src="/assets/sylvana-logo.png" alt="Sylvana Logo" style="height: 52px; width: auto; object-fit: contain; margin-bottom: 8px;" onerror="this.style.display='none'">
-        <h2>The Sylvana Restaurant</h2>
-        <div style="color: #f59e0b; font-size: 0.9rem; font-weight: 600;">Admin Studio</div>
-        <p style="color: var(--admin-muted); font-size: 0.85rem; margin-top: 6px;">
-          Authenticate to manage live menu, dishes, and restaurant content
-        </p>
-      </div>
+  <!-- Notification Toast Container -->
+  <div class="admin-toast" id="adminToast" role="alert" aria-live="polite"></div>
 
-      <div class="login-hint">
-        🔑 <strong>Default Credentials:</strong><br>
-        Username: <code>admin</code> &nbsp;|&nbsp; Password: <code>admin123</code>
-      </div>
-
-      <div id="loginAlert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 16px;"></div>
-
-      <form id="loginForm">
-        <div class="admin-field">
-          <label class="admin-label">Username</label>
-          <input type="text" id="loginUsername" class="admin-input" required value="admin">
-        </div>
-
-        <div class="admin-field">
-          <label class="admin-label">Password</label>
-          <input type="password" id="loginPassword" class="admin-input" required value="admin123">
-        </div>
-
-        <button type="submit" class="btn-primary-save btn-admin-action" style="width: 100%; padding: 12px; margin-top: 10px; font-size: 0.95rem; justify-content: center;">
-          Sign In to Admin Studio &rarr;
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Admin Toast Container -->
-  <div class="admin-toast" id="adminToast"></div>
-
+  <!-- Client Scripts -->
+  <script src="/js/app.js"></script>
   <script src="/js/admin.js"></script>
 </body>
 </html>
