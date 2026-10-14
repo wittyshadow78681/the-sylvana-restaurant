@@ -234,154 +234,123 @@ body {
   color: var(--text-muted);
 }
 
-/* Tab Filter Buttons */
-.tab-filter-row,
-.category-filter-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-
-.tab-btn,
-.filter-pill {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.tab-btn:hover,
-.filter-pill:hover {
-  border-color: var(--primary-red);
-  color: var(--primary-red);
-  transform: translateY(-1px);
-}
-
-.tab-btn.active,
-.filter-pill.active {
-  background: var(--primary-red);
-  color: #fff;
-  border-color: var(--primary-red);
-  box-shadow: 0 4px 14px rgba(217, 56, 30, 0.25);
-}
-
-/* Image Dish Cards Grid */
-.menu-image-grid,
-.menu-cards-grid {
+/* ========================================================
+   SECTION 2: MIDDLE MENU (4 AUTHENTIC MENU PAGES WITH LIGHTBOX)
+   ======================================================== */
+.menu-pages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
 
-.food-card {
+.menu-page-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-}
-
-.food-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1;
-}
-
-.food-card-img-wrap {
-  width: 100%;
-  height: 200px;
+  cursor: pointer;
   position: relative;
-  overflow: hidden;
-  background: #f1f5f9;
+  text-align: left;
 }
 
-.food-card-img {
+.menu-page-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(217, 56, 30, 0.16);
+  border-color: rgba(217, 56, 30, 0.35);
+}
+
+.menu-page-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  position: relative;
+  background: #f8fafc;
+}
+
+.menu-page-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.4s ease;
+  display: block;
 }
 
-.food-card:hover .food-card-img {
-  transform: scale(1.05);
+.menu-page-card:hover .menu-page-thumb {
+  transform: scale(1.04);
 }
 
-.food-card-badge {
+.menu-page-overlay {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-page-card:hover .menu-page-overlay {
+  opacity: 1;
+}
+
+.menu-page-zoom-pill {
+  background: #fff;
+  color: var(--primary-red);
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateY(10px);
+  transition: transform 0.25s ease;
+}
+
+.menu-page-card:hover .menu-page-zoom-pill {
+  transform: translateY(0);
+}
+
+.menu-page-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
   background: rgba(15, 23, 42, 0.85);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 20px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  z-index: 2;
 }
 
-.food-card-meal-pill {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--primary-red);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.food-card-content {
-  padding: 20px;
+.menu-page-card-body {
+  padding: 18px 20px 20px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background: var(--bg-card);
 }
 
-.food-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.food-card-title {
-  font-size: 1.15rem;
+.menu-page-card-title {
+  font-size: 1.12rem;
   font-weight: 700;
   color: var(--text-main);
+  margin-bottom: 4px;
   line-height: 1.3;
 }
 
-.food-card-price {
-  background: var(--amber-light);
-  color: var(--amber-gold);
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 4px 12px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-
-.food-card-bn-title {
+.menu-page-card-bn {
   font-family: var(--font-bengali);
   font-size: 0.95rem;
   color: var(--primary-red);
@@ -389,22 +358,237 @@ body {
   margin-bottom: 8px;
 }
 
-.food-card-desc {
-  font-size: 0.88rem;
+.menu-page-card-summary {
+  font-size: 0.84rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   flex-grow: 1;
 }
 
-.food-card-footer {
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 12px;
+.menu-page-card-btn {
+  background: #fff5f2;
+  color: var(--primary-red);
+  border: 1px solid rgba(217, 56, 30, 0.2);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.menu-page-card:hover .menu-page-card-btn {
+  background: var(--primary-red);
+  color: #fff;
+}
+
+/* ========================================================
+   FULLSCREEN LIGHTBOX MODAL
+   ======================================================== */
+.menu-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-lightbox.active {
+  display: flex;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 29, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-container {
+  position: relative;
+  z-index: 2;
+  width: 95vw;
+  max-width: 920px;
+  height: 94vh;
+  max-height: 960px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-dim);
+  padding: 10px 16px;
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 12px 12px 0 0;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-counter {
+  background: var(--primary-red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.lightbox-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightbox-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-btn-close {
+  background: rgba(239, 68, 68, 0.85);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lightbox-btn-close:hover {
+  background: #dc2626;
+}
+
+.lightbox-image-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 12px;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 23, 42, 0.8);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.lightbox-arrow:hover {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+}
+
+.arrow-left {
+  left: 14px;
+}
+
+.arrow-right {
+  right: 14px;
+}
+
+.lightbox-thumbs-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: rgba(30, 41, 59, 0.9);
+  border-radius: 0 0 12px 12px;
+  overflow-x: auto;
+}
+
+.lightbox-thumb-btn {
+  width: 52px;
+  height: 68px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0;
+  background: #000;
+  transition: all 0.2s ease;
+}
+
+.lightbox-thumb-btn:hover {
+  opacity: 0.9;
+}
+
+.lightbox-thumb-btn.active {
+  opacity: 1;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 10px rgba(217, 56, 30, 0.5);
+}
+
+.lightbox-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ========================================================

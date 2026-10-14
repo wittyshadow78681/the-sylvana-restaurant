@@ -46,23 +46,19 @@
   </header>
 
   <!-- ========================================================
-       SECTION 2: MIDDLE MENU (MINIMAL, RESPONSIVE & LIGHT CARDS)
+       SECTION 2: MIDDLE MENU (AUTHENTIC 4-PAGE MENU CARDS WITH LIGHTBOX)
        ======================================================== -->
   <main class="menu-section" id="menu">
     <div class="site-container">
       <div class="menu-header-bar">
-        <p class="section-label">CULINARY COLLECTION</p>
-        <h2 class="section-main-title">Food & Beverage Menu</h2>
-        <p class="section-subtitle">Prepared fresh daily with authentic Dhaka spices & 100% Halal meat.</p>
+        <p class="section-label">THE SYLVANA RESTAURANT • ফুড অ্যান্ড বেভারেজ মেনু</p>
+        <h2 class="section-main-title" id="menuSectionTitle">Food & Beverage Menu</h2>
+        <p class="section-subtitle" id="menuSectionSub">Click any menu card below to view or zoom into the complete high-resolution menu page.</p>
       </div>
 
-      <!-- Category Filter Pills (Scrollable on Mobile) -->
-      <nav class="category-filter-wrap" id="categoryFilterWrap" aria-label="Menu Categories">
+      <!-- 4 Authentic Menu Cards Grid (Click to view full image in lightbox) -->
+      <div class="menu-pages-grid" id="menuCardsGrid">
         <!-- Rendered dynamically by modern.js -->
-      </nav>
-
-      <!-- Responsive Cards Grid -->
-      <div class="menu-cards-grid" id="menuCardsGrid">
         <noscript>
           <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #64748b;">
             Please enable JavaScript to view the full interactive menu.
@@ -161,6 +157,33 @@
           <button type="submit" class="btn-submit">Unlock Editor</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       FULLSCREEN INTERACTIVE MENU IMAGE LIGHTBOX MODAL
+       ======================================================== -->
+  <div class="menu-lightbox" id="menuLightbox" role="dialog" aria-modal="true" aria-label="Menu Image Viewer">
+    <div class="lightbox-overlay" id="lightboxOverlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-bar">
+        <div class="lightbox-info">
+          <span class="lightbox-counter" id="lightboxCounter">Page 1 of 4</span>
+          <span class="lightbox-title" id="lightboxTitle">Breakfast Menu & Tea Item</span>
+        </div>
+        <div class="lightbox-actions">
+          <a href="#" target="_blank" class="lightbox-btn" id="lightboxDirectLink" title="Open Full Image in New Tab">↗ Full Image</a>
+          <button type="button" class="lightbox-btn-close" id="lightboxCloseBtn" title="Close (ESC)">✕</button>
+        </div>
+      </div>
+      <div class="lightbox-image-wrap" id="lightboxImageWrap">
+        <button type="button" class="lightbox-arrow arrow-left" id="lightboxPrevBtn" aria-label="Previous Page">‹</button>
+        <img src="" alt="Menu Page" class="lightbox-img" id="lightboxMainImg">
+        <button type="button" class="lightbox-arrow arrow-right" id="lightboxNextBtn" aria-label="Next Page">›</button>
+      </div>
+      <div class="lightbox-thumbs-bar" id="lightboxThumbsBar">
+        <!-- Rendered by modern.js -->
+      </div>
     </div>
   </div>
 

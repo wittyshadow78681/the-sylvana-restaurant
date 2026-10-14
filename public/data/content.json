@@ -1,8 +1,8 @@
 {
   "meta": {
-    "siteTitle": "The Sylvana Restaurant | Authentic Bengali Cuisine in Shahbagh, Dhaka",
+    "siteTitle": "The Sylvana Restaurant | Authentic Food & Beverage Menu in Shahbagh, Dhaka",
     "siteTagline": "দ্যা সিলভানা রেস্টুরেন্ট - Traditional Flavours & Warm Hospitality",
-    "metaDescription": "Experience authentic Bengali cuisine, Kacchi Biryani, hearty breakfast, and Continental dining at The Sylvana Restaurant in Shahbagh, Dhaka.",
+    "metaDescription": "Experience authentic Bengali cuisine, Kacchi Biryani, hearty breakfast, and refreshments at The Sylvana Restaurant in Shahbagh, Dhaka. View full menu online.",
     "brandName": "The Sylvana Restaurant",
     "brandNameBn": "দ্যা সিলভানা রেস্টুরেন্ট",
     "logoUrl": "assets/sylvana-logo.png",
@@ -16,168 +16,51 @@
     "headlineStart": "Welcome to",
     "headlineHighlight": "The Sylvana Restaurant",
     "headlineEnd": "দ্যা সিলভানা রেস্টুরেন্ট",
-    "subtitle": "Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, hearty morning breakfast, fresh clay-oven naans, and gourmet dishes crafted fresh every day at Shahbagh, Dhaka."
+    "subtitle": "Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing beverages crafted fresh every day at Shahbagh, Dhaka."
   },
   "menu": {
-    "categories": [
-      "All",
-      "Breakfast",
-      "Lunch"
-    ],
-    "items": [
+    "title": "Food & Beverage Menu",
+    "subtitle": "Click any menu card below to view or zoom into the complete high-resolution menu page.",
+    "pages": [
       {
-        "id": "b-1",
-        "name": "Paratha with Bhaji",
-        "nameBn": "পরোটা ও সবজি ভাজি",
-        "category": "Breakfast",
-        "price": 100,
-        "currency": "৳",
-        "description": "Crispy, flaky tawa paratha served hot with spiced seasonal vegetable bhaji.",
-        "badge": "Morning Special",
-        "imageUrl": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=600&q=80"
+        "id": 1,
+        "pageNumber": 1,
+        "title": "Breakfast Menu & Tea Item",
+        "titleBn": "সকালের নাস্তা ও স্পেশাল চা",
+        "category": "Breakfast & Tea",
+        "badge": "Page 1 • Breakfast & Tea",
+        "summary": "Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea",
+        "image": "assets/menu-page-1.png"
       },
       {
-        "id": "b-2",
-        "name": "Paratha with Dim Bhuna",
-        "nameBn": "পরোটা ও ডিম ভুনা",
-        "category": "Breakfast",
-        "price": 130,
-        "currency": "৳",
-        "description": "Hot layered paratha served with eggs simmered in a rich onion and tomato bhuna gravy.",
-        "badge": "Chef's Choice",
-        "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80"
+        "id": 2,
+        "pageNumber": 2,
+        "title": "Lunch & Dinner Starters, Burgers & Pizza",
+        "titleBn": "স্যুপ, ফ্রাইড চিকেন, বার্গার ও পিৎজা",
+        "category": "Starters & Fast Food",
+        "badge": "Page 2 • Starters & Pizza",
+        "summary": "Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta",
+        "image": "assets/menu-page-2.png"
       },
       {
-        "id": "b-3",
-        "name": "Bhuna Khichuri with Omelette",
-        "nameBn": "ভুনা খিচুড়ি ও ডিম অমলেট",
-        "category": "Breakfast",
-        "price": 150,
-        "currency": "৳",
-        "description": "Fragrant Chinigura rice and yellow lentil khichuri served with green chili onion omelette.",
-        "badge": "Crowd Favorite",
-        "imageUrl": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80"
+        "id": 3,
+        "pageNumber": 3,
+        "title": "Traditional Meals & Favourites",
+        "titleBn": "ঐতিহ্যবাহী কাচ্চি বিরিয়ানি ও দেশি খাবার",
+        "category": "Biryani & Traditional Meals",
+        "badge": "Page 3 • Biryani & Curries",
+        "summary": "Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal",
+        "image": "assets/menu-page-3.png"
       },
       {
-        "id": "b-4",
-        "name": "Shahi Suji Halwa with Paratha",
-        "nameBn": "শাহী সুজির হালুয়া ও পরোটা",
-        "category": "Breakfast",
-        "price": 120,
-        "currency": "৳",
-        "description": "Sweet aromatic semolina halwa cooked in pure ghee, raisins and cardamom with warm parathas.",
-        "badge": "Traditional Sweet",
-        "imageUrl": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "b-5",
-        "name": "Clay Oven Naan with Dal Butter",
-        "nameBn": "তন্দুরি নান ও ডাল বাটার",
-        "category": "Breakfast",
-        "price": 90,
-        "currency": "৳",
-        "description": "Soft, freshly baked tandoori naan served with warm spiced lentil curry and melting butter.",
-        "badge": "Fresh Tandoor",
-        "imageUrl": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "b-6",
-        "name": "Special Masala Milk Tea",
-        "nameBn": "স্পেশাল মসলা দুধ চা",
-        "category": "Breakfast",
-        "price": 30,
-        "currency": "৳",
-        "description": "Authentic Bengali slow-boiled creamy milk tea infused with cardamom, clove, and fresh ginger.",
-        "badge": "Must Try",
-        "imageUrl": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-1",
-        "name": "Special Mutton Kacchi Biryani",
-        "nameBn": "স্পেশাল খাসির কাচ্চি বিরিয়ানি",
-        "category": "Lunch",
-        "price": 380,
-        "currency": "৳",
-        "description": "Slow-cooked tender mutton marinated in curd and secret spices, layered with fragrant basmati and alu.",
-        "badge": "Signature Dish",
-        "imageUrl": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-2",
-        "name": "Old Dhaka Beef Tehari",
-        "nameBn": "পুরান ঢাকা গরুর তেহারি",
-        "category": "Lunch",
-        "price": 280,
-        "currency": "৳",
-        "description": "Classic mustard oil aroma, short-grain Chinigura rice and succulent beef cubes cooked to perfection.",
-        "badge": "Authentic Taste",
-        "imageUrl": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-3",
-        "name": "Shahi Chicken Roast with Polao",
-        "nameBn": "শাহী চিকেন রোস্ট ও মোরগ পোলাও",
-        "category": "Lunch",
-        "price": 260,
-        "currency": "৳",
-        "description": "Rich caramelized onion and cashew gravy over crispy chicken leg, paired with aromatic ghee polao.",
-        "badge": "Bestseller",
-        "imageUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-4",
-        "name": "Mezbanee Beef Bhuna with Rice",
-        "nameBn": "মেজবানি বিফ ভুনা ও সাদা ভাত",
-        "category": "Lunch",
-        "price": 320,
-        "currency": "৳",
-        "description": "Authentic Chittagong Mezban spiced tender beef curry served with steaming fragrant rice.",
-        "badge": "Spicy & Rich",
-        "imageUrl": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-5",
-        "name": "Rui Fish Curry with Alu Bhorta & Dal",
-        "nameBn": "রুই মাছের ঝোল, আলু ভর্তা ও ডাল",
-        "category": "Lunch",
-        "price": 240,
-        "currency": "৳",
-        "description": "Freshly caught sweetwater Rui fish in light cumin gravy, traditional mustard potato mash and yellow dal.",
-        "badge": "Home Classic",
-        "imageUrl": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-6",
-        "name": "Sylvana Special Chowmein & Crispy Chicken",
-        "nameBn": "স্পেশাল চাউমিন ও ক্রিস্পি ফ্রাইড চিকেন",
-        "category": "Lunch",
-        "price": 260,
-        "currency": "৳",
-        "description": "Wok-fried egg noodles with vegetables and spicy golden fried chicken pieces.",
-        "badge": "Chef's Special",
-        "imageUrl": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-7",
-        "name": "Gourmet Beef Cheese Burger with Fries",
-        "nameBn": "বিফ চিজ বার্গার ও ফ্রেঞ্চ ফ্রাই",
-        "category": "Lunch",
-        "price": 220,
-        "currency": "৳",
-        "description": "Flame-grilled beef patty, melted cheddar cheese, fresh lettuce, tomato, special sauce, and crisp fries.",
-        "badge": "Popular",
-        "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        "id": "l-8",
-        "name": "Garlic Butter Naan with Chicken Butter Masala",
-        "nameBn": "গার্লিক নান ও বাটার চিকেন",
-        "category": "Lunch",
-        "price": 310,
-        "currency": "৳",
-        "description": "Crisp garlic-coriander naan brushed with butter, paired with creamy boneless chicken butter masala.",
-        "badge": "House Specialty",
-        "imageUrl": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+        "id": 4,
+        "pageNumber": 4,
+        "title": "Drinks, Desserts & Refreshments",
+        "titleBn": "মিষ্টি, লস্যি, মিল্কশেক ও ফ্রেশ জুস",
+        "category": "Drinks & Desserts",
+        "badge": "Page 4 • Drinks & Sweets",
+        "summary": "Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice",
+        "image": "assets/menu-page-4.png"
       }
     ]
   },

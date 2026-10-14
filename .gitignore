@@ -14,3 +14,6 @@ obj/
 *.log
 *.tmp
 data/*.tmp
+.venv/
+temp_history
+sftp_upload.txt

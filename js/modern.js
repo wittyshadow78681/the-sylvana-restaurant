@@ -1,22 +1,24 @@
 /**
  * The Sylvana Restaurant - Minimal, Modern, Light & Responsive Web Script
+ * Features 4 Authentic Menu Pages with Interactive Fullscreen Lightbox
  */
 
 (function () {
   let contentData = null;
   let adminToken = sessionStorage.getItem('sylvana_admin_token') || '';
   let isEditMode = false;
-  let activeCategory = 'All';
+  let currentLightboxIndex = 0;
 
   document.addEventListener('DOMContentLoaded', init);
 
   async function init() {
     await fetchContent();
+    setupLightboxEvents();
     checkAdminRoute();
     setupAdminModal();
   }
 
-    // 1. Fetch content
+  // 1. Fetch content
   async function fetchContent() {
     // Check localStorage cache first for client-side persistence
     try {
@@ -57,8 +59,7 @@
   // 2. Render all 3 sections
   function renderAll() {
     renderHero();
-    renderCategories();
-    renderDishes();
+    renderMenuPages();
     renderContact();
 
     if (isEditMode) {
@@ -82,7 +83,7 @@
 
     const heroDesc = document.getElementById('heroDesc');
     if (heroDesc) {
-      heroDesc.textContent = hero.subtitle || 'Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, hearty morning breakfast, fresh clay-oven naans, and gourmet dishes crafted fresh every day at Shahbagh, Dhaka.';
+      heroDesc.textContent = hero.subtitle || 'Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing beverages crafted fresh every day at Shahbagh, Dhaka.';
     }
 
     const heroCallBtn = document.getElementById('heroCallBtn');
@@ -92,66 +93,50 @@
     }
   }
 
-  function renderCategories() {
-    const filterWrap = document.getElementById('categoryFilterWrap');
-    if (!filterWrap || !contentData.menu || !contentData.menu.items) return;
-
-    // Distinct categories (Breakfast & Lunch)
-    const categoryOptions = [
-      { id: 'All', label: 'All Items', icon: '🍽️' },
-      { id: 'Breakfast', label: 'Breakfast Menu', icon: '🌅' },
-      { id: 'Lunch', label: 'Lunch Menu', icon: '🍛' }
-    ];
-
-    filterWrap.innerHTML = categoryOptions.map(cat => `
-      <button class="filter-pill tab-btn ${cat.id === activeCategory ? 'active' : ''}" type="button" data-cat="${escapeHtml(cat.id)}">
-        <span>${cat.icon}</span>
-        <span>${escapeHtml(cat.label)}</span>
-      </button>
-    `).join('');
-
-    filterWrap.querySelectorAll('.filter-pill').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeCategory = btn.getAttribute('data-cat');
-        filterWrap.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderDishes();
-      });
-    });
-  }
-
-  function renderDishes() {
+  // 3. Render 4 Authentic Menu Pages
+  function renderMenuPages() {
     const grid = document.getElementById('menuCardsGrid');
-    if (!grid || !contentData.menu || !contentData.menu.items) return;
+    if (!grid || !contentData.menu || !contentData.menu.pages) return;
 
-    const filtered = activeCategory === 'All'
-      ? contentData.menu.items
-      : contentData.menu.items.filter(d => d.category.toLowerCase().includes(activeCategory.toLowerCase()));
-
-    grid.innerHTML = filtered.map(dish => `
-      <article class="food-card" data-dish-id="${dish.id}">
-        <div class="food-card-img-wrap">
-          <img src="${escapeHtml(dish.imageUrl || 'assets/sylvana-logo.png')}" alt="${escapeHtml(dish.name)}" class="food-card-img" loading="lazy" onerror="this.onerror=null;this.src='assets/sylvana-logo.png'">
-          ${dish.badge ? `<span class="food-card-badge" data-field="badge">${escapeHtml(dish.badge)}</span>` : ''}
-          <span class="food-card-meal-pill">${escapeHtml(dish.category)}</span>
-        </div>
-        <div class="food-card-content">
-          <div class="food-card-header">
-            <h3 class="food-card-title" data-field="name">${escapeHtml(dish.name)}</h3>
-            <span class="food-card-price" data-field="price">৳ ${dish.price}</span>
+    grid.innerHTML = contentData.menu.pages.map((page, idx) => `
+      <article class="menu-page-card" data-page-index="${idx}" tabindex="0" role="button" aria-label="Open ${escapeHtml(page.title)}">
+        <div class="menu-page-thumb-wrap">
+          <img src="${escapeHtml(page.image)}" alt="${escapeHtml(page.title)}" class="menu-page-thumb" loading="lazy" onerror="this.onerror=null;this.src='assets/sylvana-logo.png'">
+          <span class="menu-page-badge">${escapeHtml(page.badge || `Page ${page.pageNumber}`)}</span>
+          <div class="menu-page-overlay">
+            <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
           </div>
-          ${dish.nameBn ? `<div class="food-card-bn-title" data-field="nameBn">${escapeHtml(dish.nameBn)}</div>` : ''}
-          <p class="food-card-desc" data-field="description">${escapeHtml(dish.description || 'Prepared fresh with traditional Dhaka spices.')}</p>
-          <div class="food-card-footer">
-            <span>✨ 100% Halal & Fresh</span>
-            <span>🍽️ Dine-in / Takeaway</span>
+        </div>
+        <div class="menu-page-card-body">
+          <h3 class="menu-page-card-title" data-page-field="title">${escapeHtml(page.title)}</h3>
+          <div class="menu-page-card-bn" data-page-field="titleBn">${escapeHtml(page.titleBn || '')}</div>
+          <p class="menu-page-card-summary" data-page-field="summary">${escapeHtml(page.summary || '')}</p>
+          <div class="menu-page-card-btn">
+            <span>📖 View High-Res Page ${page.pageNumber}</span>
           </div>
         </div>
       </article>
     `).join('');
 
+    // Attach click and enter key handlers
+    grid.querySelectorAll('.menu-page-card').forEach(card => {
+      const open = () => {
+        const idx = parseInt(card.getAttribute('data-page-index'), 10);
+        openLightbox(idx);
+      };
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+
+    renderLightboxThumbnails();
+
     if (isEditMode) {
-      grid.querySelectorAll('[data-field]').forEach(f => f.setAttribute('contenteditable', 'true'));
+      grid.querySelectorAll('[data-page-field]').forEach(f => f.setAttribute('contenteditable', 'true'));
     }
   }
 
@@ -177,7 +162,120 @@
     if (hours) hours.textContent = contact.hours || 'Monday – Sunday: 7:00 AM – 11:30 PM (Daily)';
   }
 
-  // 3. Admin Authentication & In-Line Edit Activation
+  // 4. Interactive Fullscreen Menu Lightbox
+  function setupLightboxEvents() {
+    const lightbox = document.getElementById('menuLightbox');
+    const overlay = document.getElementById('lightboxOverlay');
+    const closeBtn = document.getElementById('lightboxCloseBtn');
+    const prevBtn = document.getElementById('lightboxPrevBtn');
+    const nextBtn = document.getElementById('lightboxNextBtn');
+
+    if (overlay) overlay.addEventListener('click', closeLightbox);
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateLightbox(-1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateLightbox(1);
+      });
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox || !lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+  }
+
+  function openLightbox(index) {
+    if (!contentData || !contentData.menu || !contentData.menu.pages) return;
+    const pages = contentData.menu.pages;
+    if (index < 0 || index >= pages.length) return;
+
+    currentLightboxIndex = index;
+    const page = pages[index];
+
+    const lightbox = document.getElementById('menuLightbox');
+    const counter = document.getElementById('lightboxCounter');
+    const title = document.getElementById('lightboxTitle');
+    const mainImg = document.getElementById('lightboxMainImg');
+    const directLink = document.getElementById('lightboxDirectLink');
+
+    if (counter) counter.textContent = `Page ${page.pageNumber} of ${pages.length}`;
+    if (title) title.textContent = page.title;
+    if (mainImg) {
+      mainImg.src = page.image;
+      mainImg.alt = page.title;
+    }
+    if (directLink) directLink.href = page.image;
+
+    updateActiveThumbnail(index);
+
+    if (lightbox) {
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('menuLightbox');
+    if (lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function navigateLightbox(direction) {
+    if (!contentData || !contentData.menu || !contentData.menu.pages) return;
+    const pages = contentData.menu.pages;
+    let newIndex = currentLightboxIndex + direction;
+    if (newIndex < 0) newIndex = pages.length - 1;
+    if (newIndex >= pages.length) newIndex = 0;
+    openLightbox(newIndex);
+  }
+
+  function renderLightboxThumbnails() {
+    const thumbsBar = document.getElementById('lightboxThumbsBar');
+    if (!thumbsBar || !contentData || !contentData.menu || !contentData.menu.pages) return;
+
+    thumbsBar.innerHTML = contentData.menu.pages.map((page, idx) => `
+      <button type="button" class="lightbox-thumb-btn ${idx === currentLightboxIndex ? 'active' : ''}" data-thumb-index="${idx}" title="Jump to Page ${page.pageNumber}">
+        <img src="${escapeHtml(page.image)}" alt="Page ${page.pageNumber}">
+      </button>
+    `).join('');
+
+    thumbsBar.querySelectorAll('.lightbox-thumb-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = parseInt(btn.getAttribute('data-thumb-index'), 10);
+        openLightbox(idx);
+      });
+    });
+  }
+
+  function updateActiveThumbnail(index) {
+    const thumbsBar = document.getElementById('lightboxThumbsBar');
+    if (!thumbsBar) return;
+    thumbsBar.querySelectorAll('.lightbox-thumb-btn').forEach(btn => {
+      const idx = parseInt(btn.getAttribute('data-thumb-index'), 10);
+      if (idx === index) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  // 5. Admin Authentication & In-Line Edit Activation
   function checkAdminRoute() {
     const isAdmin = window.location.pathname.includes('/admin') || window.location.search.includes('admin=1');
     if (isAdmin) {
@@ -291,16 +389,16 @@
     document.body.classList.add('admin-edit-active');
 
     // Make text headers and elements editable
-    ['heroBrandEn', 'heroBrandBn', 'heroLocationText', 'heroDesc', 'contactAddress', 'contactHours'].forEach(id => {
+    ['heroBrandEn', 'heroBrandBn', 'heroLocationText', 'heroDesc', 'contactAddress', 'contactHours', 'menuSectionTitle', 'menuSectionSub'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.setAttribute('contenteditable', 'true');
     });
 
-    document.querySelectorAll('[data-field]').forEach(f => {
+    document.querySelectorAll('[data-page-field]').forEach(f => {
       f.setAttribute('contenteditable', 'true');
     });
 
-    showToast('✏️ In-Line Edit Mode: Click on any headline, dish, or price to edit.');
+    showToast('✏️ In-Line Edit Mode: Click on any headline or menu page summary to edit.');
   }
 
   function disableInLineEdit() {
@@ -330,28 +428,26 @@
     const heroDesc = document.getElementById('heroDesc');
     if (heroDesc) contentData.hero.subtitle = heroDesc.textContent.trim();
 
-    // Collect dish values
-    document.querySelectorAll('.food-card, .menu-card').forEach(card => {
-      const id = card.getAttribute('data-dish-id');
-      const item = contentData.menu.items.find(i => i.id === id);
-      if (item) {
-        const nameEl = card.querySelector('[data-field="name"]');
-        if (nameEl) item.name = nameEl.textContent.trim();
+    // Collect menu section titles
+    const menuTitle = document.getElementById('menuSectionTitle');
+    if (menuTitle && contentData.menu) contentData.menu.title = menuTitle.textContent.trim();
 
-        const nameBnEl = card.querySelector('[data-field="nameBn"]');
-        if (nameBnEl) item.nameBn = nameBnEl.textContent.trim();
+    const menuSub = document.getElementById('menuSectionSub');
+    if (menuSub && contentData.menu) contentData.menu.subtitle = menuSub.textContent.trim();
 
-        const priceEl = card.querySelector('[data-field="price"]');
-        if (priceEl) {
-          const num = parseInt(priceEl.textContent.replace(/[^0-9]/g, ''), 10);
-          if (!isNaN(num)) item.price = num;
-        }
+    // Collect page values
+    document.querySelectorAll('.menu-page-card').forEach(card => {
+      const idx = parseInt(card.getAttribute('data-page-index'), 10);
+      if (contentData.menu && contentData.menu.pages && contentData.menu.pages[idx]) {
+        const page = contentData.menu.pages[idx];
+        const titleEl = card.querySelector('[data-page-field="title"]');
+        if (titleEl) page.title = titleEl.textContent.trim();
 
-        const descEl = card.querySelector('[data-field="description"]');
-        if (descEl) item.description = descEl.textContent.trim();
+        const titleBnEl = card.querySelector('[data-page-field="titleBn"]');
+        if (titleBnEl) page.titleBn = titleBnEl.textContent.trim();
 
-        const badgeEl = card.querySelector('[data-field="badge"]');
-        if (badgeEl) item.badge = badgeEl.textContent.trim();
+        const sumEl = card.querySelector('[data-page-field="summary"]');
+        if (sumEl) page.summary = sumEl.textContent.trim();
       }
     });
 
