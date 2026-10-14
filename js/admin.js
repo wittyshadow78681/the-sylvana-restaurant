@@ -10,6 +10,50 @@
   let isDirty = false;
   let cachedContent = null;
 
+  // Bengali numerals normalizer: converts Bengali digits ০-৯ to ASCII 0-9
+  function normalizeDigits(str) {
+    if (!str) return '';
+    const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    let res = str.toString();
+    for (let i = 0; i < bnDigits.length; i++) {
+      res = res.split(bnDigits[i]).join(i.toString());
+    }
+    return res;
+  }
+
+  // Prevent newlines in single-line fields
+  function handleSingleLineKeydown(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      e.target.blur();
+    }
+  }
+
+  // Sanitize paste to insert only plain text without foreign HTML or breaking tags
+  function handlePastePlain(e) {
+    e.preventDefault();
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const text = clipboardData ? clipboardData.getData('text/plain') : '';
+    const isSingleLine = e.target.classList.contains('dish-name') ||
+                         e.target.classList.contains('dish-price-val') ||
+                         e.target.id === 'brandName' ||
+                         e.target.id === 'brandNameBn' ||
+                         e.target.id === 'contactPhone' ||
+                         e.target.id === 'contactEmail';
+    const cleanText = isSingleLine ? text.replace(/[\r\n\t]+/g, ' ').trim() : text;
+
+    if (document.queryCommandSupported && document.queryCommandSupported('insertText')) {
+      document.execCommand('insertText', false, cleanText);
+    } else {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      selection.deleteFromDocument();
+      selection.getRangeAt(0).insertNode(document.createTextNode(cleanText));
+      selection.collapseToEnd();
+    }
+    markDirty();
+  }
+
   // Initialize Admin Module
   document.addEventListener('DOMContentLoaded', () => {
     initAdminSession();
@@ -17,7 +61,13 @@
 
   async function initAdminSession() {
     const isAdminPage = window.location.pathname.startsWith('/admin') ||
-                        document.body.classList.contains('admin-mode');
+                        document.body.classList.contains('admin-mode') ||
+                        window.location.search.includes('admin=1');
+
+    // Security & Scope Guard: Only initialize admin controls if explicitly on an admin route
+    if (!isAdminPage) {
+      return;
+    }
 
     const token = localStorage.getItem(TOKEN_KEY);
 
@@ -27,11 +77,9 @@
         enableInlineEditing();
       } else {
         localStorage.removeItem(TOKEN_KEY);
-        if (isAdminPage) {
-          showAuthModal();
-        }
+        showAuthModal();
       }
-    } else if (isAdminPage) {
+    } else {
       showAuthModal();
     }
 
@@ -160,6 +208,15 @@
       '.dish-desc'
     ];
 
+    const singleLineSelectors = [
+      '#brandName',
+      '#brandNameBn',
+      '#contactPhone',
+      '#contactEmail',
+      '.dish-name',
+      '.dish-price-val'
+    ];
+
     editableSelectors.forEach(sel => {
       document.querySelectorAll(sel).forEach(el => {
         el.setAttribute('contenteditable', 'true');
@@ -168,6 +225,19 @@
         el.addEventListener('input', () => {
           markDirty();
         });
+
+        el.addEventListener('paste', handlePastePlain);
+
+        if (singleLineSelectors.some(s => el.matches(s))) {
+          el.addEventListener('keydown', handleSingleLineKeydown);
+        }
+      });
+    });
+
+    // In admin mode, prevent link clicks inside editable fields from navigating away
+    document.querySelectorAll('#contactPhone a, #contactEmail a').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
       });
     });
   }
@@ -277,19 +347,19 @@
       const introStoryEl = document.getElementById('introStory');
 
       if (brandNameEl) {
-        base.meta.brandName = brandNameEl.innerText.trim();
+        base.meta.brandName = brandNameEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         if (base.hero) base.hero.headlineHighlight = base.meta.brandName;
       }
       if (brandNameBnEl) {
-        base.meta.brandNameBn = brandNameBnEl.innerText.trim();
+        base.meta.brandNameBn = brandNameBnEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         if (base.about) base.about.bengaliTitle = base.meta.brandNameBn;
       }
       if (brandTaglineEl) {
-        base.meta.siteTagline = brandTaglineEl.innerText.trim();
+        base.meta.siteTagline = brandTaglineEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         if (base.hero) base.hero.subtitle = base.meta.siteTagline;
       }
       if (introStoryEl) {
-        base.about.story1 = introStoryEl.innerText.trim();
+        base.about.story1 = introStoryEl.innerText.replace(/[\r\n]+/g, ' ').trim();
       }
 
       // 3. Scrape Contact fields
@@ -298,16 +368,16 @@
       const emailEl = document.getElementById('contactEmail');
       const hoursEl = document.getElementById('contactHours');
 
-      if (addrEl) base.contact.address = addrEl.innerText.trim();
+      if (addrEl) base.contact.address = addrEl.innerText.replace(/[\r\n]+/g, ' ').trim();
       if (phoneEl) {
-        const rawPhone = phoneEl.innerText.trim();
+        const rawPhone = phoneEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         base.contact.phone = rawPhone;
       }
       if (emailEl) {
-        const rawEmail = emailEl.innerText.trim();
+        const rawEmail = emailEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         base.contact.email = rawEmail;
       }
-      if (hoursEl) base.contact.hours = hoursEl.innerText.trim();
+      if (hoursEl) base.contact.hours = hoursEl.innerText.replace(/[\r\n]+/g, ' ').trim();
 
       // 4. Scrape Menu Item changes
       const itemMap = new Map();
@@ -328,13 +398,13 @@
         const priceEl = node.querySelector('.dish-price-val');
         const descEl = node.querySelector('.dish-desc');
 
-        if (nameEl) it.name = nameEl.innerText.trim();
+        if (nameEl) it.name = nameEl.innerText.replace(/[\r\n]+/g, ' ').trim();
         if (priceEl) {
-          const rawPrice = priceEl.innerText.trim().replace(/[^\d.]/g, '');
+          const rawPrice = normalizeDigits(priceEl.innerText.trim()).replace(/[^\d.]/g, '');
           const parsed = parseFloat(rawPrice);
           it.price = isNaN(parsed) ? 0 : parsed;
         }
-        if (descEl) it.description = descEl.innerText.trim();
+        if (descEl) it.description = descEl.innerText.replace(/[\r\n]+/g, ' ').trim();
       });
 
       // 5. Send PUT /api/content
@@ -407,4 +477,5 @@
   window.saveAllChanges = saveAllChanges;
   window.enableInlineEditing = enableInlineEditing;
   window.initAdminSession = initAdminSession;
+  window.normalizeDigits = normalizeDigits;
 })();

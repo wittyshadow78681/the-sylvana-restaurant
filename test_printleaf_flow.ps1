@@ -79,6 +79,9 @@ try {
     Assert-Leaflet ($cssRes.Content -like "*--leaf-border-gold: #C5A059*") "Stylesheet defines luxury gold border: #C5A059"
     Assert-Leaflet ($cssRes.Content -like "*--leaf-crimson: #8B1E0F*") "Stylesheet defines traditional crimson accent: #8B1E0F"
     Assert-Leaflet ($cssRes.Content -like "*dish-dots*") "Stylesheet defines dotted price leader styling"
+    Assert-Leaflet ($cssRes.Content -like "*@media print*") "Stylesheet includes physical print media rules (@media print)"
+    Assert-Leaflet ($cssRes.Content -like "*break-inside: avoid*") "Print stylesheet guards dish cards against page break splitting"
+    Assert-Leaflet ($cssRes.Content -like "*pointer-events: none*") "Admin mode isolates contact links against navigation during in-line edit"
 
     # 3. Subdomain /admin & In-Line Content Edit Suite
     Write-Host "`n[3/5] Verifying /admin In-Line Content Edit Suite..." -ForegroundColor Yellow
@@ -88,6 +91,13 @@ try {
     Assert-Leaflet ($adminRes.Content -like "*btnSaveLeaflet*") "/admin includes 'Save Changes' action button"
     Assert-Leaflet ($adminRes.Content -like "*authModalOverlay*") "/admin includes authentication modal dialog"
     Assert-Leaflet ($adminRes.Content -like "*js/admin.js*") "/admin references admin.js controller script"
+    Assert-Leaflet (-not ($indexRes.Content -like "*js/admin.js*")) "Public index.html isolates admin script (pure lightweight leaflet)"
+
+    $adminJsRes = Invoke-WebRequest -Uri "$baseUrl/js/admin.js" -UseBasicParsing
+    Assert-Leaflet ($adminJsRes.Content -like "*normalizeDigits*") "admin.js provides Bengali digit normalizer (০-৯ -> 0-9)"
+    Assert-Leaflet ($adminJsRes.Content -like "*handlePastePlain*") "admin.js includes clipboard paste plain-text sanitizer"
+    Assert-Leaflet ($adminJsRes.Content -like "*handleSingleLineKeydown*") "admin.js guards single-line fields against Enter key linebreaks"
+    Assert-Leaflet ($adminJsRes.Content -like "*if (!isAdminPage)*") "admin.js strictly gates in-line editing to authenticated admin routes"
 
     # 4. In-Line Admin Authentication & Live Mutation Flow
     Write-Host "`n[4/5] Verifying Admin Auth & In-Line Content Persistence..." -ForegroundColor Yellow

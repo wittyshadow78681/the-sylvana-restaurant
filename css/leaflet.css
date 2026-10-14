@@ -1,0 +1,618 @@
+/* ========================================================
+   THE SYLVANA RESTAURANT - 500 TAKA GRAPHIC PRINT-LEAFLET
+   Minimalist, Modern, Real Paper Menu Leaflet Aesthetic
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://banglawebfonts.pages.dev/css/bornomala.min.css');
+
+@font-face {
+  font-family: 'Bornomala';
+  src: url('/fonts/bornomala/bornomala-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bornomala';
+  src: url('/fonts/bornomala/bornomala-bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bornomala';
+  src: url('/fonts/bornomala/bornomala-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-desk: #eeece8;
+  --paper-bg: #fffefc;
+  --paper-border: #e7dfd5;
+  --ink-primary: #1c1917;
+  --ink-muted: #57534e;
+  --ink-faint: #a8a29e;
+  --brand-red: #d9381e;
+  --brand-gold: #b45309;
+  --brand-amber: #c59b27;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-bengali: 'Bornomala', 'Hind Siliguri', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-desk);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.03) 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  padding: 30px 16px 80px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========================================================
+   THE PRINT-LEAFLET PAPER SHEET
+   ======================================================== */
+.print-leaf-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--paper-bg);
+  padding: 48px 44px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 20px 40px -10px rgba(0, 0, 0, 0.12),
+    0 0 0 1px var(--paper-border);
+  position: relative;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+/* Inner Graphic Frame Border */
+.print-inner-frame {
+  border: 2px solid var(--ink-primary);
+  outline: 1px solid var(--brand-amber);
+  outline-offset: -7px;
+  padding: 36px 32px 32px;
+  position: relative;
+}
+
+/* Decorative Corner Accents */
+.corner-flourish {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--brand-red);
+  pointer-events: none;
+}
+.corner-tl { top: 3px; left: 3px; border-top: 3px solid var(--brand-red); border-left: 3px solid var(--brand-red); }
+.corner-tr { top: 3px; right: 3px; border-top: 3px solid var(--brand-red); border-right: 3px solid var(--brand-red); }
+.corner-bl { bottom: 3px; left: 3px; border-bottom: 3px solid var(--brand-red); border-left: 3px solid var(--brand-red); }
+.corner-br { bottom: 3px; right: 3px; border-bottom: 3px solid var(--brand-red); border-right: 3px solid var(--brand-red); }
+
+/* ========================================================
+   SECTION 1: TOP INTRO (NO NAVIGATION)
+   ======================================================== */
+.leaf-header {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--paper-border);
+  margin-bottom: 30px;
+}
+
+.leaf-logo-box {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.leaf-logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.leaf-brand-en {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.leaf-brand-bn {
+  font-family: var(--font-bengali);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--brand-red);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.leaf-tagline {
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+
+.leaf-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.leaf-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--brand-amber);
+}
+
+.leaf-divider-icon {
+  color: var(--brand-red);
+  font-size: 0.95rem;
+}
+
+.leaf-intro-statement {
+  max-width: 620px;
+  margin: 14px auto 0;
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* ========================================================
+   SECTION 2: MIDDLE MENU (COLUMNS & DOTTED LEADERS)
+   ======================================================== */
+.leaf-menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.menu-category-section {
+  break-inside: avoid;
+}
+
+.category-heading-box {
+  border-bottom: 1.5px solid var(--ink-primary);
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.category-title-en {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--brand-red);
+}
+
+.category-title-bn {
+  font-family: var(--font-bengali);
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  column-gap: 36px;
+  row-gap: 14px;
+}
+
+.dish-row {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+  position: relative;
+}
+
+.dish-header-line {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+}
+
+.dish-title {
+  font-family: var(--font-sans);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--ink-primary);
+  white-space: nowrap;
+}
+
+.dish-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--ink-faint);
+  margin: 0 8px;
+  position: relative;
+  top: -3px;
+}
+
+.dish-price {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand-gold);
+  white-space: nowrap;
+}
+
+.dish-desc {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+  line-height: 1.35;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.dish-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: #fef3c7;
+  color: #92400e;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ========================================================
+   SECTION 3: LAST CONTACT & DETAILS (PRINT FOOTER)
+   ======================================================== */
+.leaf-footer {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1.5px solid var(--paper-border);
+  text-align: center;
+}
+
+.contact-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--ink-primary);
+  font-weight: 500;
+}
+
+.contact-item strong {
+  font-weight: 700;
+}
+
+.contact-item a {
+  color: var(--brand-red);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.hours-statement {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.leaf-bottom-note {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px dotted var(--paper-border);
+}
+
+.admin-lock-link {
+  color: var(--ink-faint);
+  text-decoration: none;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.admin-lock-link:hover {
+  color: var(--brand-red);
+  background: rgba(217, 56, 30, 0.08);
+}
+
+/* ========================================================
+   IN-LINE ADMIN EDITING MODE
+   ======================================================== */
+body.admin-edit-active [contenteditable="true"] {
+  outline: 1px dashed rgba(217, 56, 30, 0.35);
+  transition: all 0.2s;
+}
+
+body.admin-edit-active [contenteditable="true"]:hover {
+  outline: 1px dashed var(--brand-red);
+  background: rgba(217, 56, 30, 0.04);
+  cursor: text;
+}
+
+body.admin-edit-active [contenteditable="true"]:focus {
+  outline: 2px solid var(--brand-red);
+  background: rgba(217, 56, 30, 0.08);
+  box-shadow: 0 0 8px rgba(217, 56, 30, 0.2);
+}
+
+/* Floating Save / Exit Toolbar */
+.admin-floating-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c1917;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: none;
+  align-items: center;
+  gap: 16px;
+  z-index: 10000;
+  border: 1px solid var(--brand-red);
+}
+
+body.admin-edit-active .admin-floating-bar {
+  display: flex;
+}
+
+.admin-status-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #34d399;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #34d399;
+}
+
+.btn-admin-action {
+  background: var(--brand-red);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-admin-action:hover {
+  background: #b91c1c;
+}
+
+.btn-admin-exit {
+  background: transparent;
+  color: #d6d3d1;
+  border: 1px solid #57534e;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-admin-exit:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Login Modal */
+.admin-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.admin-modal-backdrop.open {
+  display: flex;
+}
+
+.admin-modal-card {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 8px;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--paper-border);
+  text-align: center;
+}
+
+.admin-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink-primary);
+}
+
+.admin-modal-subtitle {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+}
+
+.admin-input-group {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.admin-input-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: var(--ink-muted);
+}
+
+.admin-input-field {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d6d3d1;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+}
+
+.admin-input-field:focus {
+  outline: 2px solid var(--brand-red);
+  border-color: transparent;
+}
+
+.admin-modal-btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.admin-modal-btn-row button {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-modal-cancel {
+  background: #f5f5f4;
+  border: 1px solid #d6d3d1;
+  color: var(--ink-muted);
+}
+
+.btn-modal-submit {
+  background: var(--brand-red);
+  border: 1px solid var(--brand-red);
+  color: #fff;
+}
+
+/* Toast Notification */
+.admin-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #1c1917;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10002;
+  display: none;
+  border-left: 4px solid var(--brand-red);
+}
+
+.admin-toast.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  body {
+    padding: 12px 8px 60px;
+  }
+  .print-leaf-wrapper {
+    padding: 24px 16px;
+  }
+  .print-inner-frame {
+    padding: 24px 14px 20px;
+    outline-offset: -4px;
+  }
+  .leaf-brand-en {
+    font-size: 1.8rem;
+  }
+  .leaf-brand-bn {
+    font-size: 1.4rem;
+  }
+  .category-grid {
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
+  .contact-pill-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

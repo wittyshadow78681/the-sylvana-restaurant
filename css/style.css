@@ -518,6 +518,12 @@ body.admin-mode [contenteditable="true"]:focus {
   background-color: rgba(197, 160, 89, 0.15);
 }
 
+body.admin-mode .contact-val[contenteditable="true"] a {
+  pointer-events: none;
+  cursor: text;
+  text-decoration: none;
+}
+
 /* Floating Admin Dock */
 .admin-floating-dock {
   position: fixed;
@@ -830,3 +836,145 @@ body.admin-mode [contenteditable="true"]:focus {
     font-size: 1.55rem;
   }
 }
+
+/* ==========================================================================
+   PHYSICAL PRINT STYLES (500-Taka Graphical Print Leaflet / Ctrl+P)
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 12mm 12mm;
+  }
+
+  html, body.printleaf-body {
+    background: #FFF !important;
+    background-image: none !important;
+    color: #111 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .printleaf-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .printleaf-sheet {
+    background: #FFFDF9 !important;
+    border: 1.5pt solid #B48A3C !important;
+    box-shadow: none !important;
+    padding: 24pt 28pt 20pt !important;
+    border-radius: 0 !important;
+    page-break-after: auto;
+  }
+
+  /* Hide interactive / Admin UI in print */
+  .admin-floating-dock,
+  .admin-modal-overlay,
+  .admin-toast,
+  .admin-entry-link,
+  #adminStudioIndicator,
+  .print-meta-link {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Print Header */
+  .brand-title-en {
+    font-size: 24pt !important;
+    color: #111 !important;
+  }
+
+  .brand-title-bn {
+    font-size: 20pt !important;
+    color: #8B1E0F !important;
+  }
+
+  .brand-tagline {
+    font-size: 10pt !important;
+    color: #444 !important;
+  }
+
+  .brand-narrative {
+    font-size: 8.5pt !important;
+    line-height: 1.5 !important;
+    color: #222 !important;
+  }
+
+  /* Print Menu Layout */
+  .menu-columns {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20pt !important;
+  }
+
+  .menu-category {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 14pt !important;
+  }
+
+  .dish-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    padding: 2pt 0 !important;
+  }
+
+  .dish-name {
+    font-size: 9.5pt !important;
+    color: #000 !important;
+  }
+
+  .dish-dots {
+    border-bottom: 1.5pt dotted #999 !important;
+  }
+
+  .dish-price {
+    font-size: 9.5pt !important;
+    color: #8B1E0F !important;
+  }
+
+  .dish-desc {
+    font-size: 7.5pt !important;
+    color: #555 !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Contact Section in Print */
+  .printleaf-footer {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 14pt !important;
+  }
+
+  .contact-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8pt !important;
+  }
+
+  .contact-card {
+    background: #FDFBF7 !important;
+    border: 0.75pt solid #CBBFA8 !important;
+    padding: 8pt 6pt !important;
+  }
+
+  .contact-val {
+    font-size: 8pt !important;
+    color: #111 !important;
+  }
+
+  .contact-label {
+    font-size: 6.5pt !important;
+    color: #8B1E0F !important;
+  }
+
+  .colophon-meta, .colophon-copy {
+    font-size: 7pt !important;
+    color: #666 !important;
+  }
+}
+

@@ -198,6 +198,8 @@ def build_html(is_admin=False):
     <a href="/3d.html" class="print-meta-link" style="display:none">3D Experience</a>
     """
 
+    admin_script_tag = '  <script src="/js/admin.js"></script>' if is_admin else ''
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -380,7 +382,7 @@ def build_html(is_admin=False):
 
   <!-- Client Scripts -->
   <script src="/js/app.js"></script>
-  <script src="/js/admin.js"></script>
+{admin_script_tag}
 </body>
 </html>
 """
