@@ -3,139 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sylvana Restaurant | দ্যা সিলভানা রেস্টুরেন্ট - Food Menu</title>
-  <meta name="description" content="The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) - Official printed food menu. Authentic Bengali breakfast, Kacchi Biryani, snacks, and beverages at 10, Shahbagh Biponi Bithan, Dhaka.">
+  <title>The Sylvana Restaurant | দ্যা সিলভানা রেস্টুরেন্ট</title>
+  <meta name="description" content="The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) - Authentic Bengali Cuisine, Kacchi Biryani, hearty breakfast, and Continental dining in Shahbagh, Dhaka.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Graphic Restaurant Print-Leaf Stylesheet -->
-  <link rel="stylesheet" href="css/leaflet.css">
+  <!-- Modern Light Responsive Stylesheet -->
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 
   <!-- ========================================================
-       500 TAKA GRAPHIC PRINT-LEAFLET PAPER MENU CARD
+       SECTION 1: HERO & RESTAURANT INTRO (NO NAVIGATION HEADER)
        ======================================================== -->
-  <main class="print-leaf-wrapper">
-    <div class="print-inner-frame">
+  <header class="hero-section">
+    <div class="site-container">
+      <div class="hero-logo-wrapper">
+        <img src="assets/sylvana-logo.png" alt="The Sylvana Restaurant Emblem" class="hero-logo-img">
+      </div>
 
-      <!-- Decorative Corner Accents -->
-      <div class="corner-flourish corner-tl"></div>
-      <div class="corner-flourish corner-tr"></div>
-      <div class="corner-flourish corner-bl"></div>
-      <div class="corner-flourish corner-br"></div>
+      <div class="hero-badge">
+        <span>✨</span>
+        <span>Authentic Bengali & Continental Dining</span>
+      </div>
 
-      <!-- ========================================================
-           PART 1: RESTAURANT INTRO (NO NAVIGATION HEADER)
-           ======================================================== -->
-      <header class="leaf-header">
-        <div class="leaf-logo-box">
-          <img src="assets/sylvana-logo.png" alt="The Sylvana Restaurant Logo" class="leaf-logo-img">
-        </div>
-        <h1 class="leaf-brand-en" id="brandEn">The Sylvana Restaurant</h1>
-        <h2 class="leaf-brand-bn" id="brandBn">দ্যা সিলভানা রেস্টুরেন্ট</h2>
-        <p class="leaf-tagline" id="brandTagline">10, Shahbagh Biponi Bithan, Dhaka-1000 • Authentic Delicacies</p>
+      <h1 class="hero-title-en" id="heroBrandEn">The Sylvana Restaurant</h1>
+      <h2 class="hero-title-bn" id="heroBrandBn">দ্যা সিলভানা রেস্টুরেন্ট</h2>
+      <p class="hero-location-text" id="heroLocationText">10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh</p>
 
-        <div class="leaf-divider">
-          <span class="leaf-divider-line"></span>
-          <span class="leaf-divider-icon">❖ • ❖</span>
-          <span class="leaf-divider-line"></span>
-        </div>
+      <p class="hero-desc" id="heroDesc">
+        Welcome to The Sylvana Restaurant. Discover our slow-cooked Mutton Kacchi Biryani, traditional Bengali breakfast, fresh clay-oven naans, and gourmet specialties crafted fresh every day at Shahbagh, Dhaka.
+      </p>
 
-        <p class="leaf-intro-statement" id="introStatement">
-          Welcome to The Sylvana Restaurant. Discover our authentic slow-cooked Kacchi Biryani, hearty traditional Bengali breakfast, fresh clay-oven naans, and gourmet specialties crafted fresh daily.
-        </p>
-      </header>
+      <div class="hero-actions">
+        <a href="#menu" class="btn-primary">
+          <span>Explore Menu ↓</span>
+        </a>
+        <a href="tel:+8801734489275" class="btn-secondary" id="heroCallBtn">
+          <span>📞 Call: +8801734489275</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-      <!-- ========================================================
-           PART 2: THE FOOD MENU (38+ DISHES IN PRINTED COLUMNS)
-           ======================================================== -->
-      <section class="leaf-menu-container" id="menuContainer">
-        <!-- Rendered dynamically by leaflet.js with dotted leaders & ৳ prices -->
+  <!-- ========================================================
+       SECTION 2: MIDDLE MENU (MINIMAL, RESPONSIVE & LIGHT CARDS)
+       ======================================================== -->
+  <main class="menu-section" id="menu">
+    <div class="site-container">
+      <div class="menu-header-bar">
+        <p class="section-label">CULINARY COLLECTION</p>
+        <h2 class="section-main-title">Food & Beverage Menu</h2>
+        <p class="section-subtitle">Prepared fresh daily with authentic Dhaka spices & 100% Halal meat.</p>
+      </div>
+
+      <!-- Category Filter Pills (Scrollable on Mobile) -->
+      <nav class="category-filter-wrap" id="categoryFilterWrap" aria-label="Menu Categories">
+        <!-- Rendered dynamically by modern.js -->
+      </nav>
+
+      <!-- Responsive Cards Grid -->
+      <div class="menu-cards-grid" id="menuCardsGrid">
         <noscript>
-          <div style="padding: 20px; text-align: center; color: #78716c;">
-            Please enable JavaScript to view the full interactive menu card.
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #64748b;">
+            Please enable JavaScript to view the full interactive menu.
           </div>
         </noscript>
-      </section>
-
-      <!-- ========================================================
-           PART 3: CONTACT & DETAILS (LEAFLET FOOTER)
-           ======================================================== -->
-      <footer class="leaf-footer">
-        <div class="contact-pill-row">
-          <div class="contact-item">
-            <span>📍</span>
-            <span id="contactAddress">10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh</span>
-          </div>
-          <div class="contact-item">
-            <span>📞</span>
-            <strong>Direct Line:</strong>
-            <a href="tel:+8801734489275" id="contactPhone">+8801734489275</a>
-          </div>
-          <div class="contact-item">
-            <span>✉️</span>
-            <a href="mailto:sylvanarestaurantbd@gmail.com" id="contactEmail">sylvanarestaurantbd@gmail.com</a>
-          </div>
-        </div>
-
-        <div class="hours-statement" id="contactHours">
-          ⏰ Open Daily: 7:00 AM – 11:30 PM (Saturday – Friday)
-        </div>
-
-        <div class="leaf-bottom-note">
-          <span>&copy; 2026 The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট). All rights reserved.</span>
-          <a href="/admin" class="admin-lock-link" id="adminLockLink" title="Admin In-Line Content Editor">
-            🔒 Edit Content
-          </a>
-        </div>
-      </footer>
-
+      </div>
     </div>
   </main>
 
   <!-- ========================================================
-       IN-LINE ADMIN EDITING FLOATING TOOLBAR (Active on /admin)
+       SECTION 3: CONTACT & DETAILS (BOTTOM / LAST)
+       ======================================================== -->
+  <section class="contact-section">
+    <div class="site-container">
+      <div class="contact-cards-grid">
+        <!-- Card 1: Location -->
+        <div class="contact-card">
+          <div class="contact-icon-bubble">📍</div>
+          <h3 class="contact-card-title">Our Location</h3>
+          <p class="contact-card-text" id="contactAddress">
+            10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh
+          </p>
+          <div class="contact-card-highlight">Shahbagh, Dhaka</div>
+        </div>
+
+        <!-- Card 2: Contact -->
+        <div class="contact-card">
+          <div class="contact-icon-bubble">📞</div>
+          <h3 class="contact-card-title">Get in Touch</h3>
+          <p class="contact-card-text">
+            Direct Line: <a href="tel:+8801734489275" id="contactPhone">+8801734489275</a>
+          </p>
+          <p class="contact-card-text">
+            Email: <a href="mailto:sylvanarestaurantbd@gmail.com" id="contactEmail">sylvanarestaurantbd@gmail.com</a>
+          </p>
+          <div class="contact-card-highlight">Takeaway & Dine-in</div>
+        </div>
+
+        <!-- Card 3: Hours -->
+        <div class="contact-card">
+          <div class="contact-icon-bubble">⏰</div>
+          <h3 class="contact-card-title">Opening Hours</h3>
+          <p class="contact-card-text" id="contactHours">
+            Monday – Sunday: 7:00 AM – 11:30 PM (Daily)
+          </p>
+          <div class="contact-card-highlight">Open 7 Days a Week</div>
+        </div>
+      </div>
+
+      <!-- Clean Footer -->
+      <footer class="site-footer">
+        <span>&copy; 2026 The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট). All rights reserved.</span>
+        <a href="/admin" class="admin-lock-btn" id="adminLockBtn" title="In-Line Content Editor">
+          🔒 In-Line Editor
+        </a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FLOATING IN-LINE ADMIN TOOLBAR (Active on /admin)
        ======================================================== -->
   <aside class="admin-floating-bar" id="adminFloatingBar" aria-label="In-Line Admin Controls">
-    <div class="admin-status-tag">
+    <div class="admin-status-indicator">
       <span class="status-dot"></span>
       <span>In-Line Edit Mode</span>
     </div>
-    <button class="btn-admin-action" id="btnSaveInLine" type="button">
+    <button class="btn-admin-save" id="btnSaveInLine" type="button">
       💾 Save Changes
     </button>
     <button class="btn-admin-exit" id="btnExitInLine" type="button">
-      ✕ Exit Edit
+      ✕ Exit
     </button>
   </aside>
 
   <!-- ========================================================
        ADMIN LOGIN AUTH MODAL
        ======================================================== -->
-  <div class="admin-modal-backdrop" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="admin-modal-card">
-      <h3 class="admin-modal-title" id="modalTitle">Admin Authentication</h3>
-      <p class="admin-modal-subtitle">Log in to edit restaurant text and menu prices in-line.</p>
+  <div class="modal-backdrop" id="adminLoginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modal-card">
+      <h3 class="modal-title" id="loginTitle">Admin Authentication</h3>
+      <p class="modal-desc">Log in to edit restaurant headlines, prices, and menu items directly on the page.</p>
 
       <form id="adminLoginForm">
-        <div class="admin-input-group">
-          <label class="admin-input-label" for="adminUsername">Username</label>
-          <input type="text" id="adminUsername" class="admin-input-field" value="admin" required autocomplete="username">
+        <div class="form-group">
+          <label class="form-label" for="adminUser">Username</label>
+          <input type="text" id="adminUser" class="form-input" value="admin" required autocomplete="username">
         </div>
-        <div class="admin-input-group">
-          <label class="admin-input-label" for="adminPassword">Password</label>
-          <input type="password" id="adminPassword" class="admin-input-field" placeholder="Default: admin123" required autocomplete="current-password">
+        <div class="form-group">
+          <label class="form-label" for="adminPass">Password</label>
+          <input type="password" id="adminPass" class="form-input" placeholder="Default: admin123" required autocomplete="current-password">
         </div>
 
-        <div class="admin-modal-btn-row">
-          <button type="button" class="btn-modal-cancel" id="btnModalCancel">Cancel</button>
-          <button type="submit" class="btn-modal-submit">Unlock Editor</button>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" id="btnModalCancel">Cancel</button>
+          <button type="submit" class="btn-submit">Unlock Editor</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Dynamic Content & In-line Editor Script -->
-  <script src="js/leaflet.js"></script>
+  <!-- Dynamic Content & In-line Editor Controller -->
+  <script src="js/modern.js"></script>
 </body>
 </html>
