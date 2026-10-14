@@ -1,8 +1,8 @@
 {
   "meta": {
-    "siteTitle": "The Sylvana Restaurant | Authentic Food & Beverage Menu in Shahbagh, Dhaka",
+    "siteTitle": "The Sylvana Restaurant | Authentic Food Menu in Shahbagh, Dhaka",
     "siteTagline": "দ্যা সিলভানা রেস্টুরেন্ট - Traditional Flavours & Warm Hospitality",
-    "metaDescription": "Experience authentic Bengali cuisine, Kacchi Biryani, hearty breakfast, and refreshments at The Sylvana Restaurant in Shahbagh, Dhaka. View full menu online.",
+    "metaDescription": "Authentic Bengali cuisine, Kacchi Biryani, hearty breakfast, and refreshments at The Sylvana Restaurant in Shahbagh, Dhaka. Open 7:30 AM to 11:00 PM.",
     "brandName": "The Sylvana Restaurant",
     "brandNameBn": "দ্যা সিলভানা রেস্টুরেন্ট",
     "logoUrl": "assets/sylvana-logo.png",
@@ -12,59 +12,405 @@
     "secondaryColor": "#d97706"
   },
   "hero": {
-    "badge": "✨ Authentic Bengali & Continental Dining in Shahbagh, Dhaka",
+    "badge": "✨ Open Daily: 7:30 AM – 11:00 PM • Shahbagh, Dhaka",
     "headlineStart": "Welcome to",
     "headlineHighlight": "The Sylvana Restaurant",
     "headlineEnd": "দ্যা সিলভানা রেস্টুরেন্ট",
-    "subtitle": "Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing beverages crafted fresh every day at Shahbagh, Dhaka."
+    "subtitle": "Discover authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing desserts crafted fresh daily in Shahbagh, Dhaka."
   },
   "menu": {
     "title": "Food & Beverage Menu",
-    "subtitle": "Click any menu card below to view or zoom into the complete high-resolution menu page.",
-    "pages": [
+    "subtitle": "Select a category below to explore our authentic printed restaurant menu.",
+    "categories": [
       {
-        "id": 1,
-        "pageNumber": 1,
-        "title": "Breakfast Menu & Tea Item",
-        "titleBn": "সকালের নাস্তা ও স্পেশাল চা",
-        "category": "Breakfast & Tea",
-        "badge": "Page 1 • Breakfast & Tea",
-        "summary": "Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea",
-        "image": "assets/menu-page-1.webp",
-        "fallbackImage": "assets/menu-page-1.jpg"
+        "id": "breakfast",
+        "name": "Breakfast",
+        "nameBn": "সকালের নাস্তা ও চা",
+        "icon": "🌅",
+        "badge": "Morning Specials • 7:30 AM – 11:30 AM",
+        "tagline": "Freshly rolled parathas, hot lentils, eggs, khichuri & authentic milk tea",
+        "items": [
+          {
+            "id": "b1",
+            "num": "1",
+            "name": "Paratha with Bhaji",
+            "desc": "Flaky paratha served with spiced mixed vegetables",
+            "price": 100,
+            "currency": "৳"
+          },
+          {
+            "id": "b2",
+            "num": "2",
+            "name": "Paratha with Dal",
+            "desc": "Golden paratha with warm, seasoned yellow lentils",
+            "price": 90,
+            "currency": "৳"
+          },
+          {
+            "id": "b3",
+            "num": "3",
+            "name": "Paratha with Dim Bhuna",
+            "desc": "Paratha served with eggs in a rich onion and tomato gravy",
+            "price": 130,
+            "currency": "৳"
+          },
+          {
+            "id": "b4",
+            "num": "4",
+            "name": "Khichuri with Omelette",
+            "desc": "Chinigura rice & yellow lentils served with onion & green chili omelette",
+            "price": 150,
+            "currency": "৳"
+          },
+          {
+            "id": "b5",
+            "num": "5",
+            "name": "Eggs Omelette",
+            "desc": "Onion, coriander and green chili fresh omelette",
+            "price": 70,
+            "currency": "৳"
+          },
+          {
+            "id": "b6",
+            "num": "6",
+            "name": "Plain Naan (each)",
+            "desc": "Warm clay-oven baked tandoori naan",
+            "price": 40,
+            "currency": "৳"
+          },
+          {
+            "id": "b7",
+            "num": "7",
+            "name": "Paratha (each)",
+            "desc": "Crispy golden layered flatbread",
+            "price": 30,
+            "currency": "৳"
+          },
+          {
+            "id": "b8",
+            "num": "8",
+            "name": "Special Masala Tea",
+            "desc": "Hot tea infused with cardamom, clove & aromatic spices",
+            "price": 60,
+            "currency": "৳"
+          },
+          {
+            "id": "b9",
+            "num": "9",
+            "name": "Milk Tea",
+            "desc": "Classic creamy Bangladeshi slow-boiled milk tea",
+            "price": 40,
+            "currency": "৳"
+          },
+          {
+            "id": "b10",
+            "num": "10",
+            "name": "Black Tea",
+            "desc": "Pure refreshing brewed hot black tea",
+            "price": 30,
+            "currency": "৳"
+          }
+        ]
       },
       {
-        "id": 2,
-        "pageNumber": 2,
-        "title": "Lunch & Dinner Starters, Burgers & Pizza",
-        "titleBn": "স্যুপ, ফ্রাইড চিকেন, বার্গার ও পিৎজা",
-        "category": "Starters & Fast Food",
-        "badge": "Page 2 • Starters & Pizza",
-        "summary": "Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta",
-        "image": "assets/menu-page-2.webp",
-        "fallbackImage": "assets/menu-page-2.jpg"
+        "id": "dinner",
+        "name": "Dinner & Mains",
+        "nameBn": "দুপুর ও রাতের খাবার",
+        "icon": "🍲",
+        "badge": "Lunch & Dinner • All Day Mains",
+        "tagline": "Slow-cooked Kacchi Biryani, Tehari, rich beef curries, burgers, pizza & pasta",
+        "items": [
+          {
+            "id": "d1",
+            "num": "11",
+            "name": "Mutton Kacchi Biryani",
+            "desc": "Fragrant basmati rice layered with tender mutton, alu & secret aromatic spices",
+            "price": 320,
+            "currency": "৳"
+          },
+          {
+            "id": "d2",
+            "num": "12",
+            "name": "Old Dhaka Beef Tehari",
+            "desc": "Fragrant short-grain rice cooked with tender beef cubes & mustard oil aroma",
+            "price": 230,
+            "currency": "৳"
+          },
+          {
+            "id": "d3",
+            "num": "13",
+            "name": "Chicken Dum Biryani",
+            "desc": "Layered fragrant rice and spiced chicken, served with cool raita",
+            "price": 260,
+            "currency": "৳"
+          },
+          {
+            "id": "d4",
+            "num": "14",
+            "name": "Traditional Chicken Biryani",
+            "desc": "Aromatic rice with juicy chicken and traditional Bengali spices",
+            "price": 230,
+            "currency": "৳"
+          },
+          {
+            "id": "d5",
+            "num": "15",
+            "name": "Plain Rice with Beef Bhuna",
+            "desc": "Steamed fragrant rice served with tender beef in rich Bengali gravy",
+            "price": 270,
+            "currency": "৳"
+          },
+          {
+            "id": "d6",
+            "num": "16",
+            "name": "Naan with Beef Bhuna",
+            "desc": "Clay-oven baked naan served with tender beef curry & spiced gravy",
+            "price": 280,
+            "currency": "৳"
+          },
+          {
+            "id": "d7",
+            "num": "17",
+            "name": "Fish Curry with Rice (Rui / Katla)",
+            "desc": "Fresh sweetwater fish in tomato based gravy, chili, garlic & coriander",
+            "price": 250,
+            "currency": "৳"
+          },
+          {
+            "id": "d8",
+            "num": "18",
+            "name": "Beef Bhuna Khichuri",
+            "desc": "Aromatic Chinigura rice and lentils with spicy beef bhuna",
+            "price": 260,
+            "currency": "৳"
+          },
+          {
+            "id": "d9",
+            "num": "19",
+            "name": "Chicken Bhuna Khichuri",
+            "desc": "Aromatic rice and lentils with succulent chicken bhuna",
+            "price": 230,
+            "currency": "৳"
+          },
+          {
+            "id": "d10",
+            "num": "20",
+            "name": "Chicken Soup (Thick / Clear) (1:1)",
+            "desc": "Eggs, shredded chicken, fresh lemon, chili & garden vegetables",
+            "price": 150,
+            "currency": "৳"
+          },
+          {
+            "id": "d11",
+            "num": "21",
+            "name": "Spicy Fried Chicken (6 pcs)",
+            "desc": "Golden crispy chicken pieces served with tomato & BBQ sauce",
+            "price": 350,
+            "currency": "৳"
+          },
+          {
+            "id": "d12",
+            "num": "22",
+            "name": "Gourmet Beef Burger",
+            "desc": "Flame-grilled beef patty, cheddar cheese, lettuce, tomato & mayo",
+            "price": 220,
+            "currency": "৳"
+          },
+          {
+            "id": "d13",
+            "num": "23",
+            "name": "Chicken Burger",
+            "desc": "Crispy chicken patty, fresh lettuce, tomato & creamy mayonnaise",
+            "price": 180,
+            "currency": "৳"
+          },
+          {
+            "id": "d14",
+            "num": "24",
+            "name": "Plain Margherita Pizza",
+            "desc": "Crisp thin crust, tomato sauce base, melted cheese & oregano",
+            "price": 320,
+            "currency": "৳"
+          },
+          {
+            "id": "d15",
+            "num": "25",
+            "name": "Italian Pasta",
+            "desc": "Penne in rich savory tomato sauce, chili, cheese, green peas & coriander",
+            "price": 220,
+            "currency": "৳"
+          },
+          {
+            "id": "d16",
+            "num": "26",
+            "name": "French Fries",
+            "desc": "Crisp golden potato fries served with dipping sauce",
+            "price": 130,
+            "currency": "৳"
+          },
+          {
+            "id": "d17",
+            "num": "27",
+            "name": "Samosa with Salad & Sauce (2 pcs)",
+            "desc": "Crisp golden triangular pastry with savory spiced vegetable filling",
+            "price": 100,
+            "currency": "৳"
+          },
+          {
+            "id": "d18",
+            "num": "28",
+            "name": "Mixed Salad",
+            "desc": "Sliced tomato, cucumber, onions, chili, lemon and crisp lettuce",
+            "price": 120,
+            "currency": "৳"
+          },
+          {
+            "id": "d19",
+            "num": "29",
+            "name": "Potato Mash (Alu Bhorta)",
+            "desc": "Bengali mustard potato mash with caramelized onions & green chili",
+            "price": 50,
+            "currency": "৳"
+          },
+          {
+            "id": "d20",
+            "num": "30",
+            "name": "Tandoori Naan (each)",
+            "desc": "Soft, hot clay-oven baked naan",
+            "price": 40,
+            "currency": "৳"
+          },
+          {
+            "id": "d21",
+            "num": "31",
+            "name": "Plain Steamed Rice",
+            "desc": "Steamed fragrant long-grain rice",
+            "price": 60,
+            "currency": "৳"
+          },
+          {
+            "id": "d22",
+            "num": "32",
+            "name": "Dal (Yellow Lentil)",
+            "desc": "Warm spiced lentil soup tempered with garlic & cumin",
+            "price": 40,
+            "currency": "৳"
+          }
+        ]
       },
       {
-        "id": 3,
-        "pageNumber": 3,
-        "title": "Traditional Meals & Favourites",
-        "titleBn": "ঐতিহ্যবাহী কাচ্চি বিরিয়ানি ও দেশি খাবার",
-        "category": "Biryani & Traditional Meals",
-        "badge": "Page 3 • Biryani & Curries",
-        "summary": "Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal",
-        "image": "assets/menu-page-3.webp",
-        "fallbackImage": "assets/menu-page-3.jpg"
-      },
-      {
-        "id": 4,
-        "pageNumber": 4,
-        "title": "Drinks, Desserts & Refreshments",
-        "titleBn": "মিষ্টি, লস্যি, মিল্কশেক ও ফ্রেশ জুস",
-        "category": "Drinks & Desserts",
-        "badge": "Page 4 • Drinks & Sweets",
-        "summary": "Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice",
-        "image": "assets/menu-page-4.webp",
-        "fallbackImage": "assets/menu-page-4.jpg"
+        "id": "other",
+        "name": "Drinks & Others",
+        "nameBn": "পানীয়, মিষ্টি ও ডেজার্ট",
+        "icon": "🍹",
+        "badge": "Beverages, Sweets & Refreshments",
+        "tagline": "Hand-churned lassis, thick milkshakes, Gulab Jamun, Firni & fresh juices",
+        "items": [
+          {
+            "id": "o1",
+            "num": "33",
+            "name": "Gulab Jamun / Golap Jamun",
+            "desc": "Soft milk-based sweets soaked in warm cardamom & rose sugar syrup",
+            "price": 70,
+            "currency": "৳"
+          },
+          {
+            "id": "o2",
+            "num": "34",
+            "name": "Firni (Bengali Rice Pudding)",
+            "desc": "Chilled creamy Chinigura rice pudding infused with saffron, cardamom & nuts",
+            "price": 100,
+            "currency": "৳"
+          },
+          {
+            "id": "o3",
+            "num": "35",
+            "name": "Sweet Yoghurt / Bogra Doi",
+            "desc": "Cool, creamy traditional clay-pot sweet curd",
+            "price": 100,
+            "currency": "৳"
+          },
+          {
+            "id": "o4",
+            "num": "36",
+            "name": "Ice Cream (Vanilla / Chocolate)",
+            "desc": "Rich creamy scoops of premium ice cream",
+            "price": 150,
+            "currency": "৳"
+          },
+          {
+            "id": "o5",
+            "num": "37",
+            "name": "Mango Lassi",
+            "desc": "Creamy yogurt blended with ripe mango & crushed ice",
+            "price": 150,
+            "currency": "৳"
+          },
+          {
+            "id": "o6",
+            "num": "38",
+            "name": "Sweet / Salty Lassi",
+            "desc": "Traditional chilled yogurt drink, smooth, creamy & refreshing",
+            "price": 120,
+            "currency": "৳"
+          },
+          {
+            "id": "o7",
+            "num": "39",
+            "name": "Chocolate Milkshake",
+            "desc": "Thick chocolate shake blended with rich milk and cocoa",
+            "price": 170,
+            "currency": "৳"
+          },
+          {
+            "id": "o8",
+            "num": "40",
+            "name": "Vanilla Milkshake",
+            "desc": "Smooth chilled whole milk shake with natural vanilla",
+            "price": 160,
+            "currency": "৳"
+          },
+          {
+            "id": "o9",
+            "num": "41",
+            "name": "Fresh Orange Juice",
+            "desc": "Freshly squeezed citrus juice, rich in Vitamin C",
+            "price": 160,
+            "currency": "৳"
+          },
+          {
+            "id": "o10",
+            "num": "42",
+            "name": "Seasonal Fresh Fruit Juice",
+            "desc": "Crisp chilled seasonal fruits squeezed to order",
+            "price": 130,
+            "currency": "৳"
+          },
+          {
+            "id": "o11",
+            "num": "43",
+            "name": "Regular Hot Coffee",
+            "desc": "Freshly brewed aromatic hot coffee",
+            "price": 90,
+            "currency": "৳"
+          },
+          {
+            "id": "o12",
+            "num": "44",
+            "name": "Soft Drinks (Coca-Cola, Sprite, Fanta)",
+            "desc": "Chilled 250ml can / bottle",
+            "price": 50,
+            "currency": "৳"
+          },
+          {
+            "id": "o13",
+            "num": "45",
+            "name": "Drinking Water (1L)",
+            "desc": "Sealed pure mineral water bottle",
+            "price": 40,
+            "currency": "৳"
+          }
+        ]
       }
     ]
   },
@@ -72,7 +418,7 @@
     "address": "10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh",
     "phone": "+8801734489275",
     "email": "sylvanarestaurantbd@gmail.com",
-    "hours": "Monday – Sunday: 7:00 AM – 11:30 PM (Daily)",
+    "hours": "Monday – Sunday: 7:30 AM – 11:00 PM (Daily)",
     "days": "Open 7 Days a Week"
   }
 }

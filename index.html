@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Sylvana Restaurant | দ্যা সিলভানা রেস্টুরেন্ট</title>
-  <meta name="description" content="The Sylvana Restaurant (দ্যা সিলভানা রেস্টুরেন্ট) - Authentic Bengali Cuisine, Kacchi Biryani, hearty breakfast, and Continental dining in Shahbagh, Dhaka.">
+  <title>The Sylvana Restaurant | Authentic Food Menu in Shahbagh, Dhaka</title>
+  <meta name="description" content="Minimal, authentic printed food & beverage menu for The Sylvana Restaurant in Shahbagh, Dhaka. Open daily 7:30 AM to 11:00 PM.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Modern Light Responsive Stylesheet -->
-  <link rel="stylesheet" href="css/modern.css?v=4">
+  <!-- Minimal & Modern Stylesheet -->
+  <link rel="stylesheet" href="css/modern.css?v=5">
 </head>
 <body>
 
   <!-- ========================================================
-       SECTION 1: HERO & RESTAURANT INTRO (NO NAVIGATION HEADER)
+       SECTION 1: HERO & RESTAURANT EMBLEM
        ======================================================== -->
   <header class="hero-section">
     <div class="site-container">
@@ -23,7 +23,7 @@
 
       <div class="hero-badge">
         <span>✨</span>
-        <span>Authentic Bengali & Continental Dining</span>
+        <span id="heroBadgeText">Open Daily: 7:30 AM – 11:00 PM • Shahbagh, Dhaka</span>
       </div>
 
       <h1 class="hero-title-en" id="heroBrandEn">The Sylvana Restaurant</h1>
@@ -31,7 +31,7 @@
       <p class="hero-location-text" id="heroLocationText">10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh</p>
 
       <p class="hero-desc" id="heroDesc">
-        Welcome to The Sylvana Restaurant. Discover our slow-cooked Mutton Kacchi Biryani, traditional Bengali breakfast, fresh clay-oven naans, and gourmet specialties crafted fresh every day at Shahbagh, Dhaka.
+        Welcome to The Sylvana Restaurant. Discover authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing desserts crafted fresh daily in Shahbagh, Dhaka.
       </p>
 
       <div class="hero-actions">
@@ -46,95 +46,183 @@
   </header>
 
   <!-- ========================================================
-       SECTION 2: MIDDLE MENU (AUTHENTIC 4-PAGE MENU CARDS WITH LIGHTBOX)
+       SECTION 2: MINIMAL PRINTABLE RESTAURANT MENU
+       3 Highlighted Categories: Breakfast | Dinner & Mains | Drinks & Others
        ======================================================== -->
   <main class="menu-section" id="menu">
     <div class="site-container">
       <div class="menu-header-bar">
         <p class="section-label">THE SYLVANA RESTAURANT • ফুড অ্যান্ড বেভারেজ মেনু</p>
         <h2 class="section-main-title" id="menuSectionTitle">Food & Beverage Menu</h2>
-        <p class="section-subtitle" id="menuSectionSub">Click any menu card below to view or zoom into the complete high-resolution menu page.</p>
+        <p class="section-subtitle" id="menuSectionSub">Select a category below to explore our authentic printed restaurant menu.</p>
       </div>
 
-      <!-- 4 Authentic Menu Cards Grid (Pre-rendered for Instant Paint, Enhanced by modern.js) -->
-      <div class="menu-pages-grid" id="menuCardsGrid">
-        <article class="menu-page-card" data-page-index="0" tabindex="0" role="button" aria-label="Open Breakfast Menu & Tea Item">
-          <div class="menu-page-thumb-wrap">
-            <img src="assets/menu-page-1.webp" alt="Breakfast Menu & Tea Item" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-1.jpg'">
-            <span class="menu-page-badge">Page 1 • Breakfast & Tea</span>
-            <div class="menu-page-overlay">
-              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
-            </div>
-          </div>
-          <div class="menu-page-card-body">
-            <h3 class="menu-page-card-title" data-page-field="title">Breakfast Menu & Tea Item</h3>
-            <div class="menu-page-card-bn" data-page-field="titleBn">সকালের নাস্তা ও স্পেশাল চা</div>
-            <p class="menu-page-card-summary" data-page-field="summary">Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea</p>
-            <div class="menu-page-card-btn">
-              <span>📖 View High-Res Page 1</span>
-            </div>
-          </div>
-        </article>
+      <!-- 3 Highlighted Category Tabs -->
+      <nav class="category-tabs-nav" aria-label="Menu Category Selection">
+        <button type="button" class="category-tab-btn active" data-category="breakfast" id="tabBreakfast">
+          <span class="tab-icon">🌅</span>
+          <span class="tab-text">
+            <span class="tab-title">Breakfast</span>
+            <span class="tab-bn">সকালের নাস্তা ও চা</span>
+          </span>
+          <span class="tab-count">10 Items</span>
+        </button>
 
-        <article class="menu-page-card" data-page-index="1" tabindex="0" role="button" aria-label="Open Lunch & Dinner Starters, Burgers & Pizza">
-          <div class="menu-page-thumb-wrap">
-            <img src="assets/menu-page-2.webp" alt="Lunch & Dinner Starters, Burgers & Pizza" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-2.jpg'">
-            <span class="menu-page-badge">Page 2 • Starters & Pizza</span>
-            <div class="menu-page-overlay">
-              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
-            </div>
-          </div>
-          <div class="menu-page-card-body">
-            <h3 class="menu-page-card-title" data-page-field="title">Lunch & Dinner Starters, Burgers & Pizza</h3>
-            <div class="menu-page-card-bn" data-page-field="titleBn">স্যুপ, ফ্রাইড চিকেন, বার্গার ও পিৎজা</div>
-            <p class="menu-page-card-summary" data-page-field="summary">Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta</p>
-            <div class="menu-page-card-btn">
-              <span>📖 View High-Res Page 2</span>
-            </div>
-          </div>
-        </article>
+        <button type="button" class="category-tab-btn" data-category="dinner" id="tabDinner">
+          <span class="tab-icon">🍲</span>
+          <span class="tab-text">
+            <span class="tab-title">Dinner & Mains</span>
+            <span class="tab-bn">দুপুর ও রাতের খাবার</span>
+          </span>
+          <span class="tab-count">22 Items</span>
+        </button>
 
-        <article class="menu-page-card" data-page-index="2" tabindex="0" role="button" aria-label="Open Traditional Meals & Favourites">
-          <div class="menu-page-thumb-wrap">
-            <img src="assets/menu-page-3.webp" alt="Traditional Meals & Favourites" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-3.jpg'">
-            <span class="menu-page-badge">Page 3 • Biryani & Curries</span>
-            <div class="menu-page-overlay">
-              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
-            </div>
-          </div>
-          <div class="menu-page-card-body">
-            <h3 class="menu-page-card-title" data-page-field="title">Traditional Meals & Favourites</h3>
-            <div class="menu-page-card-bn" data-page-field="titleBn">ঐতিহ্যবাহী কাচ্চি বিরিয়ানি ও দেশি খাবার</div>
-            <p class="menu-page-card-summary" data-page-field="summary">Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal</p>
-            <div class="menu-page-card-btn">
-              <span>📖 View High-Res Page 3</span>
-            </div>
-          </div>
-        </article>
+        <button type="button" class="category-tab-btn" data-category="other" id="tabOther">
+          <span class="tab-icon">🍹</span>
+          <span class="tab-text">
+            <span class="tab-title">Drinks & Others</span>
+            <span class="tab-bn">পানীয় ও ডেজার্ট</span>
+          </span>
+          <span class="tab-count">13 Items</span>
+        </button>
+      </nav>
 
-        <article class="menu-page-card" data-page-index="3" tabindex="0" role="button" aria-label="Open Drinks, Desserts & Refreshments">
-          <div class="menu-page-thumb-wrap">
-            <img src="assets/menu-page-4.webp" alt="Drinks, Desserts & Refreshments" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-4.jpg'">
-            <span class="menu-page-badge">Page 4 • Drinks & Sweets</span>
-            <div class="menu-page-overlay">
-              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
+      <!-- Printable Restaurant Menu Leaf Board -->
+      <div class="print-leaf-wrapper">
+        <article class="print-leaf-card" id="printableMenuLeaf">
+          <!-- Card Header styled like an authentic fine-dining printed menu -->
+          <header class="print-leaf-header">
+            <div class="print-leaf-emblem">
+              <img src="assets/sylvana-logo.png" alt="Emblem" class="print-leaf-emblem-img">
             </div>
-          </div>
-          <div class="menu-page-card-body">
-            <h3 class="menu-page-card-title" data-page-field="title">Drinks, Desserts & Refreshments</h3>
-            <div class="menu-page-card-bn" data-page-field="titleBn">মিষ্টি, লস্যি, মিল্কশেক ও ফ্রেশ জুস</div>
-            <p class="menu-page-card-summary" data-page-field="summary">Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice</p>
-            <div class="menu-page-card-btn">
-              <span>📖 View High-Res Page 4</span>
+            <h3 class="print-leaf-restaurant-name">The Sylvana Restaurant</h3>
+            <div class="print-leaf-restaurant-bn">দ্যা সিলভানা রেস্টুরেন্ট • শাহবাগ, ঢাকা</div>
+            <div class="print-leaf-divider">
+              <span class="divider-line"></span>
+              <span class="divider-icon">♦</span>
+              <span class="divider-line"></span>
             </div>
+            <h4 class="print-leaf-cat-title" id="leafCatTitle">BREAKFAST MENU</h4>
+            <div class="print-leaf-cat-bn" id="leafCatBn">সকালের নাস্তা ও স্পেশাল চা</div>
+            <p class="print-leaf-timing" id="leafCatTiming">Morning Specials • 7:30 AM – 11:30 AM</p>
+          </header>
+
+          <!-- 2-Column Balanced Printable Dishes Grid -->
+          <div class="print-leaf-items-grid" id="leafItemsGrid">
+        <div class="menu-leaf-item" data-item-id="b1">
+          <div class="item-header-row">
+            <span class="item-num">1.</span>
+            <span class="item-name" data-field="name">Paratha with Bhaji</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">100 ৳</span>
           </div>
+          <p class="item-desc" data-field="desc">Flaky paratha served with spiced mixed vegetables</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b2">
+          <div class="item-header-row">
+            <span class="item-num">2.</span>
+            <span class="item-name" data-field="name">Paratha with Dal</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">90 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Golden paratha with warm, seasoned yellow lentils</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b3">
+          <div class="item-header-row">
+            <span class="item-num">3.</span>
+            <span class="item-name" data-field="name">Paratha with Dim Bhuna</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">130 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Paratha served with eggs in a rich onion and tomato gravy</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b4">
+          <div class="item-header-row">
+            <span class="item-num">4.</span>
+            <span class="item-name" data-field="name">Khichuri with Omelette</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">150 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Chinigura rice & yellow lentils served with onion & green chili omelette</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b5">
+          <div class="item-header-row">
+            <span class="item-num">5.</span>
+            <span class="item-name" data-field="name">Eggs Omelette</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">70 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Onion, coriander and green chili fresh omelette</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b6">
+          <div class="item-header-row">
+            <span class="item-num">6.</span>
+            <span class="item-name" data-field="name">Plain Naan (each)</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">40 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Warm clay-oven baked tandoori naan</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b7">
+          <div class="item-header-row">
+            <span class="item-num">7.</span>
+            <span class="item-name" data-field="name">Paratha (each)</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">30 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Crispy golden layered flatbread</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b8">
+          <div class="item-header-row">
+            <span class="item-num">8.</span>
+            <span class="item-name" data-field="name">Special Masala Tea</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">60 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Hot tea infused with cardamom, clove & aromatic spices</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b9">
+          <div class="item-header-row">
+            <span class="item-num">9.</span>
+            <span class="item-name" data-field="name">Milk Tea</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">40 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Classic creamy Bangladeshi slow-boiled milk tea</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b10">
+          <div class="item-header-row">
+            <span class="item-num">10.</span>
+            <span class="item-name" data-field="name">Black Tea</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">30 ৳</span>
+          </div>
+          <p class="item-desc" data-field="desc">Pure refreshing brewed hot black tea</p>
+        </div>
+          </div>
+
+          <!-- Printable Leaf Footer -->
+          <footer class="print-leaf-footer">
+            <div class="print-leaf-footer-notes">
+              <span>✦ All prices in Bangladeshi Taka (৳) • Pure Ingredients & Traditional Taste</span>
+              <span>✦ Open 7 Days a Week: 7:30 AM – 11:00 PM Daily</span>
+            </div>
+            <div class="print-leaf-footer-actions">
+              <a href="tel:+8801734489275" class="btn-leaf-order">
+                <span>📞 Order / Inquiries: +8801734489275</span>
+              </a>
+              <button type="button" class="btn-leaf-print" onclick="window.print()">
+                <span>🖨️ Print Menu</span>
+              </button>
+            </div>
+          </footer>
         </article>
       </div>
     </div>
   </main>
 
   <!-- ========================================================
-       SECTION 3: CONTACT & DETAILS (BOTTOM / LAST)
+       SECTION 3: CONTACT & DETAILS
        ======================================================== -->
   <section class="contact-section">
     <div class="site-container">
@@ -167,7 +255,7 @@
           <div class="contact-icon-bubble">⏰</div>
           <h3 class="contact-card-title">Opening Hours</h3>
           <p class="contact-card-text" id="contactHours">
-            Monday – Sunday: 7:00 AM – 11:30 PM (Daily)
+            Monday – Sunday: 7:30 AM – 11:00 PM (Daily)
           </p>
           <div class="contact-card-highlight">Open 7 Days a Week</div>
         </div>
@@ -225,34 +313,7 @@
     </div>
   </div>
 
-  <!-- ========================================================
-       FULLSCREEN INTERACTIVE MENU IMAGE LIGHTBOX MODAL
-       ======================================================== -->
-  <div class="menu-lightbox" id="menuLightbox" role="dialog" aria-modal="true" aria-label="Menu Image Viewer">
-    <div class="lightbox-overlay" id="lightboxOverlay"></div>
-    <div class="lightbox-container">
-      <div class="lightbox-bar">
-        <div class="lightbox-info">
-          <span class="lightbox-counter" id="lightboxCounter">Page 1 of 4</span>
-          <span class="lightbox-title" id="lightboxTitle">Breakfast Menu & Tea Item</span>
-        </div>
-        <div class="lightbox-actions">
-          <a href="#" target="_blank" class="lightbox-btn" id="lightboxDirectLink" title="Open Full Image in New Tab">↗ Full Image</a>
-          <button type="button" class="lightbox-btn-close" id="lightboxCloseBtn" title="Close (ESC)">✕</button>
-        </div>
-      </div>
-      <div class="lightbox-image-wrap" id="lightboxImageWrap">
-        <button type="button" class="lightbox-arrow arrow-left" id="lightboxPrevBtn" aria-label="Previous Page">‹</button>
-        <img src="" alt="Menu Page" class="lightbox-img" id="lightboxMainImg">
-        <button type="button" class="lightbox-arrow arrow-right" id="lightboxNextBtn" aria-label="Next Page">›</button>
-      </div>
-      <div class="lightbox-thumbs-bar" id="lightboxThumbsBar">
-        <!-- Rendered by modern.js -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Dynamic Content & In-line Editor Controller -->
-  <script src="js/modern.js?v=4"></script>
+  <!-- Dynamic Controller -->
+  <script src="js/modern.js?v=5"></script>
 </body>
 </html>
