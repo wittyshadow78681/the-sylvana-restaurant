@@ -4,55 +4,127 @@
  */
 
 (function () {
-  let contentData = null;
+  const DEFAULT_CONTENT = {
+    meta: {
+      brandName: "The Sylvana Restaurant",
+      brandNameBn: "দ্যা সিলভানা রেস্টুরেন্ট",
+      tagline: "Authentic Bengali Cuisine & Hearty Dining"
+    },
+    hero: {
+      subtitle: "Discover the vibrant taste of Dhaka with our authentic Mutton Kacchi Biryani, traditional morning breakfast, clay-oven naans, burgers, and refreshing beverages crafted fresh every day at Shahbagh, Dhaka."
+    },
+    contact: {
+      phone: "+8801734489275",
+      email: "sylvanarestaurantbd@gmail.com",
+      address: "10, Shahbagh Biponi Bithan, Dhaka-1000, Bangladesh",
+      hours: "Monday – Sunday: 7:00 AM – 11:30 PM (Daily)"
+    },
+    menu: {
+      title: "Food & Beverage Menu",
+      subtitle: "Click any menu card below to view or zoom into the complete high-resolution menu page.",
+      pages: [
+        {
+          id: 1,
+          pageNumber: 1,
+          title: "Breakfast Menu & Tea Item",
+          titleBn: "সকালের নাস্তা ও স্পেশাল চা",
+          category: "Breakfast & Morning Specials",
+          badge: "Page 1 • Breakfast & Tea",
+          summary: "Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea",
+          image: "assets/menu-page-1.webp",
+          fallbackImage: "assets/menu-page-1.jpg"
+        },
+        {
+          id: 2,
+          pageNumber: 2,
+          title: "Lunch & Dinner Starters, Burgers & Pizza",
+          titleBn: "স্যুপ, ফ্রাইড চিকেন, বার্গার ও পিৎজা",
+          category: "Starters & Fast Food",
+          badge: "Page 2 • Starters & Pizza",
+          summary: "Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta",
+          image: "assets/menu-page-2.webp",
+          fallbackImage: "assets/menu-page-2.jpg"
+        },
+        {
+          id: 3,
+          pageNumber: 3,
+          title: "Traditional Meals & Favourites",
+          titleBn: "ঐতিহ্যবাহী কাচ্চি বিরিয়ানি ও দেশি খাবার",
+          category: "Biryani & Traditional Meals",
+          badge: "Page 3 • Biryani & Curries",
+          summary: "Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal",
+          image: "assets/menu-page-3.webp",
+          fallbackImage: "assets/menu-page-3.jpg"
+        },
+        {
+          id: 4,
+          pageNumber: 4,
+          title: "Drinks, Desserts & Refreshments",
+          titleBn: "মিষ্টি, লস্যি, মিল্কশেক ও ফ্রেশ জুস",
+          category: "Drinks & Desserts",
+          badge: "Page 4 • Drinks & Sweets",
+          summary: "Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice",
+          image: "assets/menu-page-4.webp",
+          fallbackImage: "assets/menu-page-4.jpg"
+        }
+      ]
+    }
+  };
+
+  let contentData = JSON.parse(JSON.stringify(DEFAULT_CONTENT));
   let adminToken = sessionStorage.getItem('sylvana_admin_token') || '';
   let isEditMode = false;
   let currentLightboxIndex = 0;
 
-  document.addEventListener('DOMContentLoaded', init);
+  // Render immediately if DOM is ready or wait for DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
   async function init() {
-    await fetchContent();
+    // Render default content immediately so images appear with zero delay
+    renderAll();
     setupLightboxEvents();
     checkAdminRoute();
     setupAdminModal();
+
+    // In parallel, load fresh content
+    await fetchContent();
   }
 
   // 1. Fetch content
   async function fetchContent() {
-    // Check localStorage cache first for client-side persistence
+    // Purge old incompatible cache
     try {
-      const cached = localStorage.getItem('sylvana_content_data');
+      const cached = localStorage.getItem('sylvana_content_data_v3');
       if (cached) {
-        contentData = JSON.parse(cached);
+        const parsed = JSON.parse(cached);
+        if (parsed && parsed.menu && Array.isArray(parsed.menu.pages) && parsed.menu.pages.length === 4) {
+          contentData = parsed;
+          renderAll();
+        }
+      } else {
+        localStorage.removeItem('sylvana_content_data');
+        localStorage.removeItem('sylvana_content_data_v2');
       }
     } catch (e) {
-      console.warn('localStorage parse error:', e);
+      console.warn('Cache error:', e);
     }
 
     try {
-      const res = await fetch('/api/content');
+      const res = await fetch('data/content.json?t=' + Date.now());
       if (res.ok) {
-        contentData = await res.json();
-        localStorage.setItem('sylvana_content_data', JSON.stringify(contentData));
-      } else if (!contentData) {
-        throw new Error('API returned ' + res.status);
-      }
-    } catch (e) {
-      if (!contentData) {
-        console.warn('Falling back to static data/content.json:', e);
-        try {
-          const fallback = await fetch('data/content.json');
-          contentData = await fallback.json();
-          localStorage.setItem('sylvana_content_data', JSON.stringify(contentData));
-        } catch (err) {
-          console.error('Failed to load menu data:', err);
+        const data = await res.json();
+        if (data && data.menu && Array.isArray(data.menu.pages) && data.menu.pages.length > 0) {
+          contentData = data;
+          localStorage.setItem('sylvana_content_data_v3', JSON.stringify(contentData));
+          renderAll();
         }
       }
-    }
-
-    if (contentData) {
-      renderAll();
+    } catch (e) {
+      console.warn('Network content fetch:', e);
     }
   }
 
@@ -101,7 +173,7 @@
     grid.innerHTML = contentData.menu.pages.map((page, idx) => `
       <article class="menu-page-card" data-page-index="${idx}" tabindex="0" role="button" aria-label="Open ${escapeHtml(page.title)}">
         <div class="menu-page-thumb-wrap">
-          <img src="${escapeHtml(page.image)}" alt="${escapeHtml(page.title)}" class="menu-page-thumb" loading="lazy" onerror="this.onerror=null;this.src='assets/sylvana-logo.png'">
+          <img src="${escapeHtml(page.image)}" alt="${escapeHtml(page.title)}" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='${escapeHtml(page.fallbackImage || 'assets/menu-page-' + page.pageNumber + '.jpg')}'">
           <span class="menu-page-badge">${escapeHtml(page.badge || `Page ${page.pageNumber}`)}</span>
           <div class="menu-page-overlay">
             <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
@@ -215,6 +287,10 @@
     if (mainImg) {
       mainImg.src = page.image;
       mainImg.alt = page.title;
+      mainImg.onerror = function() {
+        this.onerror = null;
+        this.src = page.fallbackImage || ('assets/menu-page-' + page.pageNumber + '.jpg');
+      };
     }
     if (directLink) directLink.href = page.image;
 

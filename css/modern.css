@@ -58,6 +58,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -67,6 +69,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 .site-container {
@@ -118,21 +122,23 @@ body {
 
 .hero-title-en {
   font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
   font-weight: 700;
   color: var(--text-main);
-  line-height: 1.15;
+  line-height: 1.18;
   margin-bottom: 4px;
   letter-spacing: -0.5px;
+  word-break: break-word;
 }
 
 .hero-title-bn {
   font-family: var(--font-bengali);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.3rem, 5vw, 2.3rem);
   font-weight: 700;
   color: var(--primary-red);
   line-height: 1.3;
   margin-bottom: 12px;
+  word-break: break-word;
 }
 
 .hero-location-text {
@@ -213,20 +219,22 @@ body {
 }
 
 .section-label {
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 2.5vw, 0.8rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   color: var(--primary-red);
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
 .section-main-title {
   font-family: var(--font-serif);
-  font-size: 2.1rem;
+  font-size: clamp(1.4rem, 5vw, 2.1rem);
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 6px;
+  word-break: break-word;
 }
 
 .section-subtitle {
@@ -911,18 +919,123 @@ body.admin-edit-active .admin-floating-bar {
   to { transform: translateY(0); opacity: 1; }
 }
 
-@media (max-width: 640px) {
-  .hero-section {
-    padding: 40px 0 28px;
+@media (max-width: 768px) {
+  .menu-pages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
   }
-  .menu-image-grid {
+  .contact-cards-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .tab-filter-row {
-    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .site-container {
+    padding: 0 16px;
+  }
+  .hero-section {
+    padding: 36px 0 24px;
+  }
+  .hero-badge {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    margin-bottom: 14px;
+  }
+  .hero-title-en {
+    font-size: clamp(1.65rem, 7vw, 2.3rem);
+    word-break: break-word;
+    letter-spacing: -0.3px;
+  }
+  .hero-title-bn {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+    word-break: break-word;
+    margin-bottom: 10px;
+  }
+  .hero-location-text {
+    font-size: 0.88rem;
+    padding: 0 8px;
+    margin-bottom: 10px;
+  }
+  .hero-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    padding: 0 4px;
+    margin-bottom: 20px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    word-break: break-word;
+    padding: 0 10px;
+  }
+  .section-main-title {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+  }
+  .section-subtitle {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+  .menu-pages-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .site-footer {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
+  }
+  .lightbox-container {
+    width: 96vw;
+    height: 92vh;
+  }
+  .lightbox-bar {
+    padding: 10px 14px;
+  }
+  .lightbox-title {
+    font-size: 0.85rem;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lightbox-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.4rem;
+  }
+  .lightbox-arrow.arrow-left {
+    left: 8px;
+  }
+  .lightbox-arrow.arrow-right {
+    right: 8px;
+  }
+  .lightbox-thumbs-bar {
+    gap: 6px;
+    padding: 6px 10px;
+  }
+  .lightbox-thumb-btn {
+    width: 44px;
+    height: 58px;
   }
 }
+

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Modern Light Responsive Stylesheet -->
-  <link rel="stylesheet" href="css/modern.css">
+  <link rel="stylesheet" href="css/modern.css?v=4">
 </head>
 <body>
 
@@ -56,14 +56,79 @@
         <p class="section-subtitle" id="menuSectionSub">Click any menu card below to view or zoom into the complete high-resolution menu page.</p>
       </div>
 
-      <!-- 4 Authentic Menu Cards Grid (Click to view full image in lightbox) -->
+      <!-- 4 Authentic Menu Cards Grid (Pre-rendered for Instant Paint, Enhanced by modern.js) -->
       <div class="menu-pages-grid" id="menuCardsGrid">
-        <!-- Rendered dynamically by modern.js -->
-        <noscript>
-          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #64748b;">
-            Please enable JavaScript to view the full interactive menu.
+        <article class="menu-page-card" data-page-index="0" tabindex="0" role="button" aria-label="Open Breakfast Menu & Tea Item">
+          <div class="menu-page-thumb-wrap">
+            <img src="assets/menu-page-1.webp" alt="Breakfast Menu & Tea Item" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-1.jpg'">
+            <span class="menu-page-badge">Page 1 • Breakfast & Tea</span>
+            <div class="menu-page-overlay">
+              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
+            </div>
           </div>
-        </noscript>
+          <div class="menu-page-card-body">
+            <h3 class="menu-page-card-title" data-page-field="title">Breakfast Menu & Tea Item</h3>
+            <div class="menu-page-card-bn" data-page-field="titleBn">সকালের নাস্তা ও স্পেশাল চা</div>
+            <p class="menu-page-card-summary" data-page-field="summary">Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea</p>
+            <div class="menu-page-card-btn">
+              <span>📖 View High-Res Page 1</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-page-card" data-page-index="1" tabindex="0" role="button" aria-label="Open Lunch & Dinner Starters, Burgers & Pizza">
+          <div class="menu-page-thumb-wrap">
+            <img src="assets/menu-page-2.webp" alt="Lunch & Dinner Starters, Burgers & Pizza" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-2.jpg'">
+            <span class="menu-page-badge">Page 2 • Starters & Pizza</span>
+            <div class="menu-page-overlay">
+              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
+            </div>
+          </div>
+          <div class="menu-page-card-body">
+            <h3 class="menu-page-card-title" data-page-field="title">Lunch & Dinner Starters, Burgers & Pizza</h3>
+            <div class="menu-page-card-bn" data-page-field="titleBn">স্যুপ, ফ্রাইড চিকেন, বার্গার ও পিৎজা</div>
+            <p class="menu-page-card-summary" data-page-field="summary">Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta</p>
+            <div class="menu-page-card-btn">
+              <span>📖 View High-Res Page 2</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-page-card" data-page-index="2" tabindex="0" role="button" aria-label="Open Traditional Meals & Favourites">
+          <div class="menu-page-thumb-wrap">
+            <img src="assets/menu-page-3.webp" alt="Traditional Meals & Favourites" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-3.jpg'">
+            <span class="menu-page-badge">Page 3 • Biryani & Curries</span>
+            <div class="menu-page-overlay">
+              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
+            </div>
+          </div>
+          <div class="menu-page-card-body">
+            <h3 class="menu-page-card-title" data-page-field="title">Traditional Meals & Favourites</h3>
+            <div class="menu-page-card-bn" data-page-field="titleBn">ঐতিহ্যবাহী কাচ্চি বিরিয়ানি ও দেশি খাবার</div>
+            <p class="menu-page-card-summary" data-page-field="summary">Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal</p>
+            <div class="menu-page-card-btn">
+              <span>📖 View High-Res Page 3</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="menu-page-card" data-page-index="3" tabindex="0" role="button" aria-label="Open Drinks, Desserts & Refreshments">
+          <div class="menu-page-thumb-wrap">
+            <img src="assets/menu-page-4.webp" alt="Drinks, Desserts & Refreshments" class="menu-page-thumb" loading="eager" onerror="this.onerror=null;this.src='assets/menu-page-4.jpg'">
+            <span class="menu-page-badge">Page 4 • Drinks & Sweets</span>
+            <div class="menu-page-overlay">
+              <span class="menu-page-zoom-pill">🔍 Click to View Full Menu</span>
+            </div>
+          </div>
+          <div class="menu-page-card-body">
+            <h3 class="menu-page-card-title" data-page-field="title">Drinks, Desserts & Refreshments</h3>
+            <div class="menu-page-card-bn" data-page-field="titleBn">মিষ্টি, লস্যি, মিল্কশেক ও ফ্রেশ জুস</div>
+            <p class="menu-page-card-summary" data-page-field="summary">Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice</p>
+            <div class="menu-page-card-btn">
+              <span>📖 View High-Res Page 4</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </main>
@@ -188,6 +253,6 @@
   </div>
 
   <!-- Dynamic Content & In-line Editor Controller -->
-  <script src="js/modern.js"></script>
+  <script src="js/modern.js?v=4"></script>
 </body>
 </html>

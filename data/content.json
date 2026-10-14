@@ -30,7 +30,8 @@
         "category": "Breakfast & Tea",
         "badge": "Page 1 • Breakfast & Tea",
         "summary": "Paratha with Bhaji, Dal, Dim Bhuna, Khichuri with Omelet, Plain Naan, Garlic Naan & Masala Tea",
-        "image": "assets/menu-page-1.png"
+        "image": "assets/menu-page-1.webp",
+        "fallbackImage": "assets/menu-page-1.jpg"
       },
       {
         "id": 2,
@@ -40,7 +41,8 @@
         "category": "Starters & Fast Food",
         "badge": "Page 2 • Starters & Pizza",
         "summary": "Chicken Soup, French Fries, Samosa, Spicy Fried Chicken, Gourmet Burgers, Margherita Pizza & Pasta",
-        "image": "assets/menu-page-2.png"
+        "image": "assets/menu-page-2.webp",
+        "fallbackImage": "assets/menu-page-2.jpg"
       },
       {
         "id": 3,
@@ -50,7 +52,8 @@
         "category": "Biryani & Traditional Meals",
         "badge": "Page 3 • Biryani & Curries",
         "summary": "Mutton Kacchi Biryani, Beef Tehari, Chicken Dum Biryani, Fish Curry with Rice, Beef Bhuna & Dal",
-        "image": "assets/menu-page-3.png"
+        "image": "assets/menu-page-3.webp",
+        "fallbackImage": "assets/menu-page-3.jpg"
       },
       {
         "id": 4,
@@ -60,7 +63,8 @@
         "category": "Drinks & Desserts",
         "badge": "Page 4 • Drinks & Sweets",
         "summary": "Gulab Jamun, Firni, Sweet Yoghurt, Lassi, Chocolate Milkshake, Regular Hot Coffee & Fresh Orange Juice",
-        "image": "assets/menu-page-4.png"
+        "image": "assets/menu-page-4.webp",
+        "fallbackImage": "assets/menu-page-4.jpg"
       }
     ]
   },
