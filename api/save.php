@@ -68,6 +68,7 @@ if ($written === false) {
     echo json_encode(['success' => false, 'error' => 'Failed to write to content.json file. Check permissions.']);
     exit;
 }
+@chmod($targetFile, 0666);
 
 // Log change
 $auditFile = $targetDir . '/audit_log.json';
