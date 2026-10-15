@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Minimal & Modern Stylesheet -->
-  <link rel="stylesheet" href="css/modern.css?v=5">
+  <link rel="stylesheet" href="css/modern.css?v=6">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
 
   <!-- ========================================================
        SECTION 2: MINIMAL PRINTABLE RESTAURANT MENU
-       3 Highlighted Categories: Breakfast | Dinner & Mains | Drinks & Others
+       3 Highlighted Categories: Breakfast | Lunch & Dinner | Drinks & Others
        ======================================================== -->
   <main class="menu-section" id="menu">
     <div class="site-container">
@@ -65,16 +65,16 @@
             <span class="tab-title">Breakfast</span>
             <span class="tab-bn">সকালের নাস্তা ও চা</span>
           </span>
-          <span class="tab-count">10 Items</span>
+          <span class="tab-count">12 Items</span>
         </button>
 
         <button type="button" class="category-tab-btn" data-category="dinner" id="tabDinner">
           <span class="tab-icon">🍲</span>
           <span class="tab-text">
-            <span class="tab-title">Dinner & Mains</span>
+            <span class="tab-title">Lunch & Dinner</span>
             <span class="tab-bn">দুপুর ও রাতের খাবার</span>
           </span>
-          <span class="tab-count">22 Items</span>
+          <span class="tab-count">25 Items</span>
         </button>
 
         <button type="button" class="category-tab-btn" data-category="other" id="tabOther">
@@ -83,7 +83,7 @@
             <span class="tab-title">Drinks & Others</span>
             <span class="tab-bn">পানীয় ও ডেজার্ট</span>
           </span>
-          <span class="tab-count">13 Items</span>
+          <span class="tab-count">16 Items</span>
         </button>
       </nav>
 
@@ -115,8 +115,9 @@
             <span class="item-name" data-field="name">Paratha with Bhaji</span>
             <span class="item-dots" aria-hidden="true"></span>
             <span class="item-price" data-field="price">100 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b1')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Flaky paratha served with spiced mixed vegetables</p>
+          <p class="item-desc" data-field="desc">2 Parathas & spiced mixed vegetables.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b2">
           <div class="item-header-row">
@@ -124,71 +125,79 @@
             <span class="item-name" data-field="name">Paratha with Dal</span>
             <span class="item-dots" aria-hidden="true"></span>
             <span class="item-price" data-field="price">90 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b2')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Golden paratha with warm, seasoned yellow lentils</p>
+          <p class="item-desc" data-field="desc">2 Parathas & seasoned lentils.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b3">
           <div class="item-header-row">
             <span class="item-num">3.</span>
-            <span class="item-name" data-field="name">Paratha with Dim Bhuna</span>
+            <span class="item-name" data-field="name">Eggs with Paratha</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">130 ৳</span>
+            <span class="item-price" data-field="price">140 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b3')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Paratha served with eggs in a rich onion and tomato gravy</p>
+          <p class="item-desc" data-field="desc">2 Parathas & 2 fried eggs.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b4">
           <div class="item-header-row">
             <span class="item-num">4.</span>
-            <span class="item-name" data-field="name">Khichuri with Omelette</span>
+            <span class="item-name" data-field="name">Paratha with Dim Bhuna</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">150 ৳</span>
+            <span class="item-price" data-field="price">130 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b4')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Chinigura rice & yellow lentils served with onion & green chili omelette</p>
+          <p class="item-desc" data-field="desc">2 Parathas with eggs, onions & tomato gravy.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b5">
           <div class="item-header-row">
             <span class="item-num">5.</span>
-            <span class="item-name" data-field="name">Eggs Omelette</span>
+            <span class="item-name" data-field="name">Khichuri with Omelet</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">70 ৳</span>
+            <span class="item-price" data-field="price">150 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b5')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Onion, coriander and green chili fresh omelette</p>
+          <p class="item-desc" data-field="desc">Rice & lentils served with onion, green chili & omelet.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b6">
           <div class="item-header-row">
             <span class="item-num">6.</span>
-            <span class="item-name" data-field="name">Plain Naan (each)</span>
+            <span class="item-name" data-field="name">Eggs Omelet</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">40 ৳</span>
+            <span class="item-price" data-field="price">70 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b6')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Warm clay-oven baked tandoori naan</p>
+          <p class="item-desc" data-field="desc">Onion, coriander & green chili.</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b7">
           <div class="item-header-row">
             <span class="item-num">7.</span>
-            <span class="item-name" data-field="name">Paratha (each)</span>
+            <span class="item-name" data-field="name">Plain Naan (each)</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">30 ৳</span>
+            <span class="item-price" data-field="price">40 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b7')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Crispy golden layered flatbread</p>
+          <p class="item-desc" data-field="desc">Warm clay-oven baked tandoori naan</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b8">
           <div class="item-header-row">
             <span class="item-num">8.</span>
-            <span class="item-name" data-field="name">Special Masala Tea</span>
+            <span class="item-name" data-field="name">Garlic Naan (each)</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">60 ৳</span>
+            <span class="item-price" data-field="price">50 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b8')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Hot tea infused with cardamom, clove & aromatic spices</p>
+          <p class="item-desc" data-field="desc">Clay-oven baked naan infused with fresh garlic & butter</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b9">
           <div class="item-header-row">
             <span class="item-num">9.</span>
-            <span class="item-name" data-field="name">Milk Tea</span>
+            <span class="item-name" data-field="name">Paratha (each)</span>
             <span class="item-dots" aria-hidden="true"></span>
-            <span class="item-price" data-field="price">40 ৳</span>
+            <span class="item-price" data-field="price">30 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b9')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Classic creamy Bangladeshi slow-boiled milk tea</p>
+          <p class="item-desc" data-field="desc">Crispy golden layered flatbread</p>
         </div>
         <div class="menu-leaf-item" data-item-id="b10">
           <div class="item-header-row">
@@ -196,8 +205,34 @@
             <span class="item-name" data-field="name">Black Tea</span>
             <span class="item-dots" aria-hidden="true"></span>
             <span class="item-price" data-field="price">30 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b10')">✕</button>
           </div>
-          <p class="item-desc" data-field="desc">Pure refreshing brewed hot black tea</p>
+          <p class="item-desc" data-field="desc">Freshly brewed hot black tea</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b11">
+          <div class="item-header-row">
+            <span class="item-num">11.</span>
+            <span class="item-name" data-field="name">Milk Tea</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">40 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b11')">✕</button>
+          </div>
+          <p class="item-desc" data-field="desc">Classic creamy Bangladeshi slow-boiled milk tea</p>
+        </div>
+        <div class="menu-leaf-item" data-item-id="b12">
+          <div class="item-header-row">
+            <span class="item-num">12.</span>
+            <span class="item-name" data-field="name">Masala Tea</span>
+            <span class="item-dots" aria-hidden="true"></span>
+            <span class="item-price" data-field="price">60 ৳</span>
+            <button type="button" class="item-delete-btn" title="Delete this dish" onclick="window.SylvanaAdmin.deleteItem('b12')">✕</button>
+          </div>
+          <p class="item-desc" data-field="desc">Hot tea infused with cardamom, clove & aromatic spices</p>
+        </div>
+        <div class="admin-add-dish-wrapper">
+          <button type="button" class="btn-add-dish" onclick="window.SylvanaAdmin.addItem()">
+            <span>➕ Add New Dish to Breakfast</span>
+          </button>
         </div>
           </div>
 
@@ -314,6 +349,6 @@
   </div>
 
   <!-- Dynamic Controller -->
-  <script src="js/modern.js?v=5"></script>
+  <script src="js/modern.js?v=6"></script>
 </body>
 </html>

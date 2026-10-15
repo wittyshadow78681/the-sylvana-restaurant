@@ -774,6 +774,77 @@ body.admin-edit-active .admin-floating-bar {
   border-color: #64748b;
 }
 
+/* In-line Dish Controls for Admin Edit Mode */
+.item-delete-btn {
+  display: none;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  cursor: pointer;
+  margin-left: 6px;
+  font-weight: 700;
+  transition: all 0.2s;
+  line-height: 1.2;
+}
+
+body.admin-edit-active .item-delete-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.item-delete-btn:hover {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
+.admin-add-dish-wrapper {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 14px;
+  padding: 10px;
+}
+
+body.admin-edit-active .admin-add-dish-wrapper {
+  display: block;
+}
+
+.btn-add-dish {
+  background: #f1f5f9;
+  border: 1.5px dashed #94a3b8;
+  color: #334155;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.btn-add-dish:hover {
+  background: #e2e8f0;
+  border-color: #64748b;
+  color: #0f172a;
+}
+
+/* Toast variants */
+.site-toast.toast-success {
+  background: #065f46;
+  border: 1px solid #10b981;
+}
+
+.site-toast.toast-error {
+  background: #7f1d1d;
+  border: 1px solid #ef4444;
+}
+
 /* Modal */
 .modal-backdrop {
   position: fixed;
